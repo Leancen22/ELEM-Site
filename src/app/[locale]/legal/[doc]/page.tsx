@@ -16,7 +16,8 @@ const docs: Record<Locale, Record<string, Doc>> = {
       intro:
         'En ELEM nos tomamos en serio la protección de tus datos personales. Esta política explica qué datos recogemos, con qué finalidad y cómo los tratamos.',
       sections: [
-        { h: 'Responsable del tratamiento', p: `El responsable es ${site.legalName}, con domicilio en ${siteCopy.es.address} y correo de contacto ${site.email}.` },
+        // { h: 'Responsable del tratamiento', p: `El responsable es ${site.legalName}, con domicilio en ${siteCopy.es.address} y correo de contacto ${site.email}.` },
+        { h: 'Responsable del tratamiento', p: `El responsable es ${site.legalName}, con correo de contacto ${site.email}.` },
         { h: 'Datos que recogemos', p: 'Recogemos los datos que nos facilitas a través de nuestros formularios (nombre, email, empresa y mensaje) con la única finalidad de responder a tu consulta.' },
         { h: 'Base legal', p: 'El tratamiento se basa en tu consentimiento, que puedes retirar en cualquier momento escribiéndonos.' },
         { h: 'Conservación', p: 'Conservamos tus datos el tiempo necesario para atender tu solicitud y, posteriormente, durante los plazos legalmente exigidos.' },
@@ -37,7 +38,8 @@ const docs: Record<Locale, Record<string, Doc>> = {
       title: 'Aviso Legal',
       intro: 'Condiciones generales de uso del sitio web de ELEM.',
       sections: [
-        { h: 'Titularidad', p: `Este sitio web es titularidad de ${site.legalName}, con domicilio en ${siteCopy.es.address}.` },
+        // { h: 'Titularidad', p: `Este sitio web es titularidad de ${site.legalName}, con domicilio en ${siteCopy.es.address}.` },
+        { h: 'Titularidad', p: `Este sitio web es titularidad de ${site.legalName}.` },
         { h: 'Propiedad intelectual', p: 'Todos los contenidos del sitio (textos, diseños, código y marcas) están protegidos por derechos de propiedad intelectual e industrial.' },
         { h: 'Responsabilidad', p: 'ELEM no se hace responsable del uso indebido de los contenidos del sitio por parte de terceros.' },
       ],
@@ -49,7 +51,8 @@ const docs: Record<Locale, Record<string, Doc>> = {
       intro:
         'At ELEM we take the protection of your personal data seriously. This policy explains what data we collect, for what purpose and how we process it.',
       sections: [
-        { h: 'Data controller', p: `The controller is ${site.legalName}, located at ${siteCopy.en.address}, contact email ${site.email}.` },
+        // { h: 'Data controller', p: `The controller is ${site.legalName}, located at ${siteCopy.en.address}, contact email ${site.email}.` },
+        { h: 'Data controller', p: `The controller is ${site.legalName}, with contact email ${site.email}.` },
         { h: 'Data we collect', p: 'We collect the data you provide through our forms (name, email, company and message) for the sole purpose of answering your enquiry.' },
         { h: 'Legal basis', p: 'Processing is based on your consent, which you can withdraw at any time by writing to us.' },
         { h: 'Retention', p: 'We keep your data for as long as necessary to handle your request and, afterwards, for the legally required periods.' },
@@ -70,7 +73,8 @@ const docs: Record<Locale, Record<string, Doc>> = {
       title: 'Legal Notice',
       intro: 'General terms of use of the ELEM website.',
       sections: [
-        { h: 'Ownership', p: `This website is owned by ${site.legalName}, located at ${siteCopy.en.address}.` },
+        // { h: 'Ownership', p: `This website is owned by ${site.legalName}, located at ${siteCopy.en.address}.` },
+        { h: 'Ownership', p: `This website is owned by ${site.legalName}.` },
         { h: 'Intellectual property', p: 'All site contents (texts, designs, code and trademarks) are protected by intellectual and industrial property rights.' },
         { h: 'Liability', p: 'ELEM is not liable for any misuse of the site’s contents by third parties.' },
       ],
