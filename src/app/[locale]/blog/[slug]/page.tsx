@@ -86,7 +86,7 @@ export default async function ArticlePage({
               items={[
                 { name: t.home, href: '/' },
                 { name: t.blog, href: '/blog' },
-                { name: post.category, href: '/blog' },
+                { name: post.category, href: `/blog/${post.slug}` },
               ]}
             />
             <Reveal className="mt-8">
