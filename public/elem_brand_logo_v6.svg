@@ -1,0 +1,21 @@
+<svg width="100%" viewBox="0 0 680 320" role="img" xmlns="http://www.w3.org/2000/svg" style="">
+<title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Logo ELEM: isotipo de tres barras tipo E con ajuste óptico</title>
+<desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Marca ELEM con tres barras horizontales redondeadas que evocan la letra E, balanceadas ópticamente sobre el nombre.</desc>
+<defs>
+<linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#fb356b"/>
+<stop offset="50%" stop-color="#e6128f"/>
+<stop offset="100%" stop-color="#bc12d6"/>
+</linearGradient>
+<linearGradient id="brandGradSoft" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#ff6890"/>
+<stop offset="100%" stop-color="#e879f9"/>
+</linearGradient>
+</defs>
+
+<rect x="251" y="74" width="156" height="18" rx="9" fill="url(#brandGrad)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<rect x="251" y="111" width="117" height="18" rx="9" fill="url(#brandGradSoft)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<rect x="251" y="148" width="156" height="18" rx="9" fill="url(#brandGrad)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+<text x="340" y="232" text-anchor="middle" font-family="var(--font-sans)" font-size="56" font-weight="500" letter-spacing="16" fill="url(#brandGrad)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:56px;font-weight:500;text-anchor:middle;dominant-baseline:auto">ELEM</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg width="100%" viewBox="0 0 680 160" role="img" xmlns="http://www.w3.org/2000/svg" style="">
+<title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Isotipo ELEM (solo las tres barras)</title>
+<desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Símbolo de marca ELEM: tres barras horizontales redondeadas que evocan la letra E, en degradado rosa a fucsia.</desc>
+<defs>
+<linearGradient id="brandGradI" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#fb356b"/>
+<stop offset="50%" stop-color="#e6128f"/>
+<stop offset="100%" stop-color="#bc12d6"/>
+</linearGradient>
+<linearGradient id="brandGradSoftI" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#ff6890"/>
+<stop offset="100%" stop-color="#e879f9"/>
+</linearGradient>
+</defs>
+
+<rect x="262" y="48" width="156" height="18" rx="9" fill="url(#brandGradI)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<rect x="262" y="85" width="117" height="18" rx="9" fill="url(#brandGradSoftI)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<rect x="262" y="122" width="156" height="18" rx="9" fill="url(#brandGradI)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+</svg>

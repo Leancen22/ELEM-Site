@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 340 60% 99%;
+    --foreground: 335 45% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 335 45% 9%;
+
+    --muted: 340 30% 96%;
+    --muted-foreground: 336 12% 42%;
+
+    --primary: 338 92% 49%;
+    --primary-foreground: 0 0% 100%;
+
+    --border: 340 30% 91%;
+    --input: 340 30% 90%;
+    --ring: 338 92% 49%;
+
+    --radius: 0.9rem;
+  }
+
+  .dark {
+    --background: 335 45% 5%;
+    --foreground: 340 30% 97%;
+
+    --card: 335 38% 8%;
+    --card-foreground: 340 30% 97%;
+
+    --muted: 335 30% 13%;
+    --muted-foreground: 338 15% 65%;
+
+    --primary: 338 92% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --border: 335 30% 16%;
+    --input: 335 30% 18%;
+    --ring: 338 92% 56%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Lenis smooth scroll — let the library own scrolling when active */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-rose-500/25 text-rose-950;
+  }
+  .dark ::selection {
+    @apply bg-rose-500/35 text-rose-50;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-rose-300/60;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-rose-400/80;
+    background-clip: content-box;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply mx-auto w-full max-w-[1360px] px-5 lg:px-8;
+  }
+
+  .text-gradient {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+
+  .text-gradient-soft {
+    @apply bg-brand-gradient-soft bg-clip-text text-transparent;
+  }
+
+  /* Animated gradient text */
+  .text-gradient-animated {
+    background: linear-gradient(
+      120deg,
+      #fb356b,
+      #e6128f,
+      #bc12d6,
+      #ff6890,
+      #fb356b
+    );
+    background-size: 280% 280%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    @apply animate-gradient-pan;
+  }
+
+  /* Glass surfaces */
+  .glass {
+    @apply border border-white/60 bg-white/70 backdrop-blur-xl;
+  }
+  .dark .glass {
+    @apply border-white/10 bg-white/[0.04];
+  }
+
+  /* Premium gradient border card */
+  .card-gradient-border {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+  }
+  .card-gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(251, 53, 107, 0.55),
+      rgba(214, 36, 240, 0.35),
+      transparent 60%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Section eyebrow */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-rose-200/70 bg-rose-50/80 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-rose-700;
+  }
+  .dark .eyebrow {
+    @apply border-rose-500/25 bg-rose-500/10 text-rose-300;
+  }
+
+  /* Alternating section backgrounds — every section gets an explicit band so
+     consecutive sections clearly contrast (soft rose <-> pure white).
+     Rose bands fade from/to the neighbouring white at their top & bottom edges. */
+  .section-rose {
+    background-image: linear-gradient(
+      to bottom,
+      hsl(0 0% 100%) 0,
+      hsl(345 95% 92%) 160px,
+      hsl(345 95% 92%) calc(100% - 160px),
+      hsl(0 0% 100%) 100%
+    );
+  }
+  .dark .section-rose {
+    background-image: linear-gradient(
+      to bottom,
+      hsl(335 38% 6%) 0,
+      hsl(335 42% 10%) 160px,
+      hsl(335 42% 10%) calc(100% - 160px),
+      hsl(335 38% 6%) 100%
+    );
+  }
+  .section-light {
+    background-color: hsl(0 0% 100%);
+  }
+  .dark .section-light {
+    background-color: hsl(335 38% 6%);
+  }
+
+  /* Grid background pattern */
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        hsl(var(--border) / 0.5) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .bg-dots {
+    background-image: radial-gradient(
+      hsl(var(--border)) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  .shimmer-text {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer-text::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.6) 50%,
+      transparent 65%
+    );
+    @apply animate-shimmer;
+  }
+}
+
+@layer utilities {
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+    mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  }
+  .perspective {
+    perspective: 1200px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
