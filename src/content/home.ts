@@ -123,10 +123,10 @@ export const home: Record<Locale, HomeContent> = {
       { icon: 'Workflow', title: 'Automatizaciones', description: 'Automatizamos procesos e integramos tus sistemas para ahorrar tiempo y errores.', benefits: ['Integraciones', 'Flujos automáticos', 'Conexión de sistemas'], href: '/servicios' },
     ],
     metrics: [
-      { value: 320, suffix: '+', label: 'Proyectos entregados' },
-      { value: 140, suffix: '+', label: 'Clientes en 14 países' },
-      { value: 95, suffix: '+', label: 'Sistemas implementados' },
-      { value: 1200, suffix: '+', label: 'Integraciones en producción' },
+      { value: 4, suffix: '', label: 'Tecnologías núcleo' },
+      { value: 100, suffix: '%', label: 'Equipo senior' },
+      { value: 24, suffix: 'h', label: 'Tiempo de respuesta' },
+      { value: 7, suffix: '', label: 'Fases de nuestro método' },
     ],
     caseStudies: [
       { client: 'Banco Atlas', sector: 'Banca', title: 'Core de pagos modernizado a microservicios', impact: 'De 6 a 0,3 segundos de latencia media en transacciones.', kpis: [{ value: '-95%', label: 'latencia' }, { value: '99.99%', label: 'uptime' }, { value: '3×', label: 'throughput' }], tech: ['java', 'node', 'kubernetes', 'aws'], accent: 'from-rose-500 to-fuchsia-600' },
@@ -143,10 +143,10 @@ export const home: Record<Locale, HomeContent> = {
       { step: '07', title: 'Soporte', description: 'Operación, evolución y SLA. Tu plataforma mejora de forma continua.' },
     ],
     benefits: [
-      { title: 'Equipo senior, sin intermediarios', body: 'Trabajas directamente con arquitectos e ingenieros con más de una década de experiencia. Sin capas, sin ruido: decisiones rápidas y de calidad.' },
+      { title: 'Equipo senior, sin intermediarios', body: 'Trabajas directamente con arquitectos e ingenieros senior. Sin capas, sin ruido: decisiones rápidas y de calidad.' },
       { title: 'Entregas incrementales y predecibles', body: 'Cada sprint produce software funcional y desplegable. Visibilidad total del avance con métricas, demos y roadmap vivo.' },
       { title: 'Calidad de ingeniería como estándar', body: 'CI/CD, testing automatizado, revisión de código, seguridad y observabilidad vienen de serie. No son extras, son la base.' },
-      { title: 'Tecnología elegida por sus méritos', body: 'Drupal, React, Java, PHP o Node.js: usamos la herramienta correcta para cada problema, sin modas ni ataduras a un único proveedor.' },
+      { title: 'Tecnología elegida por sus méritos', body: 'Drupal, Next.js, Java o Python: usamos la herramienta correcta para cada problema, sin modas ni ataduras a un único proveedor.' },
       { title: 'Pensado para escalar', body: 'Arquitecturas desacopladas y preparadas para crecer en tráfico, equipo y funcionalidad sin reescrituras.' },
     ],
     testimonials: [
@@ -206,10 +206,10 @@ export const home: Record<Locale, HomeContent> = {
         accent: 'puedes confiar',
         description: 'No vendemos horas. Entregamos resultados con un estándar de calidad que se nota desde el primer sprint.',
         stats: [
-          { k: '14', l: 'años de trayectoria' },
-          { k: '60+', l: 'ingenieros senior' },
+          { k: '100%', l: 'equipo senior' },
+          { k: '0', l: 'intermediarios' },
           { k: '24h', l: 'tiempo de respuesta' },
-          { k: '100%', l: 'proyectos en plazo' },
+          { k: '4', l: 'tecnologías núcleo' },
         ],
       },
       testimonials: {
@@ -250,10 +250,10 @@ export const home: Record<Locale, HomeContent> = {
       { icon: 'Workflow', title: 'Automation', description: 'We automate processes and integrate your systems to save time and errors.', benefits: ['Integrations', 'Automated workflows', 'System connectivity'], href: '/servicios' },
     ],
     metrics: [
-      { value: 320, suffix: '+', label: 'Projects delivered' },
-      { value: 140, suffix: '+', label: 'Clients across 14 countries' },
-      { value: 95, suffix: '+', label: 'Systems deployed' },
-      { value: 1200, suffix: '+', label: 'Integrations in production' },
+      { value: 4, suffix: '', label: 'Core technologies' },
+      { value: 100, suffix: '%', label: 'Senior team' },
+      { value: 24, suffix: 'h', label: 'Response time' },
+      { value: 7, suffix: '', label: 'Steps in our method' },
     ],
     caseStudies: [
       { client: 'Banco Atlas', sector: 'Banking', title: 'Payments core modernized to microservices', impact: 'From 6 to 0.3 seconds average transaction latency.', kpis: [{ value: '-95%', label: 'latency' }, { value: '99.99%', label: 'uptime' }, { value: '3×', label: 'throughput' }], tech: ['java', 'node', 'kubernetes', 'aws'], accent: 'from-rose-500 to-fuchsia-600' },
@@ -270,10 +270,10 @@ export const home: Record<Locale, HomeContent> = {
       { step: '07', title: 'Support', description: 'Operation, evolution and SLA. Your platform keeps improving continuously.' },
     ],
     benefits: [
-      { title: 'A senior team, no middlemen', body: 'You work directly with architects and engineers with over a decade of experience. No layers, no noise: fast, high-quality decisions.' },
+      { title: 'A senior team, no middlemen', body: 'You work directly with senior architects and engineers. No layers, no noise: fast, high-quality decisions.' },
       { title: 'Incremental, predictable delivery', body: 'Every sprint produces functional, deployable software. Full visibility of progress with metrics, demos and a living roadmap.' },
       { title: 'Engineering quality as standard', body: 'CI/CD, automated testing, code review, security and observability come built in. They are not extras — they are the foundation.' },
-      { title: 'Technology chosen on its merits', body: 'Drupal, React, Java, PHP or Node.js: we use the right tool for each problem, with no fads or single-vendor lock-in.' },
+      { title: 'Technology chosen on its merits', body: 'Drupal, Next.js, Java or Python: we use the right tool for each problem, with no fads or single-vendor lock-in.' },
       { title: 'Built to scale', body: 'Decoupled architectures ready to grow in traffic, team and functionality without rewrites.' },
     ],
     testimonials: [
@@ -333,10 +333,10 @@ export const home: Record<Locale, HomeContent> = {
         accent: 'rely on',
         description: 'We don’t sell hours. We deliver results with a quality standard you notice from the very first sprint.',
         stats: [
-          { k: '14', l: 'years of track record' },
-          { k: '60+', l: 'senior engineers' },
+          { k: '100%', l: 'senior team' },
+          { k: '0', l: 'middlemen' },
           { k: '24h', l: 'response time' },
-          { k: '100%', l: 'projects on time' },
+          { k: '4', l: 'core technologies' },
         ],
       },
       testimonials: {
