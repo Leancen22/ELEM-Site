@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site';
-import { posts, postSlugs } from '@/content/blog';
+import { getAllPosts, postSlugs } from '@/content/blog';
 import { techSlugs } from '@/content/tech';
 import { defaultLocale, locales } from '@/i18n/config';
 import { getPathname } from '@/i18n/navigation';
@@ -77,15 +77,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
+  const blogMeta = getAllPosts(defaultLocale);
   const blogRoutes = postSlugs.map((slug) => {
-    const post = posts[defaultLocale].find((p) => p.slug === slug)!;
+    const post = blogMeta.find((p) => p.slug === slug);
     const href = { pathname: '/blog/[slug]', params: { slug } } as const;
     const languages = Object.fromEntries(
       locales.map((l) => [l, url(l, href)])
     ) as Record<(typeof locales)[number], string>;
     return {
       url: url(defaultLocale, href),
-      lastModified: new Date(post.date),
+      lastModified: post ? new Date(post.date) : now,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
       alternates: { languages },

@@ -77,9 +77,10 @@ const serviciosRaw: RawItem[] = [
   { href: '/servicios', icon: Smartphone, label: { es: 'Aplicaciones móviles', en: 'Mobile apps' }, description: { es: 'Apps multiplataforma', en: 'Cross-platform apps' } },
   { href: '/servicios', icon: Code2, label: { es: 'Desarrollo de software', en: 'Software development' }, description: { es: 'Sistemas internos y apps empresariales', en: 'Internal systems and enterprise apps' } },
   { href: '/servicios', icon: Workflow, label: { es: 'Automatizaciones', en: 'Automation' }, description: { es: 'Integraciones ERP/CRM y procesos', en: 'ERP/CRM integrations and processes' } },
+  
   // Arquitectura & Cloud (capacidades + herramientas)
   { href: '/servicios#arquitectura', icon: Layers, label: { es: 'Arquitectura Empresarial', en: 'Enterprise Architecture' }, description: { es: 'Diseño de sistemas a escala', en: 'Systems design at scale' } },
-  { href: '/servicios#integraciones', icon: Plug, label: { es: 'Integraciones', en: 'Integrations' }, description: { es: 'Conecta tus sistemas', en: 'Connect your systems' } },
+  { href: '/servicios#integraciones', icon: Plug, label: { es: 'Consultoría', en: 'Consultancy' }, description: { es: 'Asesoramiento técnico para el diseño, arquitectura y desarrollo de software', en: 'Technical guidance for software design, architecture, and development' } },
   { href: '/servicios#apis', icon: Network, label: { es: 'APIs y Microservicios', en: 'APIs & Microservices' }, description: { es: 'Arquitecturas desacopladas', en: 'Decoupled architectures' } },
   { href: '/servicios#modernizacion', icon: RefreshCw, label: { es: 'Modernización de Sistemas', en: 'System Modernization' }, description: { es: 'Docker, Git, ddev y CI/CD', en: 'Docker, Git, ddev and CI/CD' } },
 ];

@@ -121,6 +121,13 @@ export const home: Record<Locale, HomeContent> = {
       { icon: 'Smartphone', title: 'Aplicaciones móviles', description: 'Apps multiplataforma con una sola base de código y experiencia fluida.', benefits: ['iOS y Android', 'Multiplataforma', 'Integración con APIs'], href: '/servicios' },
       { icon: 'Code2', title: 'Desarrollo de software', description: 'Sistemas a medida y backends robustos con Java y Spring Boot.', benefits: ['APIs y microservicios', 'Arquitectura escalable', 'Calidad de ingeniería'], href: '/servicios' },
       { icon: 'Workflow', title: 'Automatizaciones', description: 'Automatizamos procesos e integramos tus sistemas para ahorrar tiempo y errores.', benefits: ['Integraciones', 'Flujos automáticos', 'Conexión de sistemas'], href: '/servicios' },
+      {
+        icon: 'Lightbulb',
+        title: 'Consultoría',
+        description: 'Asesoramiento técnico para diseño de software, arquitectura y toma de decisiones tecnológicas.',
+        benefits: ['Arquitectura de software', 'Stack tecnológico', 'Buenas prácticas de desarrollo'],
+        href: '/servicios'
+      }
     ],
     metrics: [
       { value: 4, suffix: '', label: 'Tecnologías núcleo' },
@@ -248,6 +255,13 @@ export const home: Record<Locale, HomeContent> = {
       { icon: 'Smartphone', title: 'Mobile apps', description: 'Cross-platform apps from a single codebase with a smooth experience.', benefits: ['iOS & Android', 'Cross-platform', 'API integration'], href: '/servicios' },
       { icon: 'Code2', title: 'Software development', description: 'Custom systems and robust backends with Java and Spring Boot.', benefits: ['APIs & microservices', 'Scalable architecture', 'Engineering quality'], href: '/servicios' },
       { icon: 'Workflow', title: 'Automation', description: 'We automate processes and integrate your systems to save time and errors.', benefits: ['Integrations', 'Automated workflows', 'System connectivity'], href: '/servicios' },
+      {
+        icon: 'Lightbulb',
+        title: 'Consulting',
+        description: 'Technical guidance for software design, architecture, and technology decision-making.',
+        benefits: ['Software architecture', 'Technology stack', 'Best development practices'],
+        href: '/servicios'
+      }
     ],
     metrics: [
       { value: 4, suffix: '', label: 'Core technologies' },
