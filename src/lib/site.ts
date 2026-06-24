@@ -4,7 +4,7 @@ export const site = {
   name: 'ELEM',
   legalName: 'ELEM',
   url: 'https://elem.uy',
-  email: 'contacto@elemuy.com',
+  email: 'contacto@elem.uy',
   phone: '+598 98 858 254',
   social: {
     linkedin: 'https://www.linkedin.com/company/elemuy',

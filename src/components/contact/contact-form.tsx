@@ -31,6 +31,7 @@ type FormCopy = {
   successTitle: string;
   successBody: string;
   sendAnother: string;
+  sendError: string;
   errors: {
     name: string;
     email: string;
@@ -60,6 +61,7 @@ const formCopy: Record<Locale, FormCopy> = {
     successTitle: '¡Mensaje enviado!',
     successBody: 'Gracias por escribirnos. Un arquitecto senior revisará tu caso y te responderá en menos de 24 horas.',
     sendAnother: 'Enviar otro mensaje',
+    sendError: 'No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos a contacto@elem.uy.',
     errors: {
       name: 'Indícanos tu nombre',
       email: 'Introduce un email válido',
@@ -87,6 +89,7 @@ const formCopy: Record<Locale, FormCopy> = {
     successTitle: 'Message sent!',
     successBody: 'Thanks for reaching out. A senior architect will review your case and reply within 24 hours.',
     sendAnother: 'Send another message',
+    sendError: 'We couldn’t send your message. Please try again or email us at contacto@elem.uy.',
     errors: {
       name: 'Tell us your name',
       email: 'Enter a valid email',
@@ -114,6 +117,7 @@ export function ContactForm() {
   const schema = useMemo(() => makeSchema(t.errors), [t.errors]);
   type FormValues = z.infer<typeof schema>;
   const [sent, setSent] = useState(false);
+  const [sendError, setSendError] = useState(false);
   const {
     register,
     handleSubmit,
@@ -122,12 +126,19 @@ export function ContactForm() {
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (data: FormValues) => {
-    // Simulated submission — wire to your endpoint / CRM here.
-    await new Promise((r) => setTimeout(r, 1100));
-    // eslint-disable-next-line no-console
-    console.log('Contact form submission', data);
-    setSent(true);
-    reset();
+    setSendError(false);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      setSent(true);
+      reset();
+    } catch {
+      setSendError(true);
+    }
   };
 
   return (
@@ -223,6 +234,12 @@ export function ContactForm() {
             {errors.consent?.message ? (
               <p className="-mt-2 text-xs font-medium text-rose-600">
                 {errors.consent.message}
+              </p>
+            ) : null}
+
+            {sendError ? (
+              <p className="rounded-xl border border-rose-300 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700 dark:bg-rose-950/40">
+                {t.sendError}
               </p>
             ) : null}
 
