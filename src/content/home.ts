@@ -286,7 +286,7 @@ export const home: Record<Locale, HomeContent> = {
     benefits: [
       { title: 'A senior team, no middlemen', body: 'You work directly with senior architects and engineers. No layers, no noise: fast, high-quality decisions.' },
       { title: 'Incremental, predictable delivery', body: 'Every sprint produces functional, deployable software. Full visibility of progress with metrics, demos and a living roadmap.' },
-      { title: 'Engineering quality as standard', body: 'CI/CD, automated testing, code review, security and observability come built in. They are not extras — they are the foundation.' },
+      { title: 'Engineering quality as standard', body: 'CI/CD, automated testing, code review, security and observability come built in. They are not extras. They are the foundation.' },
       { title: 'Technology chosen on its merits', body: 'Drupal, Next.js, Java or Python: we use the right tool for each problem, with no fads or single-vendor lock-in.' },
       { title: 'Built to scale', body: 'Decoupled architectures ready to grow in traffic, team and functionality without rewrites.' },
     ],

@@ -21,7 +21,8 @@ export function organizationSchema(locale: Locale = defaultLocale) {
     logo: `${site.url}/favicon.ico`,
     description: siteCopy[locale].description,
     email: site.email,
-    telephone: site.phone,
+    // Teléfono oculto a pedido.
+    // telephone: site.phone,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Calle de la Innovación 12',

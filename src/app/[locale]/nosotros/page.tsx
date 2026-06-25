@@ -59,7 +59,7 @@ const content: Record<Locale, Content> = {
     storyLead: 'Empezamos con una idea simple:',
     storyAccent: 'hacer software bien',
     storyDesc:
-      'En un mercado lleno de promesas vacías, decidimos competir solo con una cosa: la calidad de nuestra ingeniería. Somos una compañía joven, y esa es —y será— nuestra única estrategia.',
+      'En un mercado lleno de promesas vacías, decidimos competir solo con una cosa: la calidad de nuestra ingeniería. Somos una compañía joven, y esa es, y será, nuestra única estrategia.',
     storyBody:
       'Diseñamos, construimos y operamos plataformas web y software a medida, de principio a fin. Tomamos pocos proyectos a la vez y tratamos cada uno como si llevara nuestro nombre, porque lo lleva: somos esos ingenieros que no saben entregar algo a medias.',
     timeline: [
@@ -103,7 +103,7 @@ const content: Record<Locale, Content> = {
     storyLead: 'We started with a simple idea:',
     storyAccent: 'build software well',
     storyDesc:
-      'In a market full of empty promises, we decided to compete on just one thing: the quality of our engineering. We are a young company, and that is —and will be— our only strategy.',
+      'In a market full of empty promises, we decided to compete on just one thing: the quality of our engineering. We are a young company, and that is, and will be, our only strategy.',
     storyBody:
       'We design, build and operate web platforms and custom software, end to end. We take few projects at a time and treat each one as if it carried our name, because it does: we are those engineers who can’t deliver something half done.',
     timeline: [

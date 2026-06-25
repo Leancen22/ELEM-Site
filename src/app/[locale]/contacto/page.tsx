@@ -119,9 +119,11 @@ export default async function ContactoPage() {
                 <a href={`mailto:${site.email}`} className="flex items-center gap-3 text-muted-foreground hover:text-rose-600">
                   <Mail className="size-4 text-rose-500" /> {site.email}
                 </a>
+                {/* Teléfono oculto a pedido.
                 <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 text-muted-foreground hover:text-rose-600">
                   <Phone className="size-4 text-rose-500" /> {site.phone}
                 </a>
+                */}
                 {/* <p className="flex items-center gap-3 text-muted-foreground">
                   <MapPin className="size-4 text-rose-500" /> {siteCopy[locale].address}
                 </p> */}

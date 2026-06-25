@@ -54,7 +54,10 @@ export function Header() {
       <div className="container-wide">
         <div
           className={cn(
-            'flex items-center justify-between gap-4 rounded-2xl px-4 transition-all duration-500',
+            // relative z-50 keeps the top bar (logo + close toggle) above the
+            // mobile menu overlay (z-40); otherwise the X close button is
+            // painted behind the menu and can't be seen or tapped.
+            'relative z-50 flex items-center justify-between gap-4 rounded-2xl px-4 transition-all duration-500',
             scrolled
               ? 'h-14 border border-border/70 bg-background/70 shadow-card backdrop-blur-xl'
               : 'h-16 border border-transparent bg-transparent'

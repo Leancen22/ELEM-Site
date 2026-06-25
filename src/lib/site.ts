@@ -5,7 +5,8 @@ export const site = {
   legalName: 'ELEM',
   url: 'https://elem.uy',
   email: 'contacto@elem.uy',
-  phone: '+598 98 858 254',
+  // Teléfono oculto a pedido.
+  // phone: '+598 98 858 254',
   social: {
     linkedin: 'https://www.linkedin.com/company/elemuy',
     instagram: 'https://www.instagram.com/elem.uy/'

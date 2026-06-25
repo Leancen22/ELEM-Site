@@ -48,8 +48,10 @@ export function Hero() {
       <div className="absolute inset-x-0 bottom-0 -z-0 h-40 bg-gradient-to-t from-background to-transparent" />
 
       <div className="container-wide relative z-10">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
+        <div className="grid items-center gap-12">
+          {/* Orbital desactivado: contenido a una sola columna, alineado a la
+              izquierda (no centrado) y un poco más ancho que la mitad previa. */}
+          <div className="max-w-3xl">
             <motion.h1
               custom={0}
               variants={fade}
@@ -67,7 +69,7 @@ export function Hero() {
               variants={fade}
               initial="hidden"
               animate="show"
-              className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground [@media(max-height:780px)]:mt-4 [@media(max-height:680px)]:text-base"
+              className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground [@media(max-height:780px)]:mt-4 [@media(max-height:680px)]:text-base"
             >
               {t.descLead}
               <span className="font-semibold text-foreground">{t.descStrong}</span>
@@ -128,6 +130,7 @@ export function Hero() {
             </motion.div>
           </div>
 
+          {/* Oculto: orbital del hero desactivado por ahora.
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -136,6 +139,7 @@ export function Hero() {
           >
             <HeroOrbit />
           </motion.div>
+          */}
         </div>
       </div>
 

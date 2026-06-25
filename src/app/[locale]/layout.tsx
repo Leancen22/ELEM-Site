@@ -79,9 +79,12 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  // Non-locale paths (e.g. devtools/well-known probes) can fall into [locale];
+  // guard so metadata generation doesn't crash on an unknown locale.
+  if (!hasLocale(routing.locales, locale)) notFound();
   const copy = siteCopy[locale];
   const title = `${site.name} | ${copy.tagline}`;
   return {

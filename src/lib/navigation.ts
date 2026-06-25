@@ -117,7 +117,8 @@ const empresaRaw: RawItem[] = [
   { href: '/nosotros#metodologia', icon: Route, label: { es: 'Metodología', en: 'Methodology' }, description: { es: 'Cómo trabajamos', en: 'How we work' } },
   // Oculto: empresa nueva, sin casos/referencias todavía.
   // { href: '/casos-de-exito', icon: Trophy, label: { es: 'Casos de Éxito', en: 'Case Studies' }, description: { es: 'Resultados reales', en: 'Real results' } },
-  { href: '/blog', icon: Newspaper, label: { es: 'Blog', en: 'Blog' }, description: { es: 'Ideas y artículos', en: 'Ideas and articles' } },
+  // Oculto: blog desactivado por ahora (página _blog fuera de rutas).
+  // { href: '/blog', icon: Newspaper, label: { es: 'Blog', en: 'Blog' }, description: { es: 'Ideas y artículos', en: 'Ideas and articles' } },
   { href: '/contacto', icon: Mail, label: { es: 'Contacto', en: 'Contact' }, description: { es: 'Hablemos', en: "Let's talk" } },
 ];
 
@@ -248,7 +249,8 @@ const supportNavRaw: RawItem[] = [
   // { href: '/soluciones', label: { es: 'Soluciones', en: 'Solutions' } },
   // Oculto: empresa nueva, sin casos/referencias todavía.
   // { href: '/casos-de-exito', label: { es: 'Casos de Éxito', en: 'Case Studies' } },
-  { href: '/blog', label: { es: 'Blog', en: 'Blog' } },
+  // Oculto: blog desactivado por ahora.
+  // { href: '/blog', label: { es: 'Blog', en: 'Blog' } },
   { href: '/nosotros', label: { es: 'Nosotros', en: 'About Us' } },
 ];
 

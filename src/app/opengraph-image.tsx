@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 import { site, siteCopy } from '@/lib/site';
 import { defaultLocale } from '@/i18n/config';
 
-export const alt = `${site.name} — ${siteCopy[defaultLocale].tagline}`;
+export const alt = `${site.name}: ${siteCopy[defaultLocale].tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 

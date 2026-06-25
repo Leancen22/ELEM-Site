@@ -45,7 +45,7 @@ export function TechLanding({ page, locale }: { page: TechPage; locale: Locale }
             ]}
           />
           <div className="mt-8 grid items-center gap-10 lg:grid-cols-2 [@media(max-height:820px)]:mt-6 [@media(max-height:820px)]:gap-8">
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-3">
                 <span className="grid size-14 place-items-center rounded-2xl border border-white/60 bg-white/80 shadow-card backdrop-blur dark:border-white/10 dark:bg-white/5">
                   <Logo className="size-9" />
@@ -75,7 +75,7 @@ export function TechLanding({ page, locale }: { page: TechPage; locale: Locale }
               </div>
             </div>
 
-            <Reveal direction="left" className="relative">
+            <Reveal direction="left" className="relative min-w-0">
               <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-brand-gradient opacity-20 blur-3xl" />
               <CodeWindow
                 title={codeSamples[page.slug]?.title ?? 'elem.ts'}
@@ -92,7 +92,7 @@ export function TechLanding({ page, locale }: { page: TechPage; locale: Locale }
                 delay={i * 0.08}
                 className="rounded-2xl border border-border bg-card/60 p-5 text-center backdrop-blur"
               >
-                <div className="font-display text-3xl font-extrabold text-gradient sm:text-4xl">
+                <div className="font-display text-xl font-extrabold leading-tight text-gradient break-words sm:text-4xl">
                   {s.value}
                 </div>
                 <div className="mt-1 text-sm text-muted-foreground">{s.label}</div>

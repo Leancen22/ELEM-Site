@@ -27,7 +27,8 @@ const copy: Record<
     links: [
       { label: 'Servicios', href: '/servicios' },
       { label: 'Nosotros', href: '/nosotros' },
-      { label: 'Blog', href: '/blog' },
+      // Oculto: blog desactivado por ahora.
+      // { label: 'Blog', href: '/blog' },
       { label: 'Contacto', href: '/contacto' },
     ],
   },
@@ -41,7 +42,8 @@ const copy: Record<
     links: [
       { label: 'Services', href: '/servicios' },
       { label: 'About', href: '/nosotros' },
-      { label: 'Blog', href: '/blog' },
+      // Oculto: blog desactivado por ahora.
+      // { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: '/contacto' },
     ],
   },

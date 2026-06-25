@@ -54,7 +54,8 @@ const content: Record<Locale, Content> = {
       { label: 'Servicios', href: '/servicios', description: 'Qué hacemos y cómo' },
       { label: 'Tecnologías', href: '/tecnologias', description: 'Nuestro stack técnico' },
       { label: 'Nosotros', href: '/nosotros', description: 'El equipo y la metodología' },
-      { label: 'Blog', href: '/blog', description: 'Ideas y artículos de ingeniería' },
+      // Oculto: blog desactivado por ahora.
+      // { label: 'Blog', href: '/blog', description: 'Ideas y artículos de ingeniería' },
       { label: 'Contacto', href: '/contacto', description: 'Hablemos de tu proyecto' },
     ],
     legal: [
@@ -84,7 +85,8 @@ const content: Record<Locale, Content> = {
       { label: 'Services', href: '/servicios', description: 'What we do and how' },
       { label: 'Technologies', href: '/tecnologias', description: 'Our technology stack' },
       { label: 'About', href: '/nosotros', description: 'The team and methodology' },
-      { label: 'Blog', href: '/blog', description: 'Engineering ideas and articles' },
+      // Oculto: blog desactivado por ahora.
+      // { label: 'Blog', href: '/blog', description: 'Engineering ideas and articles' },
       { label: 'Contact', href: '/contacto', description: "Let's talk about your project" },
     ],
     legal: [

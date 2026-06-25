@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site';
-import { getAllPosts, postSlugs } from '@/content/blog';
+// Oculto: blog desactivado por ahora.
+// import { getAllPosts, postSlugs } from '@/content/blog';
 import { techSlugs } from '@/content/tech';
 import { defaultLocale, locales } from '@/i18n/config';
 import { getPathname } from '@/i18n/navigation';
@@ -39,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     '/tecnologias',
     // '/casos-de-exito', // oculto: empresa nueva, sin casos/referencias todavía
-    '/blog',
+    // '/blog', // oculto: blog desactivado por ahora
     '/nosotros',
     '/contacto',
   ];
@@ -77,21 +78,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  const blogMeta = getAllPosts(defaultLocale);
-  const blogRoutes = postSlugs.map((slug) => {
-    const post = blogMeta.find((p) => p.slug === slug);
-    const href = { pathname: '/blog/[slug]', params: { slug } } as const;
-    const languages = Object.fromEntries(
-      locales.map((l) => [l, url(l, href)])
-    ) as Record<(typeof locales)[number], string>;
-    return {
-      url: url(defaultLocale, href),
-      lastModified: post ? new Date(post.date) : now,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-      alternates: { languages },
-    };
-  });
+  // Oculto: blog desactivado por ahora (página _blog fuera de rutas).
+  // const blogMeta = getAllPosts(defaultLocale);
+  // const blogRoutes = postSlugs.map((slug) => {
+  //   const post = blogMeta.find((p) => p.slug === slug);
+  //   const href = { pathname: '/blog/[slug]', params: { slug } } as const;
+  //   const languages = Object.fromEntries(
+  //     locales.map((l) => [l, url(l, href)])
+  //   ) as Record<(typeof locales)[number], string>;
+  //   return {
+  //     url: url(defaultLocale, href),
+  //     lastModified: post ? new Date(post.date) : now,
+  //     changeFrequency: 'monthly' as const,
+  //     priority: 0.6,
+  //     alternates: { languages },
+  //   };
+  // });
 
-  return [...staticEntries, ...techEntries, ...legalEntries, ...blogRoutes];
+  return [...staticEntries, ...techEntries, ...legalEntries];
 }

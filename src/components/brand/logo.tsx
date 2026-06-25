@@ -40,7 +40,7 @@ export function Logo({
     <Link
       href={href}
       className={cn('group inline-flex items-center gap-2.5', className)}
-      aria-label="ELEM — Inicio"
+      aria-label="ELEM, inicio"
     >
       <LogoMark className="transition-transform duration-300 group-hover:scale-105" />
       {showText ? (
