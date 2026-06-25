@@ -19,10 +19,12 @@ export function SmoothScroll() {
     if (prefersReduced || isCoarse) return;
 
     const lenis = new Lenis({
-      duration: 1.05,
+      // Shorter duration + higher wheel multiplier: still smooth, but reacts
+      // to the wheel right away instead of feeling like it resists/coasts.
+      duration: 0.6,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 1.2,
       touchMultiplier: 1.5,
     });
 
