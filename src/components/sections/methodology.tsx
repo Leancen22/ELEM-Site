@@ -29,15 +29,15 @@ export function Methodology() {
 
         <div ref={ref} className="relative mx-auto mt-16 max-w-3xl">
           {/* track */}
-          <div className="absolute left-[27px] top-2 h-[calc(100%-1rem)] w-0.5 bg-border md:left-1/2 md:-translate-x-1/2" />
+          <div className="absolute left-[19px] top-2 h-[calc(100%-1rem)] w-0.5 bg-border" />
           <motion.div
             style={{ height: lineHeight }}
-            className="absolute left-[27px] top-2 w-0.5 bg-brand-gradient md:left-1/2 md:-translate-x-1/2"
+            className="absolute left-[19px] top-2 w-0.5 bg-brand-gradient"
           />
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {methodology.map((m, i) => {
-              const left = i % 2 === 0;
+              const dark = i % 2 === 0;
               return (
                 <motion.div
                   key={m.step}
@@ -45,27 +45,33 @@ export function Methodology() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.6 }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className={`relative flex items-start gap-6 md:w-1/2 ${
-                    left
-                      ? 'md:ml-0 md:pr-12 md:text-right'
-                      : 'md:ml-auto md:flex-row-reverse md:pl-12 md:text-left'
-                  }`}
+                  className="relative flex items-stretch gap-6 pl-14"
                 >
-                  <div
-                    className={`absolute left-[14px] top-1.5 z-10 grid size-7 place-items-center rounded-full bg-brand-gradient text-[11px] font-bold text-white shadow-glow md:left-auto ${
-                      left ? 'md:-right-[14px]' : 'md:-left-[14px]'
-                    }`}
-                  >
+                  <div className="absolute left-[6px] top-5 z-10 grid size-7 place-items-center rounded-full bg-brand-gradient text-[11px] font-bold text-white shadow-glow">
                     {i + 1}
                   </div>
-                  <div className="ml-14 flex-1 rounded-2xl border border-border bg-card/70 p-5 backdrop-blur transition-colors hover:border-rose-200 md:ml-0 dark:hover:border-rose-500/30">
-                    <span className="font-mono text-xs font-semibold text-rose-500">
-                      {m.step}
+                  <div
+                    className={`flex-1 rounded-2xl p-6 backdrop-blur transition-colors ${
+                      dark
+                        ? 'bg-foreground text-background hover:bg-foreground/95'
+                        : 'border border-border bg-card/70 text-foreground hover:border-rose-200 dark:hover:border-rose-500/30'
+                    }`}
+                  >
+                    <span
+                      className={`font-mono text-xs font-semibold uppercase tracking-wide ${
+                        dark ? 'text-rose-300 dark:text-rose-600' : 'text-rose-500'
+                      }`}
+                    >
+                      {m.step} · {m.title}
                     </span>
-                    <h3 className="mt-1 font-display text-lg font-bold text-foreground">
-                      {m.title}
+                    <h3 className="mt-1.5 font-display text-xl font-bold">
+                      {m.tagline}
                     </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    <p
+                      className={`mt-2 text-sm leading-relaxed ${
+                        dark ? 'text-background/70' : 'text-muted-foreground'
+                      }`}
+                    >
                       {m.description}
                     </p>
                   </div>

@@ -32,7 +32,7 @@ export type CaseStudy = {
   accent: string;
 };
 
-export type MethodologyStep = { step: string; title: string; description: string };
+export type MethodologyStep = { step: string; title: string; tagline: string; description: string };
 export type Benefit = { title: string; body: string };
 export type Testimonial = { quote: string; name: string; role: string };
 
@@ -141,13 +141,10 @@ export const home: Record<Locale, HomeContent> = {
       { client: 'GovDigital', sector: 'Sector público', title: 'Portal ciudadano accesible para 4M de usuarios', impact: 'Accesibilidad AAA y 4M de trámites digitales al año.', kpis: [{ value: 'AAA', label: 'accesibilidad' }, { value: '4M', label: 'trámites/año' }, { value: '-60%', label: 'tiempo gestión' }], tech: ['drupal', 'react', 'php', 'aws'], accent: 'from-rose-600 to-purple-600' },
     ],
     methodology: [
-      { step: '01', title: 'Descubrimiento', description: 'Entendemos negocio, usuarios y restricciones. Definimos objetivos medibles.' },
-      { step: '02', title: 'Análisis', description: 'Auditamos sistemas, datos y arquitectura actual. Identificamos riesgos y oportunidades.' },
-      { step: '03', title: 'Diseño', description: 'Arquitectura técnica, UX/UI y plan de entrega incremental con prototipos validados.' },
-      { step: '04', title: 'Desarrollo', description: 'Ingeniería con CI/CD, revisión de código y entregas continuas cada sprint.' },
-      { step: '05', title: 'QA', description: 'Testing automatizado, performance, seguridad y accesibilidad en cada release.' },
-      { step: '06', title: 'Implementación', description: 'Despliegue con contenedores, cero cortes de servicio y vuelta atrás segura.' },
-      { step: '07', title: 'Soporte', description: 'Operación, evolución y SLA. Tu plataforma mejora de forma continua.' },
+      { step: '01', title: 'Descubrimiento y Análisis', tagline: 'Entendemos tu negocio', description: 'Nos reunimos contigo para entender tu negocio, quién usará la plataforma y tus limitaciones. Revisamos tus sistemas y datos actuales y fijamos objetivos claros y medibles.' },
+      { step: '02', title: 'Diseño', tagline: 'Damos forma a la solución', description: 'Definimos la arquitectura técnica y diseñamos la interfaz pensando en quien la usará. Validamos las ideas con prototipos antes de programar.' },
+      { step: '03', title: 'Desarrollo y QA', tagline: 'Construimos a medida', description: 'Programamos en ciclos cortos, revisando cada cambio. En paralelo probamos rendimiento, seguridad y accesibilidad para garantizar la calidad de cada versión.' },
+      { step: '04', title: 'Entrega y soporte', tagline: 'Lanzamos y acompañamos', description: 'Lanzamos la plataforma de forma controlada, sin cortes de servicio y pudiendo volver atrás si algo falla. Después seguimos a tu lado: mejoras, evolución y soporte con SLA.' },
     ],
     benefits: [
       { title: 'Equipo senior, sin intermediarios', body: 'Trabajas directamente con arquitectos e ingenieros senior. Sin capas, sin ruido: decisiones rápidas y de calidad.' },
@@ -205,7 +202,7 @@ export const home: Record<Locale, HomeContent> = {
         eyebrow: 'Metodología',
         lead: 'Un proceso probado, de',
         accent: 'extremo a extremo',
-        description: 'Siete fases que convierten la incertidumbre en software fiable, entregado de forma continua.',
+        description: 'Cuatro fases que convierten la incertidumbre en software fiable, entregado de forma continua.',
       },
       benefits: {
         eyebrow: 'Por qué ELEM',
@@ -275,13 +272,10 @@ export const home: Record<Locale, HomeContent> = {
       { client: 'GovDigital', sector: 'Public sector', title: 'Accessible citizen portal for 4M users', impact: 'AAA accessibility and 4M digital procedures per year.', kpis: [{ value: 'AAA', label: 'accessibility' }, { value: '4M', label: 'procedures/yr' }, { value: '-60%', label: 'processing time' }], tech: ['drupal', 'react', 'php', 'aws'], accent: 'from-rose-600 to-purple-600' },
     ],
     methodology: [
-      { step: '01', title: 'Discovery', description: 'We understand the business, users and constraints. We define measurable goals.' },
-      { step: '02', title: 'Analysis', description: 'We audit current systems, data and architecture. We identify risks and opportunities.' },
-      { step: '03', title: 'Design', description: 'Technical architecture, UX/UI and an incremental delivery plan with validated prototypes.' },
-      { step: '04', title: 'Development', description: 'Engineering with CI/CD, code review and continuous delivery every sprint.' },
-      { step: '05', title: 'QA', description: 'Automated testing, performance, security and accessibility on every release.' },
-      { step: '06', title: 'Deployment', description: 'Container-based rollout with zero downtime and safe rollback.' },
-      { step: '07', title: 'Support', description: 'Operation, evolution and SLA. Your platform keeps improving continuously.' },
+      { step: '01', title: 'Discovery & Analysis', tagline: 'We understand your business', description: 'We meet with you to understand your business, who will use the platform and your constraints. We review your current systems and data and set clear, measurable goals.' },
+      { step: '02', title: 'Design', tagline: 'We shape the solution', description: 'We define the technical architecture and design the interface around the people who will use it. We validate ideas with prototypes before writing any code.' },
+      { step: '03', title: 'Development & QA', tagline: 'We build to measure', description: 'We code in short cycles, reviewing every change. In parallel we test performance, security and accessibility to ensure the quality of every release.' },
+      { step: '04', title: 'Delivery & support', tagline: 'We launch and stay on', description: 'We launch the platform in a controlled way, with no downtime and the ability to roll back if something fails. Then we stay by your side: improvements, evolution and support with an SLA.' },
     ],
     benefits: [
       { title: 'A senior team, no middlemen', body: 'You work directly with senior architects and engineers. No layers, no noise: fast, high-quality decisions.' },
@@ -339,7 +333,7 @@ export const home: Record<Locale, HomeContent> = {
         eyebrow: 'Methodology',
         lead: 'A proven process, from',
         accent: 'end to end',
-        description: 'Seven phases that turn uncertainty into reliable software, delivered continuously.',
+        description: 'Four phases that turn uncertainty into reliable software, delivered continuously.',
       },
       benefits: {
         eyebrow: 'Why ELEM',
