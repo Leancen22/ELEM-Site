@@ -90,8 +90,10 @@ export default async function ContactoPage() {
       />
 
       <Section className="pt-12 sm:pt-16">
+        {/* min-w-0: grid items default to their min-content width, which let the
+            fixed-width captcha widget push the whole page wider than a phone. */}
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <Reveal>
+          <Reveal className="min-w-0">
             <p className="text-[15px] font-medium text-muted-foreground">{t.nextTitle}</p>
             <ol className="mt-5 border-t border-border">
               {t.highlights.map((h, i) => (
@@ -114,7 +116,7 @@ export default async function ContactoPage() {
             </a>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="min-w-0">
             <ContactForm />
           </Reveal>
         </div>

@@ -26,6 +26,7 @@ type TurnstileApi = {
       'expired-callback'?: () => void;
       'error-callback'?: () => void;
       theme?: 'auto' | 'light' | 'dark';
+      size?: 'normal' | 'flexible' | 'compact';
     }
   ) => string;
   reset: (id?: string) => void;
@@ -220,7 +221,7 @@ export function ContactForm() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-5 rounded-lg border border-border bg-card p-6 sm:p-8"
+            className="space-y-5 rounded-lg border border-border bg-card p-5 sm:p-8"
             noValidate
           >
             {/* Honeypot: hidden from users, off-screen and aria-hidden. Bots
@@ -361,6 +362,9 @@ function Turnstile({
         'expired-callback': () => onToken(''),
         'error-callback': () => onToken(''),
         theme: 'auto',
+        // The normal widget needs 300px; on narrow phones use the compact one
+        // (150px) so it never overflows the form.
+        size: ref.current.clientWidth >= 300 ? 'flexible' : 'compact',
       });
       registerReset(() => window.turnstile?.reset(widgetId));
     };
@@ -392,7 +396,7 @@ function Turnstile({
     };
   }, [onToken, registerReset]);
 
-  return <div ref={ref} className="flex justify-start" />;
+  return <div ref={ref} className="w-full max-w-full overflow-hidden" />;
 }
 
 function Field({
