@@ -18,7 +18,7 @@ export function ServicesGrid() {
           <SectionHeader eyebrow={t.eyebrow} title={t.lead} description={t.description} />
           <Link
             href="/servicios"
-            className="group mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground underline-offset-4 hover:underline"
+            className="group mt-8 inline-flex items-center gap-2 py-1 text-[15px] font-medium text-foreground underline-offset-4 hover:underline"
           >
             {t.all}
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
@@ -32,16 +32,13 @@ export function ServicesGrid() {
                 href={`/servicios#${service.id}`}
                 className="group grid gap-4 border-b border-border py-8 sm:grid-cols-[3rem_1fr_auto] sm:gap-6"
               >
-                <span className="font-mono text-sm text-muted-foreground">0{i + 1}</span>
+                <span className="text-[15px] tabular-nums text-muted-foreground">0{i + 1}</span>
                 <div>
                   <h3 className="text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-2xl">
                     {service.title}
                   </h3>
                   <p className="mt-2 max-w-xl leading-relaxed text-muted-foreground">
                     {service.description}
-                  </p>
-                  <p className="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-muted-foreground/80">
-                    {service.stack}
                   </p>
                 </div>
                 <ArrowUpRight className="hidden size-5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary sm:block" />

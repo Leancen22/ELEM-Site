@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/layout/page-hero';
 import { Section, SectionHeader, GradientTitle } from '@/components/ui/section';
 import { Reveal } from '@/components/motion/reveal';
-import { Methodology } from '@/components/sections/methodology';
 import { CtaFinal } from '@/components/sections/cta-final';
 import { buildMetadata } from '@/lib/seo';
 import { getLocale } from '@/i18n/server';
@@ -33,78 +32,72 @@ type Content = {
 
 const content: Record<Locale, Content> = {
   es: {
-    metaTitle: 'Nosotros · El equipo detrás de ELEM',
+    metaTitle: 'Nosotros · Quiénes somos',
     metaDesc:
-      'Somos un equipo senior de ingeniería de software. Conoce nuestra historia, nuestros valores y cómo trabajamos.',
+      'ELEM es un estudio de ingeniería de software. Conoce nuestra historia y los valores que guían nuestro trabajo.',
     home: 'Inicio',
     nosotros: 'Nosotros',
     heroTitle: 'Preferimos hacer menos proyectos, y hacerlos bien.',
     heroHighlight: '',
     heroDesc:
-      'ELEM es un estudio de ingeniería de software. Trabajamos con pocos clientes a la vez, con estándares de ingeniería altos y trato directo con quien escribe el código.',
+      'ELEM es un estudio de ingeniería de software. Trabajamos con pocos clientes a la vez para darle a cada proyecto la atención que merece.',
     storyEyebrow: 'Nuestra historia',
     storyLead: 'Empezamos con una idea simple: hacer software bien.',
     storyAccent: '',
     storyDesc:
-      'En un mercado lleno de promesas vacías, decidimos competir solo con una cosa: la calidad de nuestra ingeniería. Somos una compañía joven, y esa es, y será, nuestra única estrategia.',
+      'Somos una empresa joven y elegimos competir con una sola cosa: la calidad de nuestro trabajo.',
     storyBody:
-      'Diseñamos, construimos y operamos plataformas web y software a medida, de principio a fin. Tomamos pocos proyectos a la vez y tratamos cada uno como si llevara nuestro nombre, porque lo lleva: somos esos ingenieros que no saben entregar algo a medias.',
+      'Acompañamos cada proyecto de principio a fin y lo tratamos como si llevara nuestro nombre. Porque lo lleva.',
     timeline: [
-      { year: '2025', title: 'Nace ELEM', body: 'Arrancamos con una obsesión y ningún atajo: hacer software bien hecho, de principio a fin.' },
-      { year: '2026', title: 'Nuestra forma de trabajar', body: 'Definimos el método: equipo senior sin intermediarios, estándares de ingeniería (CI/CD, testing, accesibilidad) y entregas incrementales.' },
-      { year: 'Hoy', title: 'Proyecto a proyecto', body: 'Construimos nuestra reputación un proyecto a la vez, con la calidad como única carta de presentación.' },
+      { year: '2025', title: 'Nace ELEM', body: 'Arrancamos con un objetivo: hacer software bien hecho, sin atajos.' },
+      { year: '2026', title: 'Definimos el método', body: 'Un proceso claro y estándares de calidad que aplicamos en cada proyecto.' },
+      { year: 'Hoy', title: 'Proyecto a proyecto', body: 'Construimos nuestra reputación con cada entrega.' },
     ],
     valuesEyebrow: 'Valores',
-    valuesLead: 'Cómo tomamos decisiones.',
+    valuesLead: 'Lo que nos guía.',
     valuesAccent: '',
     values: [
-      { title: 'Excelencia técnica', body: 'No entregamos nada que no firmaríamos con nuestro nombre. La calidad es innegociable.' },
-      { title: 'Honestidad radical', body: 'Te decimos lo que necesitas oír, no lo que quieres oír. Sin sorpresas, sin letra pequeña.' },
-      { title: 'Curiosidad constante', body: 'Aprendemos sin parar. La tecnología cambia y nosotros con ella, siempre por delante.' },
-      { title: 'Foco en el impacto', body: 'No medimos líneas de código, medimos resultados de negocio. Lo que no aporta valor, sobra.' },
-      { title: 'Equipo sobre ego', body: 'Las mejores ideas ganan, vengan de donde vengan. Construimos juntos.' },
-      { title: 'Cuidado por el detalle', body: 'La diferencia entre bueno y excepcional está en los detalles. Y vivimos en ellos.' },
+      { title: 'Excelencia técnica', body: 'No entregamos nada que no firmaríamos con nuestro nombre.' },
+      { title: 'Honestidad', body: 'Te decimos lo que necesitas oír, aunque no sea lo que esperabas. Sin letra pequeña.' },
+      { title: 'Curiosidad', body: 'La tecnología cambia y nosotros con ella. Aprender es parte del trabajo.' },
+      { title: 'Foco en el impacto', body: 'Medimos el éxito por los resultados de tu negocio, no por las líneas de código.' },
     ],
     ctaTitle: '¿Quieres un equipo así de tu lado?',
-    ctaDesc:
-      'Trabajamos con un número limitado de clientes para garantizar la calidad. Hablemos de tu proyecto.',
+    ctaDesc: 'Cuéntanos qué necesitas y te respondemos con los próximos pasos.',
   },
   en: {
-    metaTitle: 'About · The team behind ELEM',
+    metaTitle: 'About · Who we are',
     metaDesc:
-      'We are a senior software engineering team. Discover our story, our values and how we work.',
+      'ELEM is a software engineering studio. Learn our story and the values that guide our work.',
     home: 'Home',
-    nosotros: 'About Us',
+    nosotros: 'About',
     heroTitle: 'We’d rather take on fewer projects, and do them well.',
     heroHighlight: '',
     heroDesc:
-      'ELEM is a software engineering studio. We work with few clients at a time, with high engineering standards and direct contact with the people who write the code.',
+      'ELEM is a software engineering studio. We work with few clients at a time so every project gets the attention it deserves.',
     storyEyebrow: 'Our story',
     storyLead: 'We started with a simple idea: build software well.',
     storyAccent: '',
     storyDesc:
-      'In a market full of empty promises, we decided to compete on just one thing: the quality of our engineering. We are a young company, and that is, and will be, our only strategy.',
+      'We are a young company and we chose to compete on one thing only: the quality of our work.',
     storyBody:
-      'We design, build and operate web platforms and custom software, end to end. We take few projects at a time and treat each one as if it carried our name, because it does: we are those engineers who can’t deliver something half done.',
+      'We stay with every project from start to finish and treat it as if it carried our name. Because it does.',
     timeline: [
-      { year: '2025', title: 'ELEM is born', body: 'We start with one obsession and no shortcuts: build software the right way, end to end.' },
-      { year: '2026', title: 'How we work', body: 'We define the method: a senior team with no middlemen, engineering standards (CI/CD, testing, accessibility) and incremental delivery.' },
-      { year: 'Today', title: 'Project by project', body: 'We build our reputation one project at a time, with quality as our only calling card.' },
+      { year: '2025', title: 'ELEM is born', body: 'We started with one goal: well-built software, no shortcuts.' },
+      { year: '2026', title: 'We define the method', body: 'A clear process and quality standards we apply on every project.' },
+      { year: 'Today', title: 'Project by project', body: 'We build our reputation with every release.' },
     ],
     valuesEyebrow: 'Values',
-    valuesLead: 'How we make decisions.',
+    valuesLead: 'What guides us.',
     valuesAccent: '',
     values: [
-      { title: 'Technical excellence', body: 'We deliver nothing we wouldn’t sign with our name. Quality is non-negotiable.' },
-      { title: 'Radical honesty', body: 'We tell you what you need to hear, not what you want to hear. No surprises, no fine print.' },
-      { title: 'Constant curiosity', body: 'We never stop learning. Technology changes and so do we, always ahead.' },
-      { title: 'Focus on impact', body: 'We don’t measure lines of code, we measure business results. What adds no value is dropped.' },
-      { title: 'Team over ego', body: 'The best ideas win, wherever they come from. We build together.' },
-      { title: 'Care for detail', body: 'The difference between good and exceptional is in the details. And we live in them.' },
+      { title: 'Technical excellence', body: 'We deliver nothing we wouldn’t sign with our name.' },
+      { title: 'Honesty', body: 'We tell you what you need to hear, even if it isn’t what you expected. No fine print.' },
+      { title: 'Curiosity', body: 'Technology changes and so do we. Learning is part of the job.' },
+      { title: 'Focus on impact', body: 'We measure success by your business results, not by lines of code.' },
     ],
     ctaTitle: 'Want a team like this on your side?',
-    ctaDesc:
-      'We work with a limited number of clients to guarantee quality. Let’s talk about your project.',
+    ctaDesc: 'Tell us what you need and we’ll reply with the next steps.',
   },
 };
 
@@ -151,7 +144,7 @@ export default async function NosotrosPage() {
             <ol className="border-t border-border">
               {t.timeline.map((item) => (
                 <li key={item.year} className="grid grid-cols-[5rem_1fr] gap-4 border-b border-border py-7">
-                  <span className="font-mono text-sm text-primary">{item.year}</span>
+                  <span className="text-[15px] tabular-nums text-primary">{item.year}</span>
                   <div>
                     <h3 className="text-lg font-semibold tracking-tight">{item.title}</h3>
                     <p className="mt-1.5 leading-relaxed text-muted-foreground">{item.body}</p>
@@ -169,18 +162,17 @@ export default async function NosotrosPage() {
           eyebrow={t.valuesEyebrow}
           title={<GradientTitle lead={t.valuesLead} accent={t.valuesAccent} />}
         />
-        <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {t.values.map((v, i) => (
-            <Reveal key={v.title} delay={(i % 3) * 0.05} className="border-t border-foreground/80 pt-6">
-              <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
+            <Reveal key={v.title} delay={i * 0.05} className="border-t border-foreground/80 pt-6">
+              <span className="text-sm tabular-nums text-muted-foreground">0{i + 1}</span>
               <h3 className="mt-4 text-lg font-semibold tracking-tight">{v.title}</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{v.body}</p>
+              <p className="mt-3 text-base leading-relaxed text-muted-foreground">{v.body}</p>
             </Reveal>
           ))}
         </div>
       </Section>
 
-      <Methodology />
 
       <CtaFinal title={t.ctaTitle} description={t.ctaDesc} />
     </>

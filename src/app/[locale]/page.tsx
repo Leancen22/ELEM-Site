@@ -1,7 +1,6 @@
 import { Hero } from '@/components/sections/hero';
 // Oculto: empresa nueva, sin clientes/referencias todavía.
 // import { PartnersMarquee } from '@/components/sections/partners-marquee';
-import { Technologies } from '@/components/sections/technologies';
 import { ServicesGrid } from '@/components/sections/services-grid';
 // import { Metrics } from '@/components/sections/metrics';
 // import { CaseStudies } from '@/components/sections/case-studies';
@@ -12,7 +11,7 @@ import { CtaFinal } from '@/components/sections/cta-final';
 import { JsonLd, websiteSchema } from '@/components/seo/json-ld';
 import { getLocale } from '@/i18n/server';
 
-// Orden: qué hacemos → cómo → por qué nosotros → con qué → contacto.
+// Orden: qué hacemos → cómo trabajamos → qué puedes esperar → contacto.
 export default async function HomePage() {
   const locale = await getLocale();
   return (
@@ -22,11 +21,10 @@ export default async function HomePage() {
       {/* Oculto: empresa nueva, sin clientes/referencias todavía. */}
       {/* <PartnersMarquee /> */}
       <ServicesGrid />
-      <Methodology />
+      <Methodology showLink />
       <Benefits />
       {/* <Metrics /> */}
       {/* <CaseStudies /> */}
-      <Technologies />
       {/* <Testimonials /> */}
       <CtaFinal />
     </>

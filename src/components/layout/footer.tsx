@@ -1,31 +1,29 @@
 import { Link } from '@/components/i18n/link';
 import { Logo } from '@/components/brand/logo';
-import { site, siteCopy } from '@/lib/site';
-import { servicios, tecnologias, empresa } from '@/lib/navigation';
+import { site } from '@/lib/site';
+import { servicios, empresa } from '@/lib/navigation';
 import { getLocale } from '@/i18n/server';
 import { ui } from '@/content/ui';
 
 export async function Footer() {
   const locale = await getLocale();
-  const copy = siteCopy[locale];
   const t = ui[locale].footer;
   return (
     <footer className="bg-surface border-t border-border">
       <div className="container-wide">
         <div className="grid gap-12 py-16 sm:py-20 md:grid-cols-12">
-          <div className="md:col-span-4">
+          <div className="md:col-span-5">
             <Logo />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">{copy.description}</p>
+            <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-muted-foreground">{t.about}</p>
             <a
               href={`mailto:${site.email}`}
-              className="mt-6 inline-block text-sm font-medium underline decoration-border underline-offset-4 hover:decoration-current"
+              className="mt-6 inline-block py-1 text-[15px] font-medium underline decoration-border underline-offset-4 hover:decoration-current"
             >
               {site.email}
             </a>
           </div>
 
-          <FooterCol title={t.colServices} items={servicios[locale]} className="md:col-span-3" />
-          <FooterCol title={t.colTech} items={tecnologias[locale]} className="md:col-span-2" />
+          <FooterCol title={t.colServices} items={servicios[locale]} className="md:col-span-4" />
           <FooterCol
             title={t.colCompany}
             items={[
@@ -37,7 +35,7 @@ export async function Footer() {
           />
         </div>
 
-        <div className="flex flex-col justify-between gap-4 border-t border-border py-8 text-xs text-muted-foreground sm:flex-row sm:items-center">
+        <div className="flex flex-col justify-between gap-4 border-t border-border py-8 text-sm text-muted-foreground sm:flex-row sm:items-center">
           <p>
             © {new Date().getFullYear()} {site.legalName}. {t.rights}
           </p>
@@ -70,11 +68,11 @@ function FooterCol({
   items: { label: string; href: string; external?: boolean }[];
   className?: string;
 }) {
-  const linkCls = 'text-sm text-foreground/85 transition-colors hover:text-foreground hover:underline underline-offset-4';
+  const linkCls = 'inline-block py-1 text-[15px] text-foreground/85 transition-colors hover:text-foreground hover:underline underline-offset-4';
   return (
     <div className={className}>
-      <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{title}</p>
-      <ul className="mt-5 space-y-3">
+      <p className="text-[15px] font-medium text-muted-foreground">{title}</p>
+      <ul className="mt-4 space-y-1.5">
         {items.map((item) => (
           <li key={item.label + item.href}>
             {item.external ? (

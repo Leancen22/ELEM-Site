@@ -2,14 +2,13 @@ import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site';
 // Oculto: blog desactivado por ahora.
 // import { getAllPosts, postSlugs } from '@/content/blog';
-import { techSlugs } from '@/content/tech';
 import { defaultLocale, locales } from '@/i18n/config';
 import { getPathname } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 
 type Internal = keyof typeof routing.pathnames;
 type Href = Parameters<typeof getPathname>[0]['href'];
-type StaticHref = Exclude<Internal, '/blog/[slug]' | '/legal/[doc]' | '/tecnologias/[slug]'>;
+type StaticHref = Exclude<Internal, '/blog/[slug]' | '/legal/[doc]'>;
 
 function url(locale: (typeof locales)[number], href: Href) {
   return `${site.url}${getPathname({ locale, href })}`;
@@ -38,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/servicios',
     // '/soluciones', // oculto: menú fusionado en Servicios
 
-    '/tecnologias',
+    '/como-trabajamos',
     // '/casos-de-exito', // oculto: empresa nueva, sin casos/referencias todavía
     // '/blog', // oculto: blog desactivado por ahora
     '/nosotros',
@@ -48,20 +47,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries = staticRoutes.map((href) =>
     entry(href, href === '/' ? 1 : 0.8, now)
   );
-
-  const techEntries = techSlugs.map((slug) => {
-    const href = { pathname: '/tecnologias/[slug]', params: { slug } } as const;
-    const languages = Object.fromEntries(
-      locales.map((l) => [l, url(l, href)])
-    ) as Record<(typeof locales)[number], string>;
-    return {
-      url: url(defaultLocale, href),
-      lastModified: now,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-      alternates: { languages },
-    };
-  });
 
   const legalDocs = ['privacidad', 'cookies', 'aviso-legal'];
   const legalEntries = legalDocs.map((doc) => {
@@ -95,5 +80,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
   //   };
   // });
 
-  return [...staticEntries, ...techEntries, ...legalEntries];
+  return [...staticEntries, ...legalEntries];
 }

@@ -45,16 +45,16 @@ export default function OpengraphImage() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <div style={{ fontSize: 68, fontWeight: 800, lineHeight: 1.05, maxWidth: 920 }}>
-            Construimos el software que mueve empresas líderes
+            Software a medida, bien hecho desde el primer día
           </div>
           <div style={{ fontSize: 30, color: 'rgba(255,255,255,0.75)' }}>
-            Drupal · Next.js · Java · Docker
+            Desarrollo web · Apps · Software a medida · Automatización
           </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 26, color: 'rgba(255,255,255,0.7)' }}>
-          <span>Ingeniería de software empresarial premium</span>
-          <span style={{ marginLeft: 'auto', color: '#ff6890' }}>elem.dev</span>
+          <span>Estudio de ingeniería de software</span>
+          <span style={{ marginLeft: 'auto', color: '#ff6890' }}>elem.uy</span>
         </div>
       </div>
     ),

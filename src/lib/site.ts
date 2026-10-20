@@ -20,16 +20,16 @@ export const siteCopy: Record<
   { tagline: string; description: string; ogLocale: string }
 > = {
   es: {
-    tagline: 'Desarrollo de Software',
+    tagline: 'Software a medida',
     description:
-      'ELEM diseña, construye y moderniza plataformas digitales de alto rendimiento. Expertos en Drupal, Next.js y Java, integraciones empresariales y APIs a medida.',
+      'ELEM es un estudio de ingeniería de software. Diseñamos, construimos y evolucionamos plataformas web, aplicaciones y sistemas a medida para empresas.',
     // address: 'Calle de la Innovación 12, 28010 Madrid, España',
     ogLocale: 'es_ES',
   },
   en: {
-    tagline: 'Software Development',
+    tagline: 'Custom software',
     description:
-      'ELEM designs, builds and modernizes high-performance digital platforms. Experts in Drupal, Next.js and Java, enterprise integrations and custom APIs.',
+      'ELEM is a software engineering studio. We design, build and evolve web platforms, applications and custom systems for companies.',
     // address: 'Calle de la Innovación 12, 28010 Madrid, Spain',
     ogLocale: 'en_US',
   },

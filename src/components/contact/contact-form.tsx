@@ -77,7 +77,7 @@ const formCopy: Record<Locale, FormCopy> = {
     companyPlaceholder: 'Nombre de tu empresa',
     service: '¿En qué te ayudamos?',
     servicePlaceholder: 'Selecciona un servicio',
-    services: ['Desarrollo web', 'Aplicaciones móviles', 'Desarrollo de software', 'Automatizaciones', 'Arquitectura empresarial', 'Integraciones / APIs', 'Modernización de sistemas', 'Cloud & DevOps', 'Otro'],
+    services: ['Desarrollo web', 'Aplicaciones móviles', 'Software a medida', 'Automatización e integraciones', 'Consultoría técnica', 'Otro'],
     message: 'Cuéntanos tu proyecto',
     messagePlaceholder: '¿Qué reto quieres resolver? Cuanto más nos cuentes, mejor.',
     consentPre: 'Acepto la ',
@@ -86,7 +86,7 @@ const formCopy: Record<Locale, FormCopy> = {
     submit: 'Enviar mensaje',
     sending: 'Enviando…',
     successTitle: '¡Mensaje enviado!',
-    successBody: 'Gracias por escribirnos. Un arquitecto senior revisará tu caso y te responderá en menos de 24 horas.',
+    successBody: 'Gracias por escribirnos. Te respondemos en menos de 24 horas hábiles.',
     sendAnother: 'Enviar otro mensaje',
     sendError: 'No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos a contacto@elem.uy.',
     captchaError: 'Verifica que no eres un robot antes de enviar.',
@@ -106,7 +106,7 @@ const formCopy: Record<Locale, FormCopy> = {
     companyPlaceholder: 'Your company name',
     service: 'How can we help?',
     servicePlaceholder: 'Select a service',
-    services: ['Web development', 'Mobile apps', 'Software development', 'Automation', 'Enterprise architecture', 'Integrations / APIs', 'System modernization', 'Cloud & DevOps', 'Other'],
+    services: ['Web development', 'Mobile apps', 'Custom software', 'Automation & integrations', 'Technical consulting', 'Other'],
     message: 'Tell us about your project',
     messagePlaceholder: 'What challenge do you want to solve? The more you tell us, the better.',
     consentPre: 'I accept the ',
@@ -115,7 +115,7 @@ const formCopy: Record<Locale, FormCopy> = {
     submit: 'Send message',
     sending: 'Sending…',
     successTitle: 'Message sent!',
-    successBody: 'Thanks for reaching out. A senior architect will review your case and reply within 24 hours.',
+    successBody: 'Thanks for reaching out. We’ll reply within 24 business hours.',
     sendAnother: 'Send another message',
     sendError: 'We couldn’t send your message. Please try again or email us at contacto@elem.uy.',
     captchaError: 'Please confirm you are not a robot before sending.',
@@ -301,7 +301,7 @@ export function ContactForm() {
               </span>
             </label>
             {errors.consent?.message ? (
-              <p className="-mt-2 text-xs font-medium text-rose-600">
+              <p className="-mt-2 text-sm font-medium text-rose-600">
                 {errors.consent.message}
               </p>
             ) : null}
@@ -314,7 +314,7 @@ export function ContactForm() {
 
             <Turnstile onToken={handleToken} registerReset={registerCaptchaReset} />
             {captchaError ? (
-              <p className="-mt-2 text-xs font-medium text-rose-600">{t.captchaError}</p>
+              <p className="-mt-2 text-sm font-medium text-rose-600">{t.captchaError}</p>
             ) : null}
 
             <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
@@ -408,7 +408,7 @@ function Field({
     <label className="block">
       <span className="mb-1.5 block text-sm font-medium text-foreground">{label}</span>
       {children}
-      {error ? <span className="mt-1 block text-xs font-medium text-rose-600">{error}</span> : null}
+      {error ? <span className="mt-1 block text-sm font-medium text-rose-600">{error}</span> : null}
     </label>
   );
 }

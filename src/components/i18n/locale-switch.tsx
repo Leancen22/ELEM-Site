@@ -36,7 +36,7 @@ export function LocaleSwitch({ className }: { className?: string }) {
       aria-label={locale === 'es' ? 'Switch to English' : 'Cambiar a español'}
       title={locales.map((l) => l.toUpperCase()).join(' / ')}
       className={cn(
-        'inline-flex h-9 items-center gap-1.5 rounded-md px-2.5 font-mono text-xs font-medium transition-colors text-muted-foreground hover:bg-muted hover:text-foreground disabled:opacity-60',
+        'inline-flex h-10 items-center gap-1.5 rounded-md px-3 text-sm font-medium transition-colors text-muted-foreground hover:bg-muted hover:text-foreground disabled:opacity-60',
         className
       )}
     >

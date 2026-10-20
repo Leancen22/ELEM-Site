@@ -26,13 +26,13 @@ const content: Record<Locale, Content> = {
   es: {
     metaTitle: 'Contacto · Hablemos de tu proyecto',
     metaDesc:
-      'Cuéntanos tu reto y te respondemos en menos de 24 horas con un plan concreto. Ingeniería de software premium para tu empresa.',
+      'Cuéntanos qué necesitas construir. Respondemos en menos de 24 horas hábiles y te proponemos alcance, plazos y presupuesto.',
     home: 'Inicio',
     contacto: 'Contacto',
     heroTitle: 'Hablemos de tu proyecto.',
     heroHighlight: '',
     heroDesc:
-      'Cuéntanos qué necesitas en pocas líneas. Te responde una persona técnica, no un comercial.',
+      'Unas pocas líneas alcanzan. Te responde una persona del equipo técnico, no un comercial.',
     nextTitle: 'Qué pasa después',
     highlights: [
       { title: 'Te respondemos en 24 h hábiles', body: 'Revisamos tu mensaje y, si hace falta, te hacemos algunas preguntas.' },
@@ -44,13 +44,13 @@ const content: Record<Locale, Content> = {
   en: {
     metaTitle: 'Contact · Let’s talk about your project',
     metaDesc:
-      'Tell us about your challenge and we’ll reply within 24 hours with a concrete plan. Premium software engineering for your company.',
+      'Tell us what you need to build. We reply within 24 business hours and propose scope, timeline and budget.',
     home: 'Home',
     contacto: 'Contact',
     heroTitle: 'Let’s talk about your project.',
     heroHighlight: '',
     heroDesc:
-      'Tell us what you need in a few lines. A technical person replies, not a salesperson.',
+      'A few lines are enough. Someone from the technical team replies, not a salesperson.',
     nextTitle: 'What happens next',
     highlights: [
       { title: 'We reply within 24 business hours', body: 'We review your message and, if needed, ask a few questions.' },
@@ -92,20 +92,20 @@ export default async function ContactoPage() {
       <Section className="pt-12 sm:pt-16">
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{t.nextTitle}</p>
+            <p className="text-[15px] font-medium text-muted-foreground">{t.nextTitle}</p>
             <ol className="mt-5 border-t border-border">
               {t.highlights.map((h, i) => (
                 <li key={h.title} className="grid grid-cols-[2.5rem_1fr] border-b border-border py-6">
-                  <span className="font-mono text-sm text-primary">0{i + 1}</span>
+                  <span className="text-[15px] tabular-nums text-primary">0{i + 1}</span>
                   <div>
                     <h3 className="font-semibold tracking-tight">{h.title}</h3>
-                    <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">{h.body}</p>
+                    <p className="mt-1.5 text-base leading-relaxed text-muted-foreground">{h.body}</p>
                   </div>
                 </li>
               ))}
             </ol>
 
-            <p className="mt-10 text-sm text-muted-foreground">{t.contactData}</p>
+            <p className="mt-10 text-[15px] text-muted-foreground">{t.contactData}</p>
             <a
               href={`mailto:${site.email}`}
               className="mt-1 inline-block text-xl font-semibold tracking-tight underline decoration-border underline-offset-[6px] hover:decoration-primary"

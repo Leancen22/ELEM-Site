@@ -1,5 +1,6 @@
 import { Breadcrumbs } from '@/components/ui/breadcrumbs';
 import { Reveal } from '@/components/motion/reveal';
+import { ParallaxWash } from '@/components/motion/parallax';
 
 /** `eyebrow` is accepted for compatibility but no longer rendered. */
 export function PageHero({
@@ -17,7 +18,8 @@ export function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="bg-wash relative border-b border-border pb-16 pt-32 sm:pb-20 sm:pt-40">
+    <section className="relative isolate overflow-hidden border-b border-border pb-16 pt-32 sm:pb-20 sm:pt-40">
+      <ParallaxWash />
       <div className="container-wide">
         <Breadcrumbs items={breadcrumbs} />
         <Reveal className="mt-10 max-w-4xl">

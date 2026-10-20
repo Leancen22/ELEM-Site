@@ -24,7 +24,8 @@ const copy: Record<
     linksLabel: 'O salta directo a:',
     sitemap: 'Ver mapa del sitio',
     links: [
-      { label: 'Servicios', href: '/servicios' },
+      { label: 'Qué hacemos', href: '/servicios' },
+      { label: 'Cómo trabajamos', href: '/como-trabajamos' },
       { label: 'Nosotros', href: '/nosotros' },
       // Oculto: blog desactivado por ahora.
       // { label: 'Blog', href: '/blog' },
@@ -39,7 +40,8 @@ const copy: Record<
     linksLabel: 'Or jump straight to:',
     sitemap: 'View sitemap',
     links: [
-      { label: 'Services', href: '/servicios' },
+      { label: 'What we do', href: '/servicios' },
+      { label: 'How we work', href: '/como-trabajamos' },
       { label: 'About', href: '/nosotros' },
       // Oculto: blog desactivado por ahora.
       // { label: 'Blog', href: '/blog' },
@@ -53,7 +55,7 @@ export default async function NotFound() {
   return (
     <section className="pb-24 pt-36 sm:pb-32 sm:pt-44">
       <div className="container-wide max-w-3xl">
-        <p className="font-mono text-sm text-primary">404</p>
+        <p className="text-[15px] tabular-nums text-primary">404</p>
         <h1 className="mt-4 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">{t.title}</h1>
         <p className="mt-4 text-lg text-muted-foreground">{t.body}</p>
         <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -66,7 +68,7 @@ export default async function NotFound() {
             <Link href="/contacto">{t.contact}</Link>
           </Button>
         </div>
-        <p className="mt-14 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{t.linksLabel}</p>
+        <p className="mt-14 text-[15px] font-medium text-muted-foreground">{t.linksLabel}</p>
         <ul className="mt-4 border-t border-border">
           {[...t.links, { label: t.sitemap, href: '/mapa-del-sitio' }].map((link) => (
             <li key={link.href}>

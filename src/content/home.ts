@@ -1,23 +1,12 @@
 import type { TechKey } from '@/components/visuals/tech-logos';
 import type { Locale } from '@/i18n/config';
 
-export type TechCard = {
-  key: TechKey;
-  name: string;
-  href: string;
-  tagline: string;
-  useCases: string[];
-};
-
-export type Tool = { key?: TechKey; name: string };
-
 /** A service line. `id` is the anchor on /servicios (e.g. /servicios#web). */
 export type ServiceCard = {
   id: string;
   title: string;
   description: string;
   includes: string[];
-  stack: string;
 };
 
 export type MetricItem = { value: number; suffix: string; label: string };
@@ -45,8 +34,6 @@ type SectionHead = {
 };
 
 export type HomeContent = {
-  techCards: TechCard[];
-  tools: Tool[];
   services: ServiceCard[];
   metrics: MetricItem[];
   caseStudies: CaseStudy[];
@@ -62,11 +49,10 @@ export type HomeContent = {
       ctaSecondary: string;
     };
     partners: { heading: string };
-    technologies: SectionHead & { toolsLabel: string; more: string };
     services: SectionHead & { more: string; all: string };
     metrics: { eyebrow: string; title: string };
     caseStudies: SectionHead & { viewAll: string };
-    methodology: SectionHead;
+    methodology: SectionHead & { more: string };
     principles: SectionHead;
     testimonials: SectionHead & { prev: string; next: string; goTo: string };
     cta: {
@@ -93,24 +79,12 @@ const partners = [
 export const home: Record<Locale, HomeContent> = {
   es: {
     partners,
-    techCards: [
-      { key: 'drupal', name: 'Drupal', href: '/tecnologias/drupal', tagline: 'CMS de nivel enterprise para portales y plataformas de contenido.', useCases: ['Portales corporativos', 'Gobierno digital', 'Multi-sitio'] },
-      { key: 'next', name: 'Next.js', href: '/tecnologias/nextjs', tagline: 'Frontend moderno sobre React: rápido, accesible y SEO-friendly.', useCases: ['Web apps', 'Sitios de alto rendimiento', 'Design systems'] },
-      { key: 'java', name: 'Java + Spring Boot', href: '/tecnologias/java', tagline: 'Backend robusto y escalable con Spring Boot.', useCases: ['APIs y microservicios', 'Sistemas de misión crítica', 'Event-driven'] },
-      { key: 'python', name: 'Python', href: '/tecnologias/python', tagline: 'APIs, datos y automatización; IA en producción.', useCases: ['APIs con FastAPI', 'Pipelines de datos', 'Automatización e IA'] },
-    ],
-    tools: [
-      { key: 'ddev', name: 'ddev' },
-      { key: 'git', name: 'Git' },
-      { key: 'docker', name: 'Docker' },
-      { key: 'kubernetes', name: 'Kubernetes' },
-    ],
     services: [
-      { id: 'web', title: 'Desarrollo web', description: 'Sitios, portales, intranets y e-commerce rápidos, accesibles y fáciles de mantener por tu equipo.', includes: ['Portales corporativos e institucionales', 'Web apps y e-commerce', 'CMS editable con Drupal', 'Rendimiento, accesibilidad y SEO técnico'], stack: 'Next.js · Drupal' },
-      { id: 'movil', title: 'Aplicaciones móviles', description: 'Apps para iOS y Android desde una sola base de código, conectadas a los sistemas que ya usas.', includes: ['Apps multiplataforma', 'Diseño de experiencia móvil', 'Integración con tus APIs y backends', 'Publicación en tiendas y mantenimiento'], stack: 'iOS · Android' },
-      { id: 'software', title: 'Software a medida', description: 'Sistemas internos, backends y aplicaciones empresariales diseñados para durar y crecer.', includes: ['Sistemas de gestión internos', 'APIs y microservicios', 'Modernización de sistemas legacy', 'Arquitectura documentada y escalable'], stack: 'Java + Spring Boot · Python' },
-      { id: 'automatizacion', title: 'Automatización e integraciones', description: 'Conectamos tus sistemas y automatizamos tareas repetitivas para ganar tiempo y reducir errores.', includes: ['Integraciones con ERP, CRM y pagos', 'Flujos y tareas automatizadas', 'Sincronización de datos entre sistemas', 'Pipelines de datos'], stack: 'Python · APIs · Webhooks' },
-      { id: 'consultoria', title: 'Consultoría técnica', description: 'Te ayudamos a decidir bien antes de invertir: arquitectura, stack y prácticas de ingeniería.', includes: ['Auditoría de código y arquitectura', 'Elección de stack tecnológico', 'Hoja de ruta técnica', 'DevOps y entrega continua'], stack: 'Docker · Kubernetes · CI/CD' },
+      { id: 'web', title: 'Desarrollo web', description: 'Sitios, portales e intranets que cargan rápido, se ven bien en cualquier dispositivo y tu equipo puede actualizar sin depender de nadie.', includes: ['Sitios corporativos e institucionales', 'Portales, intranets y tiendas online', 'Gestor de contenidos fácil de usar', 'Accesibilidad y posicionamiento en buscadores'] },
+      { id: 'movil', title: 'Aplicaciones móviles', description: 'Apps para iOS y Android que se integran con los sistemas que ya usas.', includes: ['Una sola app para iOS y Android', 'Diseño pensado para el uso diario', 'Conexión con tus sistemas actuales', 'Publicación en tiendas y mantenimiento'] },
+      { id: 'software', title: 'Software a medida', description: 'Sistemas internos y aplicaciones de negocio que se adaptan a tus procesos, no al revés.', includes: ['Sistemas de gestión internos', 'Integraciones entre aplicaciones', 'Modernización de sistemas antiguos', 'Arquitectura documentada y preparada para crecer'] },
+      { id: 'automatizacion', title: 'Automatización e integraciones', description: 'Conectamos tus herramientas y eliminamos el trabajo manual repetitivo.', includes: ['Integración con ERP, CRM y medios de pago', 'Flujos de trabajo automáticos', 'Datos sincronizados entre sistemas', 'Reportes que se generan solos'] },
+      { id: 'consultoria', title: 'Consultoría técnica', description: 'Una mirada experta antes de invertir: qué construir, cómo y con qué.', includes: ['Auditoría de código y arquitectura', 'Selección de tecnología', 'Hoja de ruta técnica', 'Procesos de despliegue y calidad'] },
     ],
     metrics: [
       { value: 4, suffix: '', label: 'Tecnologías núcleo' },
@@ -124,16 +98,16 @@ export const home: Record<Locale, HomeContent> = {
       { client: 'GovDigital', sector: 'Sector público', title: 'Portal ciudadano accesible para 4M de usuarios', impact: 'Accesibilidad AAA y 4M de trámites digitales al año.', kpis: [{ value: 'AAA', label: 'accesibilidad' }, { value: '4M', label: 'trámites/año' }, { value: '-60%', label: 'tiempo gestión' }], tech: ['drupal', 'react', 'php', 'aws'], accent: 'from-rose-600 to-purple-600' },
     ],
     methodology: [
-      { step: '01', title: 'Descubrimiento y análisis', tagline: 'Entendemos tu negocio', description: 'Nos reunimos contigo para entender tu negocio, quién usará la plataforma y tus limitaciones. Revisamos tus sistemas y datos actuales y fijamos objetivos claros y medibles.' },
-      { step: '02', title: 'Diseño', tagline: 'Damos forma a la solución', description: 'Definimos la arquitectura técnica y diseñamos la interfaz pensando en quien la usará. Validamos las ideas con prototipos antes de programar.' },
-      { step: '03', title: 'Desarrollo y QA', tagline: 'Construimos a medida', description: 'Programamos en ciclos cortos, revisando cada cambio. En paralelo probamos rendimiento, seguridad y accesibilidad para garantizar la calidad de cada versión.' },
-      { step: '04', title: 'Entrega y soporte', tagline: 'Lanzamos y acompañamos', description: 'Lanzamos la plataforma de forma controlada, sin cortes de servicio y pudiendo volver atrás si algo falla. Después seguimos a tu lado: mejoras, evolución y soporte con SLA.' },
+      { step: '01', title: 'Descubrimiento', tagline: 'Entendemos el problema', description: 'Conocemos tu negocio, a quién sirve el sistema y qué tienes hoy. Acordamos objetivos medibles.' },
+      { step: '02', title: 'Diseño', tagline: 'Damos forma a la solución', description: 'Definimos la arquitectura y la experiencia de uso. Validamos con prototipos antes de escribir código.' },
+      { step: '03', title: 'Desarrollo', tagline: 'Construimos por etapas', description: 'Avanzamos en etapas cortas. Cada cambio se revisa y se prueba antes de llegar a producción.' },
+      { step: '04', title: 'Lanzamiento y evolución', tagline: 'Publicamos y acompañamos', description: 'Salimos a producción sin interrupciones y seguimos mejorando el producto con soporte continuo.' },
     ],
     principles: [
-      { title: 'Hablas con quien construye', body: 'Sin capas comerciales ni intermediarios. Las conversaciones técnicas las tienes con el equipo que diseña y programa tu proyecto.' },
-      { title: 'Avance visible cada dos semanas', body: 'Trabajamos en ciclos cortos, con demos y software desplegable. Siempre sabes en qué punto está el proyecto y qué viene después.' },
-      { title: 'Calidad de serie', body: 'Revisión de código, tests automatizados, integración continua y accesibilidad forman parte del trabajo. No son extras.' },
-      { title: 'El código es tuyo', body: 'Documentamos cada decisión y entregamos todo: repositorio, infraestructura y conocimiento. Sin dependencias forzadas.' },
+      { title: 'Hablas con quien construye', body: 'Sin intermediarios: las decisiones técnicas las conversas con el equipo que diseña y programa.' },
+      { title: 'Avances cada dos semanas', body: 'Ves software funcionando de forma regular y sabes siempre qué viene después.' },
+      { title: 'Calidad incluida', body: 'Revisión de código, pruebas automáticas y accesibilidad forman parte de cada entrega. No son un extra.' },
+      { title: 'Todo queda en tus manos', body: 'Elegimos la tecnología según tu problema y te entregamos todo: código, documentación y accesos.' },
     ],
     testimonials: [
       { quote: 'ELEM transformó nuestro core legacy en una plataforma de microservicios sin un solo minuto de caída. Su nivel de ingeniería es excepcional.', name: 'María Sanz', role: 'CTO, Banco Atlas' },
@@ -144,24 +118,17 @@ export const home: Record<Locale, HomeContent> = {
     sections: {
       hero: {
         title: 'Software a medida, bien hecho desde el primer día.',
-        description: 'Diseñamos, construimos y mantenemos plataformas web, apps y sistemas internos para empresas que necesitan que su tecnología funcione. Un equipo senior, trato directo y estándares de ingeniería en cada entrega.',
+        description: 'Diseñamos, construimos y evolucionamos plataformas web, aplicaciones y sistemas internos para empresas.',
         ctaPrimary: 'Cuéntanos tu proyecto',
-        ctaSecondary: 'Ver servicios',
+        ctaSecondary: 'Qué hacemos',
       },
       partners: { heading: 'Empresas líderes confían en ELEM' },
-      technologies: {
-        eyebrow: 'Tecnología',
-        lead: 'Pocas tecnologías, dominadas a fondo.',
-        description: 'Elegimos cada herramienta por sus méritos y la operamos con disciplina de ingeniería. Sin modas ni ataduras a un proveedor.',
-        toolsLabel: 'DevOps y herramientas',
-        more: 'Ver tecnologías',
-      },
       services: {
         eyebrow: 'Servicios',
         lead: 'Qué hacemos',
-        description: 'Un único equipo para todo el ciclo de vida de tu producto: estrategia, diseño, desarrollo y evolución.',
+        description: 'Cinco servicios y un mismo equipo, de la idea a la operación diaria.',
         more: 'Ver detalle',
-        all: 'Todos los servicios',
+        all: 'Ver todos los servicios',
       },
       metrics: { eyebrow: 'Impacto medible', title: 'Resultados que hablan por nosotros' },
       caseStudies: {
@@ -173,8 +140,9 @@ export const home: Record<Locale, HomeContent> = {
       },
       methodology: {
         eyebrow: 'Cómo trabajamos',
-        lead: 'Un proceso claro, de la primera reunión al mantenimiento.',
-        description: 'Cuatro fases que reducen la incertidumbre y te dan visibilidad en cada paso.',
+        lead: 'Cómo trabajamos',
+        description: 'Un proceso claro, de la primera reunión al mantenimiento.',
+        more: 'Conocer el proceso',
       },
       principles: {
         eyebrow: 'Por qué ELEM',
@@ -191,7 +159,7 @@ export const home: Record<Locale, HomeContent> = {
       cta: {
         eyebrow: 'Contacto',
         title: 'Cuéntanos qué necesitas construir.',
-        description: 'Te respondemos en menos de 24 horas hábiles. Si encaja, agendamos una llamada y te proponemos alcance, plazos y presupuesto.',
+        description: 'Respondemos en menos de 24 horas hábiles con los próximos pasos.',
         primary: 'Escribirnos',
         secondary: 'contacto@elem.uy',
       },
@@ -199,24 +167,12 @@ export const home: Record<Locale, HomeContent> = {
   },
   en: {
     partners,
-    techCards: [
-      { key: 'drupal', name: 'Drupal', href: '/tecnologias/drupal', tagline: 'Enterprise-grade CMS for content portals and platforms.', useCases: ['Corporate portals', 'Digital government', 'Multi-site'] },
-      { key: 'next', name: 'Next.js', href: '/tecnologias/nextjs', tagline: 'Modern React-based frontend: fast, accessible and SEO-friendly.', useCases: ['Web apps', 'High-performance sites', 'Design systems'] },
-      { key: 'java', name: 'Java + Spring Boot', href: '/tecnologias/java', tagline: 'Robust, scalable backend with Spring Boot.', useCases: ['APIs & microservices', 'Mission-critical systems', 'Event-driven'] },
-      { key: 'python', name: 'Python', href: '/tecnologias/python', tagline: 'APIs, data and automation; AI in production.', useCases: ['APIs with FastAPI', 'Data pipelines', 'Automation & AI'] },
-    ],
-    tools: [
-      { key: 'ddev', name: 'ddev' },
-      { key: 'git', name: 'Git' },
-      { key: 'docker', name: 'Docker' },
-      { key: 'kubernetes', name: 'Kubernetes' },
-    ],
     services: [
-      { id: 'web', title: 'Web development', description: 'Fast, accessible websites, portals, intranets and e-commerce that your team can maintain.', includes: ['Corporate and institutional portals', 'Web apps and e-commerce', 'Editable CMS with Drupal', 'Performance, accessibility and technical SEO'], stack: 'Next.js · Drupal' },
-      { id: 'movil', title: 'Mobile apps', description: 'iOS and Android apps from a single codebase, connected to the systems you already use.', includes: ['Cross-platform apps', 'Mobile experience design', 'Integration with your APIs and backends', 'Store publishing and maintenance'], stack: 'iOS · Android' },
-      { id: 'software', title: 'Custom software', description: 'Internal systems, backends and business applications designed to last and grow.', includes: ['Internal management systems', 'APIs and microservices', 'Legacy system modernization', 'Documented, scalable architecture'], stack: 'Java + Spring Boot · Python' },
-      { id: 'automatizacion', title: 'Automation & integrations', description: 'We connect your systems and automate repetitive work to save time and cut errors.', includes: ['ERP, CRM and payment integrations', 'Automated workflows and tasks', 'Data sync between systems', 'Data pipelines'], stack: 'Python · APIs · Webhooks' },
-      { id: 'consultoria', title: 'Technical consulting', description: 'We help you decide well before you invest: architecture, stack and engineering practices.', includes: ['Code and architecture audits', 'Technology stack selection', 'Technical roadmap', 'DevOps and continuous delivery'], stack: 'Docker · Kubernetes · CI/CD' },
+      { id: 'web', title: 'Web development', description: 'Websites, portals and intranets that load fast, look right on any device and your team can update on its own.', includes: ['Corporate and institutional websites', 'Portals, intranets and online stores', 'An easy-to-use content manager', 'Accessibility and search visibility'] },
+      { id: 'movil', title: 'Mobile apps', description: 'iOS and Android apps that work with the systems you already use.', includes: ['One app for iOS and Android', 'Design built for everyday use', 'Connected to your current systems', 'Store publishing and maintenance'] },
+      { id: 'software', title: 'Custom software', description: 'Internal systems and business applications that fit your processes, not the other way round.', includes: ['Internal management systems', 'Integrations between applications', 'Modernization of legacy systems', 'Documented architecture, ready to grow'] },
+      { id: 'automatizacion', title: 'Automation & integrations', description: 'We connect your tools and remove repetitive manual work.', includes: ['ERP, CRM and payment integrations', 'Automated workflows', 'Data kept in sync across systems', 'Reports that build themselves'] },
+      { id: 'consultoria', title: 'Technical consulting', description: 'An expert view before you invest: what to build, how, and with what.', includes: ['Code and architecture audits', 'Technology selection', 'Technical roadmap', 'Release and quality processes'] },
     ],
     metrics: [
       { value: 4, suffix: '', label: 'Core technologies' },
@@ -230,16 +186,16 @@ export const home: Record<Locale, HomeContent> = {
       { client: 'GovDigital', sector: 'Public sector', title: 'Accessible citizen portal for 4M users', impact: 'AAA accessibility and 4M digital procedures per year.', kpis: [{ value: 'AAA', label: 'accessibility' }, { value: '4M', label: 'procedures/yr' }, { value: '-60%', label: 'processing time' }], tech: ['drupal', 'react', 'php', 'aws'], accent: 'from-rose-600 to-purple-600' },
     ],
     methodology: [
-      { step: '01', title: 'Discovery & Analysis', tagline: 'We understand your business', description: 'We meet with you to understand your business, who will use the platform and your constraints. We review your current systems and data and set clear, measurable goals.' },
-      { step: '02', title: 'Design', tagline: 'We shape the solution', description: 'We define the technical architecture and design the interface around the people who will use it. We validate ideas with prototypes before writing any code.' },
-      { step: '03', title: 'Development & QA', tagline: 'We build to measure', description: 'We code in short cycles, reviewing every change. In parallel we test performance, security and accessibility to ensure the quality of every release.' },
-      { step: '04', title: 'Delivery & support', tagline: 'We launch and stay on', description: 'We launch the platform in a controlled way, with no downtime and the ability to roll back if something fails. Then we stay by your side: improvements, evolution and support with an SLA.' },
+      { step: '01', title: 'Discovery', tagline: 'We understand the problem', description: 'We learn your business, who the system serves and what you have today. We agree on measurable goals.' },
+      { step: '02', title: 'Design', tagline: 'We shape the solution', description: 'We define the architecture and the user experience. We validate with prototypes before writing code.' },
+      { step: '03', title: 'Development', tagline: 'We build in stages', description: 'We move in short stages. Every change is reviewed and tested before it reaches production.' },
+      { step: '04', title: 'Launch and evolution', tagline: 'We ship and stay on', description: 'We go live with no downtime and keep improving the product with ongoing support.' },
     ],
     principles: [
-      { title: 'You talk to the builders', body: 'No sales layers, no middlemen. Technical conversations happen with the team that designs and codes your project.' },
-      { title: 'Visible progress every two weeks', body: 'We work in short cycles with demos and deployable software. You always know where the project stands and what comes next.' },
-      { title: 'Quality by default', body: 'Code review, automated tests, continuous integration and accessibility are part of the job. Not extras.' },
-      { title: 'The code is yours', body: 'We document every decision and hand over everything: repository, infrastructure and knowledge. No forced lock-in.' },
+      { title: 'You talk to the builders', body: 'No middlemen: you discuss technical decisions with the team that designs and codes.' },
+      { title: 'Progress every two weeks', body: 'You see working software regularly and always know what comes next.' },
+      { title: 'Quality included', body: 'Code review, automated testing and accessibility are part of every release. Not an extra.' },
+      { title: 'Everything stays with you', body: 'We pick technology to fit your problem and hand everything over: code, documentation and access.' },
     ],
     testimonials: [
       { quote: 'ELEM turned our legacy core into a microservices platform without a single minute of downtime. Their engineering level is exceptional.', name: 'María Sanz', role: 'CTO, Banco Atlas' },
@@ -250,24 +206,17 @@ export const home: Record<Locale, HomeContent> = {
     sections: {
       hero: {
         title: 'Custom software, built right from day one.',
-        description: 'We design, build and maintain web platforms, apps and internal systems for companies that need their technology to work. A senior team, direct contact and engineering standards in every release.',
+        description: 'We design, build and evolve web platforms, applications and internal systems for companies.',
         ctaPrimary: 'Tell us about your project',
-        ctaSecondary: 'See services',
+        ctaSecondary: 'What we do',
       },
       partners: { heading: 'Leading companies trust ELEM' },
-      technologies: {
-        eyebrow: 'Technology',
-        lead: 'A few technologies, mastered in depth.',
-        description: 'We choose every tool on its merits and run it with engineering discipline. No fads, no vendor lock-in.',
-        toolsLabel: 'DevOps & tools',
-        more: 'See technologies',
-      },
       services: {
         eyebrow: 'Services',
         lead: 'What we do',
-        description: 'One team for your product’s whole lifecycle: strategy, design, development and evolution.',
+        description: 'Five services and one team, from the idea to day-to-day operation.',
         more: 'See details',
-        all: 'All services',
+        all: 'See all services',
       },
       metrics: { eyebrow: 'Measurable impact', title: 'Results that speak for us' },
       caseStudies: {
@@ -279,8 +228,9 @@ export const home: Record<Locale, HomeContent> = {
       },
       methodology: {
         eyebrow: 'How we work',
-        lead: 'A clear process, from the first meeting to maintenance.',
-        description: 'Four phases that reduce uncertainty and give you visibility at every step.',
+        lead: 'How we work',
+        description: 'A clear process, from the first meeting to maintenance.',
+        more: 'See the process',
       },
       principles: {
         eyebrow: 'Why ELEM',
@@ -297,7 +247,7 @@ export const home: Record<Locale, HomeContent> = {
       cta: {
         eyebrow: 'Contact',
         title: 'Tell us what you need to build.',
-        description: 'We reply within 24 business hours. If it’s a fit, we schedule a call and propose scope, timeline and budget.',
+        description: 'We reply within 24 business hours with the next steps.',
         primary: 'Get in touch',
         secondary: 'contacto@elem.uy',
       },
