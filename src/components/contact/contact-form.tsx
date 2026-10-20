@@ -205,12 +205,10 @@ export function ContactForm() {
             key="success"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="flex flex-col items-center rounded-3xl border border-rose-200 bg-card p-10 text-center shadow-card"
+            className="flex flex-col items-start rounded-lg border border-border bg-card p-8 sm:p-10"
           >
-            <span className="grid size-16 place-items-center rounded-full bg-brand-gradient text-white shadow-glow">
-              <CheckCircle2 className="size-8" />
-            </span>
-            <h3 className="mt-6 font-display text-2xl font-bold">{t.successTitle}</h3>
+            <CheckCircle2 className="size-8 text-primary" />
+            <h3 className="mt-6 text-2xl font-semibold tracking-tight">{t.successTitle}</h3>
             <p className="mt-2 max-w-sm text-muted-foreground">{t.successBody}</p>
             <Button onClick={() => setSent(false)} variant="secondary" className="mt-6">
               {t.sendAnother}
@@ -222,7 +220,7 @@ export function ContactForm() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-5 rounded-3xl border border-border bg-card p-6 shadow-card sm:p-8"
+            className="space-y-5 rounded-lg border border-border bg-card p-6 sm:p-8"
             noValidate
           >
             {/* Honeypot: hidden from users, off-screen and aria-hidden. Bots
@@ -309,7 +307,7 @@ export function ContactForm() {
             ) : null}
 
             {sendError ? (
-              <p className="rounded-xl border border-rose-300 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700 dark:bg-rose-950/40">
+              <p className="rounded-md border border-rose-300 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700 dark:bg-rose-950/40">
                 {t.sendError}
               </p>
             ) : null}
@@ -417,7 +415,7 @@ function Field({
 
 function inputCls(hasError: boolean) {
   return cn(
-    'w-full rounded-xl border bg-background px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-rose-500/40',
-    hasError ? 'border-rose-400' : 'border-border focus:border-rose-300'
+    'w-full rounded-md border bg-background px-3.5 py-2.5 text-sm text-foreground transition-colors placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-primary/25',
+    hasError ? 'border-rose-500' : 'border-input focus:border-foreground/40'
   );
 }

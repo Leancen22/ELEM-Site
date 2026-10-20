@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { useParams } from 'next/navigation';
-import { Languages } from 'lucide-react';
 import { useLocale } from '@/i18n/provider';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { locales } from '@/i18n/config';
@@ -37,12 +36,11 @@ export function LocaleSwitch({ className }: { className?: string }) {
       aria-label={locale === 'es' ? 'Switch to English' : 'Cambiar a español'}
       title={locales.map((l) => l.toUpperCase()).join(' / ')}
       className={cn(
-        'inline-flex h-10 items-center gap-1.5 rounded-xl border border-border bg-background/70 px-2.5 text-sm font-semibold text-foreground transition-colors hover:border-rose-300 hover:text-rose-600 disabled:opacity-60',
+        'inline-flex h-9 items-center gap-1.5 rounded-md px-2.5 font-mono text-xs font-medium transition-colors text-muted-foreground hover:bg-muted hover:text-foreground disabled:opacity-60',
         className
       )}
     >
-      <Languages className="size-4" />
-      <span className="tabular-nums">{locale.toUpperCase()}</span>
+      <span className="tabular-nums">{next.toUpperCase()}</span>
     </button>
   );
 }

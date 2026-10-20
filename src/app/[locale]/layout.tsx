@@ -1,10 +1,9 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Sora, JetBrains_Mono } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { site, siteCopy } from '@/lib/site';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { SmoothScroll } from '@/components/motion/smooth-scroll';
-import { ScrollProgress } from '@/components/motion/scroll-progress';
 import { JsonLd, organizationSchema } from '@/components/seo/json-ld';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
@@ -15,20 +14,13 @@ import { routing } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
 import '../globals.css';
 
-const inter = Inter({
+const sans = Geist({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
 });
 
-const sora = Sora({
-  subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const mono = JetBrains_Mono({
+const mono = Geist_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
   display: 'swap',
@@ -36,8 +28,8 @@ const mono = JetBrains_Mono({
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fff1f4' },
-    { media: '(prefers-color-scheme: dark)', color: '#0d0509' },
+    { media: '(prefers-color-scheme: light)', color: '#fbfaf8' },
+    { media: '(prefers-color-scheme: dark)', color: '#0e0c0d' },
   ],
   width: 'device-width',
   initialScale: 1,
@@ -142,7 +134,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${sora.variable} ${mono.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh font-sans">
@@ -156,7 +148,6 @@ export default async function RootLayout({
             <LocaleProvider locale={locale}>
               <JsonLd data={organizationSchema(locale)} />
               <SmoothScroll />
-              <ScrollProgress />
               <Header />
               <main id="contenido">{children}</main>
               <Footer />

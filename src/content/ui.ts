@@ -4,6 +4,8 @@ export type Ui = {
   header: {
     talk: string;
     startProject: string;
+    contact: string;
+    navLabel: string;
     openMenu: string;
     closeMenu: string;
   };
@@ -51,6 +53,8 @@ export const ui: Record<Locale, Ui> = {
     header: {
       talk: 'Hablemos',
       startProject: 'Iniciar proyecto',
+      contact: 'Contacto',
+      navLabel: 'Navegación principal',
       openMenu: 'Abrir menú',
       closeMenu: 'Cerrar menú',
     },
@@ -64,16 +68,16 @@ export const ui: Record<Locale, Ui> = {
       benefitsTitleMid: 'con',
       archEyebrow: 'Arquitectura',
       useCasesEyebrow: 'Casos de uso',
-      useCasesTitle: 'Dónde brilla {name}',
+      useCasesTitle: 'Dónde aplicamos {name}',
       useCasesDesc: 'Estos son los escenarios donde aplicamos {name} con mayor impacto.',
       integrationsEyebrow: 'Integraciones',
       integrationsTitle: 'Se conecta con todo tu ecosistema',
-      faqEyebrow: 'Preguntas frecuentes',
-      faqTitlePre: 'Resolvemos tus',
-      faqAccent: 'dudas',
+      faqEyebrow: 'FAQ',
+      faqTitlePre: 'Preguntas',
+      faqAccent: 'frecuentes',
       faqDesc: '¿No encuentras lo que buscas? Escríbenos y te respondemos en menos de 24h.',
       ctaTitle: '¿Construimos tu proyecto con {name}?',
-      ctaDesc: 'Cuéntanos tu reto. Un arquitecto senior te responde con un plan concreto.',
+      ctaDesc: 'Cuéntanos qué necesitas. Te responde una persona técnica en menos de 24 horas hábiles.',
       relatedStack: 'Stack relacionado:',
       startProject: 'Iniciar proyecto',
     },
@@ -97,6 +101,8 @@ export const ui: Record<Locale, Ui> = {
     header: {
       talk: "Let's talk",
       startProject: 'Start a project',
+      contact: 'Contact',
+      navLabel: 'Main navigation',
       openMenu: 'Open menu',
       closeMenu: 'Close menu',
     },
@@ -110,16 +116,16 @@ export const ui: Record<Locale, Ui> = {
       benefitsTitleMid: 'with',
       archEyebrow: 'Architecture',
       useCasesEyebrow: 'Use cases',
-      useCasesTitle: 'Where {name} shines',
+      useCasesTitle: 'Where we apply {name}',
       useCasesDesc: 'These are the scenarios where we apply {name} with the greatest impact.',
       integrationsEyebrow: 'Integrations',
       integrationsTitle: 'It connects with your entire ecosystem',
       faqEyebrow: 'FAQ',
-      faqTitlePre: 'We answer your',
+      faqTitlePre: 'Frequently asked',
       faqAccent: 'questions',
       faqDesc: 'Can’t find what you’re looking for? Write to us and we’ll reply within 24h.',
       ctaTitle: 'Shall we build your project with {name}?',
-      ctaDesc: 'Tell us about your challenge. A senior architect will reply with a concrete plan.',
+      ctaDesc: 'Tell us what you need. A technical person replies within 24 business hours.',
       relatedStack: 'Related stack:',
       startProject: 'Start a project',
     },

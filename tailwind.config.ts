@@ -32,6 +32,7 @@ const config: Config = {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
+        surface: 'hsl(var(--surface))',
         // Brand scale (rose-driven tech identity)
         rose: {
           50: '#fff1f4',
@@ -55,21 +56,21 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
+        display: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 4px)',
         sm: 'calc(var(--radius) - 8px)',
-        '2xl': '1.25rem',
-        '3xl': '1.75rem',
+        '2xl': '0.875rem',
+        '3xl': '1.25rem',
       },
       boxShadow: {
-        glow: '0 0 60px -12px rgba(232, 20, 87, 0.45)',
-        'glow-lg': '0 0 120px -20px rgba(232, 20, 87, 0.55)',
-        card: '0 1px 1px rgba(0,0,0,.04), 0 8px 24px -12px rgba(80,0,40,.18)',
-        'card-hover': '0 1px 1px rgba(0,0,0,.04), 0 24px 60px -20px rgba(196,8,71,.35)',
+        glow: 'none',
+        'glow-lg': 'none',
+        card: '0 1px 2px rgba(20,10,15,.04)',
+        'card-hover': '0 1px 2px rgba(20,10,15,.04), 0 12px 32px -16px rgba(20,10,15,.18)',
       },
       backgroundImage: {
         'brand-gradient':

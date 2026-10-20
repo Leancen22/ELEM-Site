@@ -1,10 +1,9 @@
 'use client';
 
 import { Link } from '@/components/i18n/link';
-import { ArrowRight } from 'lucide-react';
-import { SectionHeader, GradientTitle } from '@/components/ui/section';
-import { Stagger, StaggerItem } from '@/components/motion/reveal';
-import { Icon } from '@/components/ui/icon';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { SectionHeader } from '@/components/ui/section';
+import { Reveal } from '@/components/motion/reveal';
 import { home } from '@/content/home';
 import { useLocale } from '@/i18n/provider';
 
@@ -13,50 +12,43 @@ export function ServicesGrid() {
   const services = content.services;
   const t = content.sections.services;
   return (
-    <section id="servicios" className="section-light relative overflow-hidden py-20 sm:py-28">
-      <div className="pointer-events-none absolute inset-0 bg-mesh-rose opacity-30" />
-      <div className="container-wide relative">
-        <SectionHeader
-          eyebrow={t.eyebrow}
-          title={<GradientTitle lead={t.lead} accent={t.accent} />}
-          description={t.description}
-        />
+    <section id="servicios" className="scroll-mt-20 py-24 sm:py-32">
+      <div className="container-wide grid gap-12 lg:grid-cols-[0.8fr_1.6fr] lg:gap-20">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <SectionHeader eyebrow={t.eyebrow} title={t.lead} description={t.description} />
+          <Link
+            href="/servicios"
+            className="group mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground underline-offset-4 hover:underline"
+          >
+            {t.all}
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </div>
 
-        <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <StaggerItem key={service.title}>
+        <ol className="border-t border-border">
+          {services.map((service, i) => (
+            <Reveal as="li" key={service.id} delay={i * 0.04}>
               <Link
-                href={service.href}
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card/70 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-rose-200 hover:shadow-card-hover dark:hover:border-rose-500/30"
+                href={`/servicios#${service.id}`}
+                className="group grid gap-4 border-b border-border py-8 sm:grid-cols-[3rem_1fr_auto] sm:gap-6"
               >
-                <div className="absolute right-0 top-0 size-24 translate-x-8 -translate-y-8 rounded-full bg-brand-gradient opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-20" />
-                <div className="grid size-12 place-items-center rounded-xl bg-brand-gradient text-white shadow-glow transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                  <Icon name={service.icon} className="size-5" />
+                <span className="font-mono text-sm text-muted-foreground">0{i + 1}</span>
+                <div>
+                  <h3 className="text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-2xl">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 max-w-xl leading-relaxed text-muted-foreground">
+                    {service.description}
+                  </p>
+                  <p className="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-muted-foreground/80">
+                    {service.stack}
+                  </p>
                 </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-foreground">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {service.description}
-                </p>
-                <ul className="mt-4 flex flex-wrap gap-1.5">
-                  {service.benefits.map((b) => (
-                    <li
-                      key={b}
-                      className="rounded-full border border-border bg-background/60 px-2.5 py-1 text-xs font-medium text-foreground/70"
-                    >
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-rose-600">
-                  {t.more}
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </span>
+                <ArrowUpRight className="hidden size-5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary sm:block" />
               </Link>
-            </StaggerItem>
+            </Reveal>
           ))}
-        </Stagger>
+        </ol>
       </div>
     </section>
   );

@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 import { Link } from '@/components/i18n/link';
-import { ArrowUpRight, Boxes, Building, Compass, Cpu, Layers, Scale } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
 import { PageHero } from '@/components/layout/page-hero';
 import { Section } from '@/components/ui/section';
-import { Stagger, StaggerItem } from '@/components/motion/reveal';
+import { Reveal } from '@/components/motion/reveal';
 import { servicios, tecnologias, devops, empresa } from '@/lib/navigation';
 import { buildMetadata } from '@/lib/seo';
 import { getLocale } from '@/i18n/server';
@@ -12,7 +10,7 @@ import type { Locale } from '@/i18n/config';
 import { JsonLd, breadcrumbSchema } from '@/components/seo/json-ld';
 
 type SiteLink = { label: string; href: string; description?: string };
-type Group = { icon: LucideIcon; title: string; items: SiteLink[] };
+type Group = { title: string; items: SiteLink[] };
 
 type Content = {
   metaTitle: string;
@@ -39,8 +37,8 @@ const content: Record<Locale, Content> = {
       'Encuentra de un vistazo todas las secciones de ELEM: servicios, tecnologías, empresa y páginas legales. Navega directo a lo que buscas.',
     home: 'Inicio',
     sitemap: 'Mapa del sitio',
-    heroTitle: 'Todo el sitio,',
-    heroHighlight: 'de un vistazo',
+    heroTitle: 'Todo el sitio, de un vistazo.',
+    heroHighlight: '',
     heroDesc:
       'Un índice claro de cada sección y página de ELEM. Si te perdiste, aquí encuentras el camino de vuelta.',
     groupMain: 'Principal',
@@ -70,8 +68,8 @@ const content: Record<Locale, Content> = {
       'See every section of ELEM at a glance: services, technologies, company and legal pages. Jump straight to what you need.',
     home: 'Home',
     sitemap: 'Sitemap',
-    heroTitle: 'The whole site,',
-    heroHighlight: 'at a glance',
+    heroTitle: 'The whole site, at a glance.',
+    heroHighlight: '',
     heroDesc:
       'A clear index of every section and page on ELEM. If you got lost, here is the way back.',
     groupMain: 'Main',
@@ -113,12 +111,12 @@ export default async function SitemapPage() {
   const t = content[locale];
 
   const groups: Group[] = [
-    { icon: Compass, title: t.groupMain, items: t.main },
-    { icon: Layers, title: t.groupServices, items: servicios[locale] },
-    { icon: Cpu, title: t.groupTech, items: tecnologias[locale] },
-    { icon: Boxes, title: t.groupDevops, items: devops[locale] },
-    { icon: Building, title: t.groupCompany, items: empresa[locale] },
-    { icon: Scale, title: t.groupLegal, items: t.legal },
+    { title: t.groupMain, items: t.main },
+    { title: t.groupServices, items: servicios[locale] },
+    { title: t.groupTech, items: tecnologias[locale] },
+    { title: t.groupDevops, items: devops[locale] },
+    { title: t.groupCompany, items: empresa[locale] },
+    { title: t.groupLegal, items: t.legal },
   ];
 
   return (
@@ -140,46 +138,26 @@ export default async function SitemapPage() {
         ]}
       />
 
-      <Section className="pt-6">
-        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {groups.map((group) => {
-            const Icon = group.icon;
-            return (
-              <StaggerItem key={group.title}>
-                <div className="flex h-full flex-col rounded-2xl border border-border bg-card/60 p-6 backdrop-blur transition-all duration-300 hover:border-rose-200 hover:shadow-card-hover dark:hover:border-rose-500/30">
-                  <div className="flex items-center gap-3">
-                    <span className="grid size-11 place-items-center rounded-xl bg-brand-gradient text-white shadow-glow">
-                      <Icon className="size-5" />
-                    </span>
-                    <h2 className="font-display text-lg font-bold">{group.title}</h2>
-                  </div>
-                  <ul className="mt-5 space-y-1">
-                    {group.items.map((item) => (
-                      <li key={item.label + item.href}>
-                        <Link
-                          href={item.href}
-                          className="group flex items-start justify-between gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-rose-50 dark:hover:bg-white/5"
-                        >
-                          <span>
-                            <span className="block text-sm font-semibold text-foreground transition-colors group-hover:text-rose-600">
-                              {item.label}
-                            </span>
-                            {item.description ? (
-                              <span className="block text-xs text-muted-foreground">
-                                {item.description}
-                              </span>
-                            ) : null}
-                          </span>
-                          <ArrowUpRight className="mt-0.5 size-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-rose-500" />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </StaggerItem>
-            );
-          })}
-        </Stagger>
+      <Section className="pt-12 sm:pt-16">
+        <div className="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+          {groups.map((group, i) => (
+            <Reveal key={group.title} delay={(i % 3) * 0.05} className="border-t border-foreground/80 pt-6">
+              <h2 className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{group.title}</h2>
+              <ul className="mt-5 space-y-3">
+                {group.items.map((item) => (
+                  <li key={item.label + item.href}>
+                    <Link href={item.href} className="group block">
+                      <span className="font-medium transition-colors group-hover:text-primary">{item.label}</span>
+                      {item.description ? (
+                        <span className="block text-sm text-muted-foreground">{item.description}</span>
+                      ) : null}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          ))}
+        </div>
       </Section>
     </>
   );

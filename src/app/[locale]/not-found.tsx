@@ -1,7 +1,6 @@
 import { Link } from '@/components/i18n/link';
-import { ArrowLeft, Home, Map } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Aurora } from '@/components/visuals/aurora';
 import { getLocale } from '@/i18n/server';
 import type { Locale } from '@/i18n/config';
 
@@ -18,8 +17,8 @@ const copy: Record<
   }
 > = {
   es: {
-    title: 'Esta página se fue a producción y no volvió',
-    body: 'El enlace que seguiste no existe o se ha movido. Volvamos a terreno conocido.',
+    title: 'No encontramos esta página.',
+    body: 'El enlace que seguiste no existe o cambió de dirección.',
     home: 'Ir al inicio',
     contact: 'Contactar',
     linksLabel: 'O salta directo a:',
@@ -33,8 +32,8 @@ const copy: Record<
     ],
   },
   en: {
-    title: 'This page went to production and never came back',
-    body: 'The link you followed doesn’t exist or has moved. Let’s get back to familiar ground.',
+    title: 'We couldn’t find this page.',
+    body: 'The link you followed doesn’t exist or has moved.',
     home: 'Go home',
     contact: 'Contact',
     linksLabel: 'Or jump straight to:',
@@ -52,50 +51,34 @@ const copy: Record<
 export default async function NotFound() {
   const t = copy[await getLocale()];
   return (
-    <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden px-5 py-32">
-      <Aurora />
-      <div className="absolute inset-0 bg-grid opacity-[0.18] mask-fade-b" />
-      <div className="relative text-center">
-        <p className="font-display text-[7rem] font-extrabold leading-none text-gradient-animated sm:text-[10rem]">
-          404
-        </p>
-        <h1 className="mt-2 font-display text-2xl font-bold sm:text-3xl">{t.title}</h1>
-        <p className="mx-auto mt-3 max-w-md text-muted-foreground">{t.body}</p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+    <section className="pb-24 pt-36 sm:pb-32 sm:pt-44">
+      <div className="container-wide max-w-3xl">
+        <p className="font-mono text-sm text-primary">404</p>
+        <h1 className="mt-4 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">{t.title}</h1>
+        <p className="mt-4 text-lg text-muted-foreground">{t.body}</p>
+        <div className="mt-10 flex flex-wrap items-center gap-3">
           <Button asChild size="lg">
             <Link href="/">
-              <Home className="size-4" /> {t.home}
+              {t.home} <ArrowRight />
             </Link>
           </Button>
           <Button asChild size="lg" variant="secondary">
-            <Link href="/contacto">
-              <ArrowLeft className="size-4" /> {t.contact}
-            </Link>
+            <Link href="/contacto">{t.contact}</Link>
           </Button>
         </div>
-
-        <div className="mt-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-            {t.linksLabel}
-          </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-            {t.links.map((link) => (
+        <p className="mt-14 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{t.linksLabel}</p>
+        <ul className="mt-4 border-t border-border">
+          {[...t.links, { label: t.sitemap, href: '/mapa-del-sitio' }].map((link) => (
+            <li key={link.href}>
               <Link
-                key={link.href}
                 href={link.href}
-                className="rounded-full border border-border bg-background/70 px-4 py-2 text-sm font-medium text-foreground/80 backdrop-blur transition-colors hover:border-rose-300 hover:text-rose-600"
+                className="flex items-center justify-between border-b border-border py-4 font-medium transition-colors hover:text-primary"
               >
-                {link.label}
+                {link.label} <ArrowRight className="size-4 text-muted-foreground" />
               </Link>
-            ))}
-          </div>
-          <Link
-            href="/mapa-del-sitio"
-            className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-rose-600 hover:text-rose-700"
-          >
-            <Map className="size-4" /> {t.sitemap}
-          </Link>
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

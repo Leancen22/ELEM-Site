@@ -12,6 +12,7 @@ import { CtaFinal } from '@/components/sections/cta-final';
 import { JsonLd, websiteSchema } from '@/components/seo/json-ld';
 import { getLocale } from '@/i18n/server';
 
+// Orden: qué hacemos → cómo → por qué nosotros → con qué → contacto.
 export default async function HomePage() {
   const locale = await getLocale();
   return (
@@ -21,11 +22,11 @@ export default async function HomePage() {
       {/* Oculto: empresa nueva, sin clientes/referencias todavía. */}
       {/* <PartnersMarquee /> */}
       <ServicesGrid />
-      <Technologies />
-      {/* <Metrics /> */}
-      {/* <CaseStudies /> */}
       <Methodology />
       <Benefits />
+      {/* <Metrics /> */}
+      {/* <CaseStudies /> */}
+      <Technologies />
       {/* <Testimonials /> */}
       <CtaFinal />
     </>

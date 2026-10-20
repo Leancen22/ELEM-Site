@@ -1,18 +1,13 @@
 import type { Metadata } from 'next';
-import { Link } from '@/components/i18n/link';
-import { ArrowRight, Heart, Gem, Handshake, Lightbulb, Target, Users } from 'lucide-react';
 import { PageHero } from '@/components/layout/page-hero';
 import { Section, SectionHeader, GradientTitle } from '@/components/ui/section';
-import { Button } from '@/components/ui/button';
-import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal';
-import { AnimatedCounter } from '@/components/motion/counter';
+import { Reveal } from '@/components/motion/reveal';
 import { Methodology } from '@/components/sections/methodology';
+import { CtaFinal } from '@/components/sections/cta-final';
 import { buildMetadata } from '@/lib/seo';
 import { getLocale } from '@/i18n/server';
 import type { Locale } from '@/i18n/config';
 import { JsonLd, breadcrumbSchema } from '@/components/seo/json-ld';
-
-const valueIcons = [Gem, Handshake, Lightbulb, Target, Users, Heart];
 
 type Content = {
   metaTitle: string;
@@ -22,7 +17,6 @@ type Content = {
   heroTitle: string;
   heroHighlight: string;
   heroDesc: string;
-  heroStats: { v: number; s: string; l: string }[];
   storyEyebrow: string;
   storyLead: string;
   storyAccent: string;
@@ -35,7 +29,6 @@ type Content = {
   values: { title: string; body: string }[];
   ctaTitle: string;
   ctaDesc: string;
-  ctaButton: string;
 };
 
 const content: Record<Locale, Content> = {
@@ -45,19 +38,13 @@ const content: Record<Locale, Content> = {
       'Somos un equipo senior de ingeniería de software. Conoce nuestra historia, nuestros valores y cómo trabajamos.',
     home: 'Inicio',
     nosotros: 'Nosotros',
-    heroTitle: 'Ingeniería con',
-    heroHighlight: 'propósito',
+    heroTitle: 'Preferimos hacer menos proyectos, y hacerlos bien.',
+    heroHighlight: '',
     heroDesc:
-      'Somos el equipo senior que quieres cuando el proyecto no puede salir mal: pocos clientes a la vez, estándares de ingeniería y trato directo con quien escribe el código.',
-    heroStats: [
-      { v: 100, s: '%', l: 'Equipo senior' },
-      { v: 0, s: '', l: 'Intermediarios' },
-      { v: 4, s: '', l: 'Tecnologías núcleo' },
-      { v: 24, s: 'h', l: 'Respuesta' },
-    ],
+      'ELEM es un estudio de ingeniería de software. Trabajamos con pocos clientes a la vez, con estándares de ingeniería altos y trato directo con quien escribe el código.',
     storyEyebrow: 'Nuestra historia',
-    storyLead: 'Empezamos con una idea simple:',
-    storyAccent: 'hacer software bien',
+    storyLead: 'Empezamos con una idea simple: hacer software bien.',
+    storyAccent: '',
     storyDesc:
       'En un mercado lleno de promesas vacías, decidimos competir solo con una cosa: la calidad de nuestra ingeniería. Somos una compañía joven, y esa es, y será, nuestra única estrategia.',
     storyBody:
@@ -68,8 +55,8 @@ const content: Record<Locale, Content> = {
       { year: 'Hoy', title: 'Proyecto a proyecto', body: 'Construimos nuestra reputación un proyecto a la vez, con la calidad como única carta de presentación.' },
     ],
     valuesEyebrow: 'Valores',
-    valuesLead: 'Lo que nos mueve, todos los',
-    valuesAccent: 'días',
+    valuesLead: 'Cómo tomamos decisiones.',
+    valuesAccent: '',
     values: [
       { title: 'Excelencia técnica', body: 'No entregamos nada que no firmaríamos con nuestro nombre. La calidad es innegociable.' },
       { title: 'Honestidad radical', body: 'Te decimos lo que necesitas oír, no lo que quieres oír. Sin sorpresas, sin letra pequeña.' },
@@ -81,7 +68,6 @@ const content: Record<Locale, Content> = {
     ctaTitle: '¿Quieres un equipo así de tu lado?',
     ctaDesc:
       'Trabajamos con un número limitado de clientes para garantizar la calidad. Hablemos de tu proyecto.',
-    ctaButton: 'Iniciar conversación',
   },
   en: {
     metaTitle: 'About · The team behind ELEM',
@@ -89,19 +75,13 @@ const content: Record<Locale, Content> = {
       'We are a senior software engineering team. Discover our story, our values and how we work.',
     home: 'Home',
     nosotros: 'About Us',
-    heroTitle: 'Engineering with',
-    heroHighlight: 'purpose',
+    heroTitle: 'We’d rather take on fewer projects, and do them well.',
+    heroHighlight: '',
     heroDesc:
-      'We are the senior team you want when the project cannot go wrong: few clients at a time, engineering standards and direct contact with the people who write the code.',
-    heroStats: [
-      { v: 100, s: '%', l: 'Senior team' },
-      { v: 0, s: '', l: 'Middlemen' },
-      { v: 4, s: '', l: 'Core technologies' },
-      { v: 24, s: 'h', l: 'Response time' },
-    ],
+      'ELEM is a software engineering studio. We work with few clients at a time, with high engineering standards and direct contact with the people who write the code.',
     storyEyebrow: 'Our story',
-    storyLead: 'We started with a simple idea:',
-    storyAccent: 'build software well',
+    storyLead: 'We started with a simple idea: build software well.',
+    storyAccent: '',
     storyDesc:
       'In a market full of empty promises, we decided to compete on just one thing: the quality of our engineering. We are a young company, and that is, and will be, our only strategy.',
     storyBody:
@@ -112,8 +92,8 @@ const content: Record<Locale, Content> = {
       { year: 'Today', title: 'Project by project', body: 'We build our reputation one project at a time, with quality as our only calling card.' },
     ],
     valuesEyebrow: 'Values',
-    valuesLead: 'What drives us, every single',
-    valuesAccent: 'day',
+    valuesLead: 'How we make decisions.',
+    valuesAccent: '',
     values: [
       { title: 'Technical excellence', body: 'We deliver nothing we wouldn’t sign with our name. Quality is non-negotiable.' },
       { title: 'Radical honesty', body: 'We tell you what you need to hear, not what you want to hear. No surprises, no fine print.' },
@@ -125,7 +105,6 @@ const content: Record<Locale, Content> = {
     ctaTitle: 'Want a team like this on your side?',
     ctaDesc:
       'We work with a limited number of clients to guarantee quality. Let’s talk about your project.',
-    ctaButton: 'Start a conversation',
   },
 };
 
@@ -154,44 +133,29 @@ export default async function NosotrosPage() {
           { name: t.home, href: '/' },
           { name: t.nosotros, href: '/nosotros' },
         ]}
-      >
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {t.heroStats.map((m) => (
-            <div key={m.l} className="rounded-2xl border border-border bg-card/60 p-5 text-center backdrop-blur">
-              <div className="font-display text-3xl font-extrabold text-gradient">
-                <AnimatedCounter value={m.v} suffix={m.s} />
-              </div>
-              <div className="mt-1 text-sm text-muted-foreground">{m.l}</div>
-            </div>
-          ))}
-        </div>
-      </PageHero>
+      />
 
       {/* Story */}
-      <Section className="pt-6">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+      <Section>
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <SectionHeader
-              align="left"
               eyebrow={t.storyEyebrow}
               title={<GradientTitle lead={t.storyLead} accent={t.storyAccent} />}
-              description={t.storyDesc}
             />
-            <p className="mt-5 leading-relaxed text-muted-foreground">{t.storyBody}</p>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{t.storyDesc}</p>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{t.storyBody}</p>
           </Reveal>
 
-          <Reveal direction="left">
-            <ol className="relative space-y-6 border-l border-border pl-8">
+          <Reveal delay={0.1}>
+            <ol className="border-t border-border">
               {t.timeline.map((item) => (
-                <li key={item.year} className="relative">
-                  <span className="absolute -left-[39px] grid size-6 place-items-center rounded-full bg-brand-gradient text-[10px] font-bold text-white shadow-glow">
-                    ●
-                  </span>
-                  <span className="font-mono text-sm font-semibold text-rose-500">
-                    {item.year}
-                  </span>
-                  <h3 className="mt-0.5 font-display text-lg font-bold">{item.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{item.body}</p>
+                <li key={item.year} className="grid grid-cols-[5rem_1fr] gap-4 border-b border-border py-7">
+                  <span className="font-mono text-sm text-primary">{item.year}</span>
+                  <div>
+                    <h3 className="text-lg font-semibold tracking-tight">{item.title}</h3>
+                    <p className="mt-1.5 leading-relaxed text-muted-foreground">{item.body}</p>
+                  </div>
                 </li>
               ))}
             </ol>
@@ -200,53 +164,25 @@ export default async function NosotrosPage() {
       </Section>
 
       {/* Values */}
-      <Section className="border-y border-border/60 bg-muted/30">
+      <Section className="border-t border-border">
         <SectionHeader
           eyebrow={t.valuesEyebrow}
           title={<GradientTitle lead={t.valuesLead} accent={t.valuesAccent} />}
         />
-        <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {t.values.map((v, i) => {
-            const VIcon = valueIcons[i % valueIcons.length];
-            return (
-              <StaggerItem key={v.title}>
-                <div className="group flex h-full flex-col rounded-2xl border border-border bg-background/70 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-rose-200 hover:shadow-card-hover dark:hover:border-rose-500/30">
-                  <span className="grid size-12 place-items-center rounded-xl bg-brand-gradient text-white shadow-glow transition-transform duration-300 group-hover:scale-110">
-                    <VIcon className="size-5" />
-                  </span>
-                  <h3 className="mt-5 font-display text-lg font-bold">{v.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {v.body}
-                  </p>
-                </div>
-              </StaggerItem>
-            );
-          })}
-        </Stagger>
-      </Section>
-
-      {/* Methodology (reused) */}
-      <div id="metodologia" className="scroll-mt-24">
-        <Methodology />
-      </div>
-
-      {/* Team / CTA */}
-      <Section className="border-t border-border/60">
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-rose-500 via-fuchsia-600 to-purple-700 px-6 py-14 text-center text-white shadow-glow-lg sm:px-12">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.25),transparent_45%)]" />
-          <div className="relative">
-            <h2 className="mx-auto max-w-2xl font-display text-2xl font-bold sm:text-4xl">
-              {t.ctaTitle}
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-white/85">{t.ctaDesc}</p>
-            <Button asChild size="lg" className="mt-8 bg-white text-rose-700 hover:bg-white">
-              <Link href="/contacto">
-                {t.ctaButton} <ArrowRight className="size-4" />
-              </Link>
-            </Button>
-          </div>
+        <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {t.values.map((v, i) => (
+            <Reveal key={v.title} delay={(i % 3) * 0.05} className="border-t border-foreground/80 pt-6">
+              <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
+              <h3 className="mt-4 text-lg font-semibold tracking-tight">{v.title}</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{v.body}</p>
+            </Reveal>
+          ))}
         </div>
       </Section>
+
+      <Methodology />
+
+      <CtaFinal title={t.ctaTitle} description={t.ctaDesc} />
     </>
   );
 }

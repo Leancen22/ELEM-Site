@@ -4,24 +4,25 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
-        primary:
-          'bg-brand-gradient bg-[length:200%_auto] text-white shadow-glow hover:bg-[position:right_center] hover:shadow-glow-lg active:scale-[0.98]',
+        primary: 'bg-primary text-primary-foreground hover:bg-rose-700 dark:hover:bg-rose-500',
         secondary:
-          'border border-rose-200 bg-white text-rose-700 shadow-card hover:border-rose-300 hover:shadow-card-hover dark:border-white/10 dark:bg-white/5 dark:text-rose-200',
+          'border border-foreground/15 bg-transparent text-foreground hover:border-foreground/30 hover:bg-foreground/[0.03]',
         outline:
-          'border border-border bg-transparent text-foreground hover:border-rose-300 hover:text-rose-600',
-        ghost: 'text-foreground hover:bg-rose-50 hover:text-rose-700 dark:hover:bg-white/5',
-        link: 'text-rose-600 underline-offset-4 hover:underline',
+          'border border-border bg-transparent text-foreground hover:border-foreground/30',
+        // For use on dark (ink) or brand-gradient surfaces.
+        inverse: 'bg-white text-neutral-950 hover:bg-white/90',
+        ghost: 'text-foreground hover:bg-muted',
+        link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
         sm: 'h-9 px-4 text-[13px]',
-        md: 'h-11 px-6',
-        lg: 'h-13 px-8 text-[15px] py-3.5',
-        icon: 'size-11',
+        md: 'h-11 px-5',
+        lg: 'h-12 px-6 text-[15px]',
+        icon: 'size-10',
       },
     },
     defaultVariants: { variant: 'primary', size: 'md' },

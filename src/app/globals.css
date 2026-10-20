@@ -3,42 +3,49 @@
 @tailwind utilities;
 
 @layer base {
+  /* Neutral, warm-tinted surfaces. Rose is the single accent; the brand
+     gradient is reserved for the logo and a few signature elements. */
   :root {
-    --background: 340 60% 99%;
-    --foreground: 335 45% 9%;
+    --background: 40 20% 98.5%;
+    --foreground: 330 14% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 335 45% 9%;
+    --card-foreground: 330 14% 8%;
 
-    --muted: 340 30% 96%;
-    --muted-foreground: 336 12% 42%;
+    --muted: 36 14% 94.5%;
+    --muted-foreground: 330 5% 38%;
 
-    --primary: 338 92% 49%;
+    --primary: 338 85% 48%;
     --primary-foreground: 0 0% 100%;
 
-    --border: 340 30% 91%;
-    --input: 340 30% 90%;
-    --ring: 338 92% 49%;
+    --border: 30 9% 87%;
+    --input: 30 9% 84%;
+    --ring: 338 85% 48%;
 
-    --radius: 0.9rem;
+    /* Soft brand-tinted surface for alternating sections. */
+    --surface: 343 45% 96.5%;
+
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 335 45% 5%;
-    --foreground: 340 30% 97%;
+    --background: 330 10% 5%;
+    --foreground: 36 18% 95%;
 
-    --card: 335 38% 8%;
-    --card-foreground: 340 30% 97%;
+    --card: 330 9% 8%;
+    --card-foreground: 36 18% 95%;
 
-    --muted: 335 30% 13%;
-    --muted-foreground: 338 15% 65%;
+    --muted: 330 8% 11%;
+    --muted-foreground: 330 5% 62%;
 
-    --primary: 338 92% 56%;
+    --primary: 342 92% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --border: 335 30% 16%;
-    --input: 335 30% 18%;
-    --ring: 338 92% 56%;
+    --border: 330 7% 16%;
+    --input: 330 7% 20%;
+    --ring: 342 92% 60%;
+
+    --surface: 335 14% 8%;
   }
 
   * {
@@ -67,33 +74,32 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: 'cv11', 'ss01';
     text-rendering: optimizeLegibility;
   }
 
-  ::selection {
-    @apply bg-rose-500/25 text-rose-950;
+  /* Very fine grain over the whole page so flat surfaces have some tooth. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  .dark ::selection {
-    @apply bg-rose-500/35 text-rose-50;
+  .dark body::after {
+    opacity: 0.05;
   }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 11px;
-    height: 11px;
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
   }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-rose-300/60;
-    border: 3px solid transparent;
-    background-clip: content-box;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-rose-400/80;
-    background-clip: content-box;
+
+  ::selection {
+    @apply bg-rose-500/20 text-foreground;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -110,7 +116,7 @@
 
 @layer components {
   .container-wide {
-    @apply mx-auto w-full max-w-[1360px] px-5 lg:px-8;
+    @apply mx-auto w-full max-w-[1280px] px-5 lg:px-8;
   }
 
   .text-gradient {
@@ -121,92 +127,30 @@
     @apply bg-brand-gradient-soft bg-clip-text text-transparent;
   }
 
-  /* Animated gradient text */
+  /* Kept for hidden pages (blog, casos, soluciones); static, no animation. */
   .text-gradient-animated {
-    background: linear-gradient(
-      120deg,
-      #fb356b,
-      #e6128f,
-      #bc12d6,
-      #ff6890,
-      #fb356b
-    );
-    background-size: 280% 280%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    @apply animate-gradient-pan;
+    @apply bg-brand-gradient bg-clip-text text-transparent;
   }
 
-  /* Glass surfaces */
-  .glass {
-    @apply border border-white/60 bg-white/70 backdrop-blur-xl;
-  }
-  .dark .glass {
-    @apply border-white/10 bg-white/[0.04];
-  }
-
-  /* Premium gradient border card */
-  .card-gradient-border {
-    position: relative;
-    background: hsl(var(--card));
-    border-radius: var(--radius);
-  }
-  .card-gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      135deg,
-      rgba(251, 53, 107, 0.55),
-      rgba(214, 36, 240, 0.35),
-      transparent 60%
-    );
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  /* Section eyebrow */
+  /* Kept for hidden pages that still render an eyebrow label. */
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-rose-200/70 bg-rose-50/80 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-rose-700;
-  }
-  .dark .eyebrow {
-    @apply border-rose-500/25 bg-rose-500/10 text-rose-300;
+    @apply inline-flex items-center gap-2 text-sm font-medium text-primary;
   }
 
-  /* Alternating section backgrounds — every section gets an explicit band so
-     consecutive sections clearly contrast (soft rose <-> pure white).
-     Rose bands fade from/to the neighbouring white at their top & bottom edges. */
-  .section-rose {
-    background-image: linear-gradient(
-      to bottom,
-      hsl(0 0% 100%) 0,
-      hsl(345 95% 92%) 160px,
-      hsl(345 95% 92%) calc(100% - 160px),
-      hsl(0 0% 100%) 100%
-    );
+  /* Soft brand light washing in from the top-right of heroes. */
+  .bg-wash {
+    background-image:
+      radial-gradient(60% 70% at 88% 0%, rgba(251, 53, 107, 0.13), transparent 70%),
+      radial-gradient(45% 60% at 100% 35%, rgba(188, 18, 214, 0.09), transparent 70%),
+      linear-gradient(to bottom, hsl(var(--surface)) 0%, hsl(var(--background)) 100%);
   }
-  .dark .section-rose {
-    background-image: linear-gradient(
-      to bottom,
-      hsl(335 38% 6%) 0,
-      hsl(335 42% 10%) 160px,
-      hsl(335 42% 10%) calc(100% - 160px),
-      hsl(335 38% 6%) 100%
-    );
-  }
-  .section-light {
-    background-color: hsl(0 0% 100%);
-  }
-  .dark .section-light {
-    background-color: hsl(335 38% 6%);
+  .dark .bg-wash {
+    background-image:
+      radial-gradient(60% 70% at 88% 0%, rgba(251, 53, 107, 0.16), transparent 70%),
+      radial-gradient(45% 60% at 100% 35%, rgba(188, 18, 214, 0.12), transparent 70%);
   }
 
-  /* Grid background pattern */
+  /* Kept for hidden pages. */
   .bg-grid {
     background-image: linear-gradient(
         to right,
@@ -216,29 +160,11 @@
       linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
     background-size: 56px 56px;
   }
-  .bg-dots {
-    background-image: radial-gradient(
-      hsl(var(--border)) 1px,
-      transparent 1px
-    );
-    background-size: 22px 22px;
+  .card-gradient-border {
+    @apply rounded-lg border border-border bg-card;
   }
-
-  .shimmer-text {
-    position: relative;
-    overflow: hidden;
-  }
-  .shimmer-text::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      110deg,
-      transparent 35%,
-      rgba(255, 255, 255, 0.6) 50%,
-      transparent 65%
-    );
-    @apply animate-shimmer;
+  .glass {
+    @apply border border-border bg-card;
   }
 }
 
@@ -262,14 +188,5 @@
   .mask-fade-b {
     -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
     mask-image: linear-gradient(to bottom, #000 60%, transparent);
-  }
-  .perspective {
-    perspective: 1200px;
-  }
-  .preserve-3d {
-    transform-style: preserve-3d;
-  }
-  .backface-hidden {
-    backface-visibility: hidden;
   }
 }

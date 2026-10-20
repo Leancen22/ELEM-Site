@@ -1,85 +1,42 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import { SectionHeader, GradientTitle } from '@/components/ui/section';
+import { Reveal } from '@/components/motion/reveal';
 import { home } from '@/content/home';
 import { useLocale } from '@/i18n/provider';
 
+/** Four-phase process on a tinted surface. Reused on /nosotros. */
 export function Methodology() {
   const content = home[useLocale()];
   const methodology = content.methodology;
   const t = content.sections.methodology;
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start 70%', 'end 60%'],
-  });
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <section id="metodologia" className="section-light relative overflow-hidden py-20 sm:py-28">
-      <div className="pointer-events-none absolute inset-0 bg-dots opacity-[0.5] mask-fade-b" />
-      <div className="container-wide relative">
-        <SectionHeader
-          eyebrow={t.eyebrow}
-          title={<GradientTitle lead={t.lead} accent={t.accent} />}
-          description={t.description}
-        />
-
-        <div ref={ref} className="relative mx-auto mt-16 max-w-3xl">
-          {/* track */}
-          <div className="absolute left-[19px] top-2 h-[calc(100%-1rem)] w-0.5 bg-border" />
-          <motion.div
-            style={{ height: lineHeight }}
-            className="absolute left-[19px] top-2 w-0.5 bg-brand-gradient"
-          />
-
-          <div className="space-y-6">
-            {methodology.map((m, i) => {
-              const dark = i % 2 === 0;
-              return (
-                <motion.div
-                  key={m.step}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.6 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative flex items-stretch gap-6 pl-14"
-                >
-                  <div className="absolute left-[6px] top-5 z-10 grid size-7 place-items-center rounded-full bg-brand-gradient text-[11px] font-bold text-white shadow-glow">
-                    {i + 1}
-                  </div>
-                  <div
-                    className={`flex-1 rounded-2xl p-6 backdrop-blur transition-colors ${
-                      dark
-                        ? 'bg-foreground text-background hover:bg-foreground/95'
-                        : 'border border-border bg-card/70 text-foreground hover:border-rose-200 dark:hover:border-rose-500/30'
-                    }`}
-                  >
-                    <span
-                      className={`font-mono text-xs font-semibold uppercase tracking-wide ${
-                        dark ? 'text-rose-300 dark:text-rose-600' : 'text-rose-500'
-                      }`}
-                    >
-                      {m.step} · {m.title}
-                    </span>
-                    <h3 className="mt-1.5 font-display text-xl font-bold">
-                      {m.tagline}
-                    </h3>
-                    <p
-                      className={`mt-2 text-sm leading-relaxed ${
-                        dark ? 'text-background/70' : 'text-muted-foreground'
-                      }`}
-                    >
-                      {m.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+    <section id="metodologia" className="bg-surface scroll-mt-20 border-y border-border py-24 sm:py-32">
+      <div className="container-wide">
+        <div className="flex max-w-3xl flex-col gap-5">
+          <h2 className="text-3xl font-semibold leading-[1.1] tracking-[-0.02em] sm:text-4xl lg:text-[2.75rem]">
+            {t.lead}
+          </h2>
+          {t.description ? (
+            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {t.description}
+            </p>
+          ) : null}
         </div>
+
+        <ol className="mt-16 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          {methodology.map((m, i) => (
+            <Reveal as="li" key={m.step} delay={i * 0.08} className="flex flex-col bg-card p-7 sm:p-8">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-sm text-muted-foreground">{m.step}</span>
+                <span className="h-1 w-10 rounded-full bg-brand-gradient" />
+              </div>
+              <h3 className="mt-10 text-xl font-semibold tracking-tight">{m.title}</h3>
+              <p className="mt-1 text-sm font-medium text-primary">{m.tagline}</p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{m.description}</p>
+            </Reveal>
+          ))}
+        </ol>
       </div>
     </section>
   );

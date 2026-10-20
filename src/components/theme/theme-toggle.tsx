@@ -27,20 +27,20 @@ export function ThemeToggle({ className }: { className?: string }) {
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label={mounted && isDark ? t.light : t.dark}
       className={cn(
-        'grid size-10 place-items-center rounded-xl border border-border bg-background/70 text-foreground transition-colors hover:border-rose-300 hover:text-rose-600',
+        'relative grid size-9 place-items-center rounded-md transition-colors text-muted-foreground hover:bg-muted hover:text-foreground',
         className
       )}
     >
       {/* Render both icons; CSS swaps via opacity to avoid hydration flash. */}
       <Sun
         className={cn(
-          'size-[18px] transition-all',
+          'size-4 transition-all',
           mounted && isDark ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
         )}
       />
       <Moon
         className={cn(
-          'absolute size-[18px] transition-all',
+          'absolute size-4 transition-all',
           mounted && isDark ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
         )}
       />

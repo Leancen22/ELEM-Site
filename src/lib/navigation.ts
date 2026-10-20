@@ -71,18 +71,13 @@ function pick(items: RawItem[], locale: Locale): MenuItem[] {
   }));
 }
 
+// Líneas de servicio: cada una apunta a su sección en /servicios.
 const serviciosRaw: RawItem[] = [
-  // Qué hacemos (líneas de servicio)
-  { href: '/servicios', icon: Globe, label: { es: 'Desarrollo web', en: 'Web development' }, description: { es: 'Portales, intranets y e-commerce', en: 'Portals, intranets and e-commerce' } },
-  { href: '/servicios', icon: Smartphone, label: { es: 'Aplicaciones móviles', en: 'Mobile apps' }, description: { es: 'Apps multiplataforma', en: 'Cross-platform apps' } },
-  { href: '/servicios', icon: Code2, label: { es: 'Desarrollo de software', en: 'Software development' }, description: { es: 'Sistemas internos y apps empresariales', en: 'Internal systems and enterprise apps' } },
-  { href: '/servicios', icon: Workflow, label: { es: 'Automatizaciones', en: 'Automation' }, description: { es: 'Integraciones ERP/CRM y procesos', en: 'ERP/CRM integrations and processes' } },
-  
-  // Arquitectura & Cloud (capacidades + herramientas)
-  { href: '/servicios#arquitectura', icon: Layers, label: { es: 'Arquitectura Empresarial', en: 'Enterprise Architecture' }, description: { es: 'Diseño de sistemas a escala', en: 'Systems design at scale' } },
-  { href: '/servicios#integraciones', icon: Plug, label: { es: 'Consultoría', en: 'Consultancy' }, description: { es: 'Asesoramiento técnico para el diseño, arquitectura y desarrollo de software', en: 'Technical guidance for software design, architecture, and development' } },
-  { href: '/servicios#apis', icon: Network, label: { es: 'APIs y Microservicios', en: 'APIs & Microservices' }, description: { es: 'Arquitecturas desacopladas', en: 'Decoupled architectures' } },
-  { href: '/servicios#modernizacion', icon: RefreshCw, label: { es: 'Modernización de Sistemas', en: 'System Modernization' }, description: { es: 'Docker, Git, ddev y CI/CD', en: 'Docker, Git, ddev and CI/CD' } },
+  { href: '/servicios#web', label: { es: 'Desarrollo web', en: 'Web development' }, description: { es: 'Portales, intranets y e-commerce', en: 'Portals, intranets and e-commerce' } },
+  { href: '/servicios#movil', label: { es: 'Aplicaciones móviles', en: 'Mobile apps' }, description: { es: 'Apps para iOS y Android', en: 'iOS and Android apps' } },
+  { href: '/servicios#software', label: { es: 'Software a medida', en: 'Custom software' }, description: { es: 'Sistemas internos y backends', en: 'Internal systems and backends' } },
+  { href: '/servicios#automatizacion', label: { es: 'Automatización e integraciones', en: 'Automation & integrations' }, description: { es: 'ERP, CRM y procesos', en: 'ERP, CRM and processes' } },
+  { href: '/servicios#consultoria', label: { es: 'Consultoría técnica', en: 'Technical consulting' }, description: { es: 'Arquitectura, stack y DevOps', en: 'Architecture, stack and DevOps' } },
 ];
 
 const solucionesRaw: RawItem[] = [
@@ -114,7 +109,7 @@ const devopsRaw: RawItem[] = [
 
 const empresaRaw: RawItem[] = [
   { href: '/nosotros', icon: Building, label: { es: 'Nosotros', en: 'About Us' }, description: { es: 'Quiénes somos', en: 'Who we are' } },
-  { href: '/nosotros#metodologia', icon: Route, label: { es: 'Metodología', en: 'Methodology' }, description: { es: 'Cómo trabajamos', en: 'How we work' } },
+  { href: '/nosotros#metodologia', icon: Route, label: { es: 'Cómo trabajamos', en: 'How we work' }, description: { es: 'Nuestro proceso', en: 'Our process' } },
   // Oculto: empresa nueva, sin casos/referencias todavía.
   // { href: '/casos-de-exito', icon: Trophy, label: { es: 'Casos de Éxito', en: 'Case Studies' }, description: { es: 'Resultados reales', en: 'Real results' } },
   // Oculto: blog desactivado por ahora (página _blog fuera de rutas).
@@ -171,76 +166,17 @@ const navCopy = {
   featEmpresaCta: { es: 'Conócenos', en: 'Get to know us' },
 } satisfies Record<string, Record<Locale, string>>;
 
+/**
+ * Top navigation: flat links, no mega-menu. The site is small enough that
+ * every section is one click away; Contacto is the header CTA button.
+ * (Soluciones y casos de éxito siguen ocultos; ver historial.)
+ */
 export function getMainNav(locale: Locale): NavEntry[] {
   const c = (k: keyof typeof navCopy) => navCopy[k][locale];
-  const s = pick(serviciosRaw, locale);
-  // const so = pick(solucionesRaw, locale); // menú Soluciones fusionado en Servicios
-  // const t = pick(tecnologiasRaw, locale);
-  const e = pick(empresaRaw, locale);
   return [
-    {
-      label: c('servicios'),
-      columns: [
-        // Líneas de servicio
-        { title: c('colQueHacemos'), items: s.slice(0, 4) },
-        // Capacidades técnicas + herramientas (Docker, Git, ddev)
-        { title: c('colArqCloud'), items: s.slice(4) },
-      ],
-      featured: {
-        title: c('featServiciosTitle'),
-        description: c('featServiciosDesc'),
-        href: '/servicios',
-        cta: c('featServiciosCta'),
-        topBlock: {
-          title: c('featTecTitle'),
-          description: c('featTecDesc'),
-          cta: c('featTecCta'),
-          href: '/tecnologias',
-        },
-      },
-    },
-    // Menú "Soluciones" fusionado dentro de Servicios (sus casos se mencionan
-    // en las descripciones de las líneas de servicio). Página /soluciones oculta.
-    // {
-    //   label: c('soluciones'),
-    //   columns: [
-    //     { title: c('colPlataformas'), items: so.slice(0, 4) },
-    //     { title: c('colOperacion'), items: so.slice(4) },
-    //   ],
-    //   featured: {
-    //     title: c('featSolucionesTitle'),
-    //     description: c('featSolucionesDesc'),
-    //     href: '/soluciones',
-    //     cta: c('featSolucionesCta'),
-    //   },
-    // },
-    // Menú "Tecnologías" fusionado dentro de Servicios (evita la duplicación
-    // Servicios/Tecnologías). Las tech-pages siguen vivas para SEO.
-    // {
-    //   label: c('tecnologias'),
-    //   columns: [
-    //     { title: c('colLenguajes'), items: t.slice(0, 5) },
-    //     { title: c('colCloudDevops'), items: t.slice(5) },
-    //   ],
-    //   featured: {
-    //     title: c('featTecTitle'),
-    //     description: c('featTecDesc'),
-    //     href: '/servicios#stack',
-    //     cta: c('featTecCta'),
-    //   },
-    // },
-    {
-      label: c('empresa'),
-      columns: [{ title: c('colElem'), items: e }],
-      featured: {
-        title: c('featEmpresaTitle'),
-        description: c('featEmpresaDesc'),
-        href: '/nosotros',
-        cta: c('featEmpresaCta'),
-      },
-    },
-    // Link directo, sin mega-menú
-    { label: c('contacto'), href: '/contacto' },
+    { label: c('servicios'), href: '/servicios' },
+    { label: c('tecnologias'), href: '/tecnologias' },
+    { label: c('empresa'), href: '/nosotros' },
   ];
 }
 

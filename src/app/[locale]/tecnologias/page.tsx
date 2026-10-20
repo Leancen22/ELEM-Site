@@ -3,9 +3,9 @@ import { Link } from '@/components/i18n/link';
 import { ArrowUpRight } from 'lucide-react';
 import { PageHero } from '@/components/layout/page-hero';
 import { Section } from '@/components/ui/section';
-import { Stagger, StaggerItem } from '@/components/motion/reveal';
+import { Reveal } from '@/components/motion/reveal';
+import { CtaFinal } from '@/components/sections/cta-final';
 import { techPages } from '@/content/tech';
-import { techLogos } from '@/components/visuals/tech-logos';
 import { devops } from '@/lib/navigation';
 import { buildMetadata } from '@/lib/seo';
 import { getLocale } from '@/i18n/server';
@@ -30,8 +30,8 @@ const content: Record<Locale, Content> = {
       'Elegimos la tecnología por sus méritos: Drupal, Next.js, Java + Spring Boot y Python, operados con estándares de ingeniería y prácticas DevOps.',
     home: 'Inicio',
     tech: 'Tecnologías',
-    heroTitle: 'Un stack moderno,',
-    heroHighlight: 'sin atajos',
+    heroTitle: 'Pocas tecnologías, dominadas a fondo.',
+    heroHighlight: '',
     heroDesc:
       'Elegimos cada tecnología por sus méritos y la operamos con disciplina de ingeniería. Estas son las plataformas con las que construimos.',
     devopsLabel: 'DevOps & herramientas',
@@ -42,8 +42,8 @@ const content: Record<Locale, Content> = {
       'We choose technology on its merits: Drupal, Next.js, Java + Spring Boot and Python, run to engineering standards with DevOps practices.',
     home: 'Home',
     tech: 'Technologies',
-    heroTitle: 'A modern stack,',
-    heroHighlight: 'no shortcuts',
+    heroTitle: 'A few technologies, mastered in depth.',
+    heroHighlight: '',
     heroDesc:
       'We choose each technology on its merits and run it with engineering discipline. These are the platforms we build with.',
     devopsLabel: 'DevOps & tools',
@@ -80,44 +80,35 @@ export default async function TechnologiesPage() {
         ]}
       />
 
-      <Section className="pt-6">
-        <Stagger className="grid gap-5 sm:grid-cols-2">
-          {pages.map((page) => {
-            const Logo = techLogos[page.key];
-            return (
-              <StaggerItem key={page.slug}>
-                <Link href={`/tecnologias/${page.slug}`} className="group block h-full">
-                  <article className="flex h-full flex-col rounded-2xl border border-border bg-card/60 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-rose-200 hover:shadow-card-hover dark:hover:border-rose-500/30">
-                    <div className="flex items-start justify-between">
-                      <span className="grid size-14 place-items-center rounded-2xl border border-white/60 bg-white/80 shadow-card backdrop-blur dark:border-white/10 dark:bg-white/5">
-                        <Logo className="size-9" />
-                      </span>
-                      <span className="grid size-9 place-items-center rounded-full border border-border bg-background/70 text-rose-600 transition-all duration-300 group-hover:bg-brand-gradient group-hover:text-white">
-                        <ArrowUpRight className="size-4" />
-                      </span>
-                    </div>
-                    <h2 className="mt-5 font-display text-xl font-bold text-foreground">{page.name}</h2>
-                    <p className="mt-1 text-sm font-medium text-rose-500">{page.eyebrow}</p>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {page.hero.description}
-                    </p>
-                  </article>
-                </Link>
-              </StaggerItem>
-            );
-          })}
-        </Stagger>
-
-        {/* DevOps & tools */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-border/60 pt-10">
-          <span className="text-sm font-medium text-muted-foreground">{t.devopsLabel}</span>
-          {devops[locale].map((tool) => (
-            <span key={tool.label} className="inline-flex items-center gap-2 text-sm font-semibold text-foreground/80">
-              {tool.label}
-            </span>
+      <Section className="pt-12 sm:pt-16">
+        <ol className="border-t border-border">
+          {pages.map((page, i) => (
+            <Reveal as="li" key={page.slug} delay={i * 0.04}>
+              <Link
+                href={`/tecnologias/${page.slug}`}
+                className="group grid gap-3 border-b border-border py-9 sm:grid-cols-[3rem_1fr_1.4fr_auto] sm:gap-8"
+              >
+                <span className="font-mono text-sm text-muted-foreground">0{i + 1}</span>
+                <div>
+                  <h2 className="text-2xl font-semibold tracking-tight transition-colors group-hover:text-primary sm:text-3xl">
+                    {page.name}
+                  </h2>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{page.eyebrow}</p>
+                </div>
+                <p className="max-w-xl leading-relaxed text-muted-foreground">{page.hero.description}</p>
+                <ArrowUpRight className="hidden size-5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary sm:block" />
+              </Link>
+            </Reveal>
           ))}
-        </div>
+        </ol>
+
+        <p className="mt-10 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm">
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{t.devopsLabel}</span>
+          <span className="text-foreground/80">{devops[locale].map((tool) => tool.label).join(' · ')}</span>
+        </p>
       </Section>
+
+      <CtaFinal />
     </>
   );
 }

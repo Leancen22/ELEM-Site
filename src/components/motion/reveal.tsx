@@ -7,10 +7,10 @@ import { cn } from '@/lib/utils';
 type Direction = 'up' | 'down' | 'left' | 'right' | 'none';
 
 const offset: Record<Direction, { x?: number; y?: number }> = {
-  up: { y: 28 },
-  down: { y: -28 },
-  left: { x: 28 },
-  right: { x: -28 },
+  up: { y: 16 },
+  down: { y: -16 },
+  left: { x: 16 },
+  right: { x: -16 },
   none: {},
 };
 
@@ -52,11 +52,11 @@ export function Reveal({
 
 const containerVariants: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 14 },
   show: {
     opacity: 1,
     y: 0,

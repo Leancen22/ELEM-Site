@@ -7,7 +7,7 @@ export async function Breadcrumbs({ items }: { items: { name: string; href: stri
   return (
     <nav
       aria-label={locale === 'en' ? 'Breadcrumb' : 'Migas de pan'}
-      className="flex items-center gap-1.5 text-sm"
+      className="flex flex-wrap items-center gap-1.5 text-sm"
     >
       {items.map((item, i) => {
         const last = i === items.length - 1;
@@ -18,7 +18,7 @@ export async function Breadcrumbs({ items }: { items: { name: string; href: stri
             ) : (
               <Link
                 href={item.href}
-                className="text-muted-foreground transition-colors hover:text-rose-600"
+                className="text-muted-foreground transition-colors hover:text-foreground"
               >
                 {item.name}
               </Link>
