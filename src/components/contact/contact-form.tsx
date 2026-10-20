@@ -340,6 +340,12 @@ export function ContactForm() {
 // Mounted only while the form is visible, so it re-renders cleanly after
 // "send another". `onToken` receives the token; `registerReset` exposes a
 // reset handle to the parent for single-use token refresh.
+//
+// The widget needs at least 300px. Cloudflare's "compact" size looks broken
+// inside the form, so on narrower phones the normal widget is scaled down to
+// the available width instead (clicks still map correctly through the scale).
+const TURNSTILE_MIN_WIDTH = 300;
+
 function Turnstile({
   onToken,
   registerReset,
@@ -347,7 +353,25 @@ function Turnstile({
   onToken: (token: string) => void;
   registerReset: (reset: () => void) => void;
 }) {
+  const outerRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  const [innerHeight, setInnerHeight] = useState(0);
+
+  // Track the available width (→ scale) and the widget's real height, which
+  // changes if Cloudflare shows an interactive challenge.
+  useEffect(() => {
+    const outer = outerRef.current;
+    const inner = ref.current;
+    if (!outer || !inner) return;
+    const ro = new ResizeObserver(() => {
+      setScale(Math.min(1, outer.clientWidth / TURNSTILE_MIN_WIDTH));
+      setInnerHeight(inner.offsetHeight);
+    });
+    ro.observe(outer);
+    ro.observe(inner);
+    return () => ro.disconnect();
+  }, []);
 
   useEffect(() => {
     let widgetId: string | undefined;
@@ -362,9 +386,7 @@ function Turnstile({
         'expired-callback': () => onToken(''),
         'error-callback': () => onToken(''),
         theme: 'auto',
-        // The normal widget needs 300px; on narrow phones use the compact one
-        // (150px) so it never overflows the form.
-        size: ref.current.clientWidth >= 300 ? 'flexible' : 'compact',
+        size: 'flexible',
       });
       registerReset(() => window.turnstile?.reset(widgetId));
     };
@@ -396,7 +418,23 @@ function Turnstile({
     };
   }, [onToken, registerReset]);
 
-  return <div ref={ref} className="w-full max-w-full overflow-hidden" />;
+  const scaled = scale < 1;
+  return (
+    <div
+      ref={outerRef}
+      className="w-full [overflow-x:clip]"
+      style={scaled && innerHeight ? { height: innerHeight * scale } : undefined}
+    >
+      <div
+        ref={ref}
+        style={
+          scaled
+            ? { width: TURNSTILE_MIN_WIDTH, transform: `scale(${scale})`, transformOrigin: 'left top' }
+            : undefined
+        }
+      />
+    </div>
+  );
 }
 
 function Field({
