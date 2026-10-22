@@ -98,6 +98,7 @@ const empresaRaw: RawItem[] = [
   // { href: '/casos-de-exito', icon: Trophy, label: { es: 'Casos de Éxito', en: 'Case Studies' }, description: { es: 'Resultados reales', en: 'Real results' } },
   // Oculto: blog desactivado por ahora (página _blog fuera de rutas).
   // { href: '/blog', icon: Newspaper, label: { es: 'Blog', en: 'Blog' }, description: { es: 'Ideas y artículos', en: 'Ideas and articles' } },
+  { href: '/noticias', icon: Newspaper, label: { es: 'Noticias', en: 'News' }, description: { es: 'Avisos y novedades', en: 'Advisories and updates' } },
   { href: '/contacto', icon: Mail, label: { es: 'Contacto', en: 'Contact' }, description: { es: 'Hablemos', en: "Let's talk" } },
 ];
 
@@ -118,6 +119,7 @@ const navCopy = {
   servicios: { es: 'Qué hacemos', en: 'What we do' },
   comoTrabajamos: { es: 'Cómo trabajamos', en: 'How we work' },
   empresa: { es: 'Nosotros', en: 'About' },
+  noticias: { es: 'Noticias', en: 'News' },
 } satisfies Record<string, Record<Locale, string>>;
 
 /**
@@ -131,6 +133,7 @@ export function getMainNav(locale: Locale): NavEntry[] {
     { label: c('servicios'), href: '/servicios' },
     { label: c('comoTrabajamos'), href: '/como-trabajamos' },
     { label: c('empresa'), href: '/nosotros' },
+    { label: c('noticias'), href: '/noticias' },
   ];
 }
 
@@ -143,6 +146,7 @@ const supportNavRaw: RawItem[] = [
   // Oculto: blog desactivado por ahora.
   // { href: '/blog', label: { es: 'Blog', en: 'Blog' } },
   { href: '/nosotros', label: { es: 'Nosotros', en: 'About' } },
+  { href: '/noticias', label: { es: 'Noticias', en: 'News' } },
 ];
 
 export function getSupportNav(locale: Locale) {

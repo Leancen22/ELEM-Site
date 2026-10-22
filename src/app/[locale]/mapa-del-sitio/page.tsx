@@ -32,7 +32,7 @@ const content: Record<Locale, Content> = {
   es: {
     metaTitle: 'Mapa del sitio · Todas las páginas de ELEM',
     metaDesc:
-      'Todas las secciones de ELEM en un solo lugar: qué hacemos, cómo trabajamos, nosotros y páginas legales.',
+      'Todas las secciones de ELEM en un solo lugar: qué hacemos, cómo trabajamos, nosotros, noticias y páginas legales.',
     home: 'Inicio',
     sitemap: 'Mapa del sitio',
     heroTitle: 'Todo el sitio, de un vistazo.',
@@ -48,6 +48,7 @@ const content: Record<Locale, Content> = {
       { label: 'Qué hacemos', href: '/servicios', description: 'Nuestros servicios' },
       { label: 'Cómo trabajamos', href: '/como-trabajamos', description: 'Nuestro proceso' },
       { label: 'Nosotros', href: '/nosotros', description: 'Quiénes somos' },
+      { label: 'Noticias', href: '/noticias', description: 'Avisos y novedades' },
       // Oculto: blog desactivado por ahora.
       // { label: 'Blog', href: '/blog', description: 'Ideas y artículos de ingeniería' },
       { label: 'Contacto', href: '/contacto', description: 'Hablemos de tu proyecto' },
@@ -61,7 +62,7 @@ const content: Record<Locale, Content> = {
   en: {
     metaTitle: 'Sitemap · Every page on ELEM',
     metaDesc:
-      'Every section of ELEM in one place: what we do, how we work, about us and legal pages.',
+      'Every section of ELEM in one place: what we do, how we work, about us, news and legal pages.',
     home: 'Home',
     sitemap: 'Sitemap',
     heroTitle: 'The whole site, at a glance.',
@@ -77,6 +78,7 @@ const content: Record<Locale, Content> = {
       { label: 'What we do', href: '/servicios', description: 'Our services' },
       { label: 'How we work', href: '/como-trabajamos', description: 'Our process' },
       { label: 'About', href: '/nosotros', description: 'Who we are' },
+      { label: 'News', href: '/noticias', description: 'Advisories and updates' },
       // Oculto: blog desactivado por ahora.
       // { label: 'Blog', href: '/blog', description: 'Engineering ideas and articles' },
       { label: 'Contact', href: '/contacto', description: "Let's talk about your project" },

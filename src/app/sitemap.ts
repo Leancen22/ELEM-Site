@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site';
+import { getAllNews, newsSlugs } from '@/content/news';
 // Oculto: blog desactivado por ahora.
 // import { getAllPosts, postSlugs } from '@/content/blog';
 import { defaultLocale, locales } from '@/i18n/config';
@@ -8,7 +9,7 @@ import { routing } from '@/i18n/routing';
 
 type Internal = keyof typeof routing.pathnames;
 type Href = Parameters<typeof getPathname>[0]['href'];
-type StaticHref = Exclude<Internal, '/blog/[slug]' | '/legal/[doc]'>;
+type StaticHref = Exclude<Internal, '/blog/[slug]' | '/noticias/[slug]' | '/legal/[doc]'>;
 
 function url(locale: (typeof locales)[number], href: Href) {
   return `${site.url}${getPathname({ locale, href })}`;
@@ -41,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // '/casos-de-exito', // oculto: empresa nueva, sin casos/referencias todavía
     // '/blog', // oculto: blog desactivado por ahora
     '/nosotros',
+    '/noticias',
     '/contacto',
   ];
 
@@ -63,6 +65,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
+  const newsMeta = getAllNews(defaultLocale);
+  const newsEntries = newsSlugs.map((slug) => {
+    const item = newsMeta.find((n) => n.slug === slug);
+    const href = { pathname: '/noticias/[slug]', params: { slug } } as const;
+    const languages = Object.fromEntries(
+      locales.map((l) => [l, url(l, href)])
+    ) as Record<(typeof locales)[number], string>;
+    return {
+      url: url(defaultLocale, href),
+      lastModified: item ? new Date(item.date) : now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+      alternates: { languages },
+    };
+  });
+
   // Oculto: blog desactivado por ahora (página _blog fuera de rutas).
   // const blogMeta = getAllPosts(defaultLocale);
   // const blogRoutes = postSlugs.map((slug) => {
@@ -80,5 +98,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
   //   };
   // });
 
-  return [...staticEntries, ...legalEntries];
+  return [...staticEntries, ...newsEntries, ...legalEntries];
 }

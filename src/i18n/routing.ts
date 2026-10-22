@@ -26,6 +26,8 @@ export const routing = defineRouting({
     '/contacto': { es: '/contacto', en: '/contact' },
     '/blog': '/blog',
     '/blog/[slug]': '/blog/[slug]',
+    '/noticias': { es: '/noticias', en: '/news' },
+    '/noticias/[slug]': { es: '/noticias/[slug]', en: '/news/[slug]' },
     '/mapa-del-sitio': { es: '/mapa-del-sitio', en: '/sitemap' },
     '/como-trabajamos': { es: '/como-trabajamos', en: '/how-we-work' },
     '/legal/[doc]': '/legal/[doc]',
