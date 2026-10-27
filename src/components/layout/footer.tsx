@@ -4,6 +4,8 @@ import { site } from '@/lib/site';
 import { servicios, empresa } from '@/lib/navigation';
 import { getLocale } from '@/i18n/server';
 import { ui } from '@/content/ui';
+import { gaId } from '@/lib/analytics';
+import { CookieSettingsButton } from '@/components/analytics/analytics-consent';
 
 export async function Footer() {
   const locale = await getLocale();
@@ -49,6 +51,7 @@ export async function Footer() {
             <Link href="/legal/cookies" className="hover:text-foreground">
               {t.cookies}
             </Link>
+            {gaId && <CookieSettingsButton className="hover:text-foreground" />}
             <Link href="/legal/aviso-legal" className="hover:text-foreground">
               {t.legal}
             </Link>

@@ -9,6 +9,8 @@ import { ThemeProvider } from '@/components/theme/theme-provider';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { AnalyticsConsent } from '@/components/analytics/analytics-consent';
+import { gaId } from '@/lib/analytics';
 import { LocaleProvider } from '@/i18n/provider';
 import { routing } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
@@ -147,6 +149,7 @@ export default async function RootLayout({
               <Header />
               <main id="contenido">{children}</main>
               <Footer />
+              {gaId && <AnalyticsConsent gaId={gaId} />}
             </LocaleProvider>
           </NextIntlClientProvider>
         </ThemeProvider>

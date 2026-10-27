@@ -5,6 +5,8 @@ export const site = {
   legalName: 'ELEM',
   url: 'https://elem.uy',
   email: 'contacto@elem.uy',
+  // GA4 Measurement ID (public; it ships in the page HTML anyway).
+  gaId: 'G-8TF7JB03ZJ',
   // Teléfono oculto a pedido.
   // phone: '+598 98 858 254',
   social: {
