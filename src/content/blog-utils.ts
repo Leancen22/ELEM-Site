@@ -24,6 +24,7 @@ export function formatDate(iso: string, locale: Locale) {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
+    timeZone: 'UTC',
   }).format(new Date(iso));
 }
 

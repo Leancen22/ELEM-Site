@@ -104,7 +104,7 @@ export default async function NewsArticlePage({
 
         <Section className="!pt-12 sm:!pt-16">
           <div className="mx-auto max-w-[680px]">
-            <Reveal>
+            <Reveal amount={0}>
               <div
                 className={cn(
                   'prose prose-lg max-w-none dark:prose-invert',
