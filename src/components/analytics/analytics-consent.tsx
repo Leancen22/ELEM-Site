@@ -55,9 +55,10 @@ function clearGaCookies() {
 /**
  * Cookie banner + GA4 loader. GA is not loaded at all until the visitor
  * accepts; the choice is kept in localStorage and can be changed from the
- * footer's "Cookie settings" link.
+ * footer's "Cookie settings" link. With `load` false (dev) the banner works
+ * but GA is never loaded.
  */
-export function AnalyticsConsent({ gaId }: { gaId: string }) {
+export function AnalyticsConsent({ gaId, load }: { gaId: string; load: boolean }) {
   const locale = useLocale();
   const t = labels[locale];
   // undefined = not read yet (SSR / first paint), so the banner never flashes.
@@ -91,7 +92,7 @@ export function AnalyticsConsent({ gaId }: { gaId: string }) {
 
   return (
     <>
-      {consent === 'granted' && <GoogleAnalytics gaId={gaId} />}
+      {load && consent === 'granted' && <GoogleAnalytics gaId={gaId} />}
       {open && (
         <div
           role="region"
