@@ -13,7 +13,6 @@ const OPEN_EVENT = 'elem:open-consent';
 
 const labels = {
   es: {
-    title: 'Cookies',
     text: 'Usamos cookies analíticas para entender, de forma agregada, cómo se usa el sitio. Solo se activan si las aceptás.',
     policy: 'Política de cookies',
     accept: 'Aceptar',
@@ -22,7 +21,6 @@ const labels = {
     settings: 'Configurar cookies',
   },
   en: {
-    title: 'Cookies',
     text: 'We use analytics cookies to understand, in aggregate, how the site is used. They are only set if you accept them.',
     policy: 'Cookie policy',
     accept: 'Accept',
@@ -53,10 +51,6 @@ function clearGaCookies() {
     }
   }
 }
-
-// Both choices look the same on purpose: rejecting is as easy as accepting.
-const choiceCls =
-  'flex-1 border border-background/30 text-background hover:bg-background/10 hover:text-background focus-visible:ring-background focus-visible:ring-offset-foreground';
 
 /**
  * Cookie banner + GA4 loader. GA is not loaded at all until the visitor
@@ -103,24 +97,22 @@ export function AnalyticsConsent({ gaId, load }: { gaId: string; load: boolean }
         <div
           role="region"
           aria-label={t.region}
-          // Inverted colors + strong shadow so it reads as an overlay, not page content.
-          className="fixed inset-x-4 bottom-4 z-50 max-w-md rounded-lg bg-foreground p-5 text-background shadow-[0_12px_48px_-8px_rgba(0,0,0,0.45)] sm:left-6 sm:right-auto sm:bottom-6"
+          className="fixed inset-x-4 bottom-4 z-50 max-w-md rounded-lg border border-border bg-background p-5 shadow-lg sm:left-6 sm:right-auto sm:bottom-6"
         >
-          <p className="text-[15px] font-medium">{t.title}</p>
-          <p className="mt-1.5 text-sm leading-relaxed text-background/75">
+          <p className="text-sm leading-relaxed text-muted-foreground">
             {t.text}{' '}
             <Link
               href="/legal/cookies"
-              className="text-background underline decoration-background/40 underline-offset-4 hover:decoration-current"
+              className="text-foreground underline decoration-border underline-offset-4 hover:decoration-current"
             >
               {t.policy}
             </Link>
           </p>
           <div className="mt-4 flex gap-3">
-            <Button size="sm" variant="ghost" className={choiceCls} onClick={() => choose('denied')}>
+            <Button size="sm" variant="secondary" className="flex-1" onClick={() => choose('denied')}>
               {t.reject}
             </Button>
-            <Button size="sm" variant="ghost" className={choiceCls} onClick={() => choose('granted')}>
+            <Button size="sm" variant="secondary" className="flex-1" onClick={() => choose('granted')}>
               {t.accept}
             </Button>
           </div>
