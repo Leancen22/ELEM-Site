@@ -9,6 +9,8 @@ const nextConfig = {
   compress: true,
   images: {
     formats: ['image/avif', 'image/webp'],
+    // 90: capturas de producto (interfaces con texto chico, que a 75 se empastan).
+    qualities: [75, 90],
   },
   // The technology pages were removed (the site no longer names its stack);
   // old links land on the services page.

@@ -67,7 +67,8 @@ export type ProductsCopy = {
   indexCtaTitle: string;
 };
 
-const W = 1600, H = 1000;
+// Capturas a 2400 × 1500 (pantalla de 1600 × 1000 a ×1,5): nítidas en pantallas de alta densidad.
+const W = 2400, H = 1500;
 const core = (f: string, alt: string): Shot => ({ src: `/productos/core/${f}.webp`, alt, width: W, height: H });
 const one = (f: string, alt: string): Shot => ({ src: `/productos/one/${f}.webp`, alt, width: W, height: H });
 
@@ -138,8 +139,8 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
       heroTitle: 'Tu web, en tus manos.',
       heroDesc:
         'ELEM Core es el CMS para editar tu sitio sobre la página misma: haces doble clic, escribes y publicas. Sin tickets ni esperas. Nosotros nos ocupamos del alojamiento, la seguridad y el soporte.',
-      heroImage: core('editor-titulo', 'Editor de ELEM Core con el título de la portada recién cambiado y el botón «Publicar cambios»'),
-      heroPhone: { src: '/productos/core/sitio-celular.webp', alt: 'El sitio publicado, visto en un celular', width: 600, height: 1299 },
+      heroImage: core('editar', 'Editor de ELEM Core: el título de la portada recién cambiado sobre la página, con sus ajustes al costado y «Publicar cambios» listo'),
+      heroPhone: { src: '/productos/core/sitio-celular.webp', alt: 'El sitio publicado, visto en un celular', width: 900, height: 1948 },
       video: {
         src: '/videos/elem-core.mp4',
         poster: '/videos/elem-core-poster.jpg',
@@ -158,7 +159,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
             'Historial de versiones: compara dos versiones lado a lado y vuelve atrás',
             'Colores, letras y espacios desde el panel de diseño',
           ],
-          image: core('editor', 'Panel de diseño de ELEM Core con los colores del tema'),
+          image: core('diseno', 'Panel de diseño de ELEM Core: al elegir un color del tema, el título cambia en la página'),
         },
         {
           title: 'Armas páginas arrastrando bloques.',
@@ -169,7 +170,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
             'Piezas reutilizables: cambias una y se actualiza en todas las páginas',
             'Encabezado y pie editables con las mismas piezas',
           ],
-          image: core('bloques', 'Panel Agregar de ELEM Core con los bloques disponibles'),
+          image: core('bloques', 'Un «Iterador de contenido» arrastrado desde el panel Agregar hasta la página, con la línea de dónde va a caer'),
         },
         {
           title: 'En varios idiomas, con su propia dirección.',
@@ -180,7 +181,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
             'Menús, encabezados y pies por idioma',
             'Etiquetas para buscadores (hreflang) automáticas',
           ],
-          image: core('idiomas', 'El mismo sitio en inglés dentro del editor de ELEM Core'),
+          image: core('idiomas', 'La versión en inglés abierta en el editor, con el menú de traducciones de la página'),
         },
         {
           title: 'Se ve bien en cualquier pantalla.',
@@ -191,7 +192,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
             'Ocultar un bloque en un dispositivo',
             'Imágenes optimizadas en varios tamaños, sin datos EXIF',
           ],
-          image: core('celular', 'Vista de celular en el editor de ELEM Core'),
+          image: core('celular', 'La página en vista de celular, dentro del editor de ELEM Core'),
         },
       ],
       moreTitle: 'Y además',
@@ -258,7 +259,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
       heroDesc:
         'ELEM One reúne la comunicación interna y la gestión de personas: novedades, chat, vacaciones, recibos, capacitación y desempeño. Cada uno encuentra lo suyo y RRHH deja de responder lo mismo diez veces.',
       heroImage: one('feed', 'Muro de ELEM One con anuncios, celebraciones y accesos rápidos'),
-      heroPhone: { src: '/productos/one/feed-celular.webp', alt: 'ELEM One en un celular', width: 600, height: 1298 },
+      heroPhone: { src: '/productos/one/feed-celular.webp', alt: 'ELEM One en un celular', width: 900, height: 1948 },
       video: {
         src: '/videos/elem-one.mp4',
         poster: '/videos/elem-one-poster.jpg',
@@ -277,7 +278,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
             'Encuestas de clima y eNPS con resultados al instante',
             'Transmisiones en vivo que quedan grabadas',
           ],
-          image: one('surveys', 'Encuestas en ELEM One'),
+          image: one('news', 'Noticias de ELEM One con portadas, categorías y la nota destacada'),
         },
         {
           title: 'Trámites sin correos de ida y vuelta.',
@@ -376,8 +377,8 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
       heroTitle: 'Your website, in your hands.',
       heroDesc:
         'ELEM Core is the CMS to edit your site right on the page: double-click, type and publish. No tickets, no waiting. We take care of hosting, security and support.',
-      heroImage: core('editor-titulo', 'ELEM Core editor with the home page title just changed and the “Publish changes” button'),
-      heroPhone: { src: '/productos/core/sitio-celular.webp', alt: 'The published site on a phone', width: 600, height: 1299 },
+      heroImage: core('editar', 'ELEM Core editor: the home page title just changed on the page, with its settings on the side and “Publish changes” ready'),
+      heroPhone: { src: '/productos/core/sitio-celular.webp', alt: 'The published site on a phone', width: 900, height: 1948 },
       video: {
         src: '/videos/elem-core.mp4',
         poster: '/videos/elem-core-poster.jpg',
@@ -396,7 +397,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
             'Version history: compare two versions side by side and roll back',
             'Colors, fonts and spacing from the design panel',
           ],
-          image: core('editor', 'ELEM Core design panel with the theme colors'),
+          image: core('diseno', 'ELEM Core design panel: picking a theme color changes the title on the page'),
         },
         {
           title: 'Build pages by dragging blocks.',
@@ -407,7 +408,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
             'Reusable pieces: change one and every page updates',
             'Editable header and footer with the same pieces',
           ],
-          image: core('bloques', 'ELEM Core Add panel with the available blocks'),
+          image: core('bloques', 'A content iterator dragged from the Add panel onto the page, with the line showing where it will land'),
         },
         {
           title: 'In several languages, each with its own URL.',
@@ -418,7 +419,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
             'Menus, headers and footers per language',
             'Automatic hreflang tags for search engines',
           ],
-          image: core('idiomas', 'The same site in English inside the ELEM Core editor'),
+          image: core('idiomas', 'The English version open in the editor, with the page’s translations menu'),
         },
         {
           title: 'Looks right on any screen.',
@@ -429,7 +430,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
             'Hide a block on a given device',
             'Images optimized in several sizes, with EXIF data stripped',
           ],
-          image: core('celular', 'Phone view in the ELEM Core editor'),
+          image: core('celular', 'The page in phone view, inside the ELEM Core editor'),
         },
       ],
       moreTitle: 'And also',
@@ -496,7 +497,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
       heroDesc:
         'ELEM One brings internal communication and people management together: news, chat, time off, payslips, training and performance. Everyone finds what they need, and HR stops answering the same question ten times.',
       heroImage: one('feed', 'ELEM One feed with announcements, celebrations and shortcuts'),
-      heroPhone: { src: '/productos/one/feed-celular.webp', alt: 'ELEM One on a phone', width: 600, height: 1298 },
+      heroPhone: { src: '/productos/one/feed-celular.webp', alt: 'ELEM One on a phone', width: 900, height: 1948 },
       video: {
         src: '/videos/elem-one.mp4',
         poster: '/videos/elem-one-poster.jpg',
@@ -515,7 +516,7 @@ export const products: Record<Locale, Record<ProductId, Product>> = {
             'Climate and eNPS surveys with instant results',
             'Live streams that stay recorded',
           ],
-          image: one('surveys', 'Surveys in ELEM One'),
+          image: one('news', 'ELEM One news with covers, categories and the featured story'),
         },
         {
           title: 'Requests without back-and-forth emails.',

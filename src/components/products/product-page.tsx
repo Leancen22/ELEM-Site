@@ -30,7 +30,8 @@ export function ProductLockup({ name, className }: { name: string; className?: s
 }
 
 /** Captura dentro de una ventana de navegador. */
-export function BrowserFrame({ shot, className, priority }: { shot: Shot; className?: string; priority?: boolean }) {
+/** `sizes`: el ancho con que se muestra (Next elige el archivo); calidad alta porque son interfaces con texto chico. */
+export function BrowserFrame({ shot, className, priority, sizes = '(min-width: 1024px) 680px, 100vw' }: { shot: Shot; className?: string; priority?: boolean; sizes?: string }) {
   return (
     <div className={cn('overflow-hidden rounded-xl border border-border bg-card shadow-[0_30px_80px_-30px_rgba(18,2,9,0.35)]', className)}>
       <div aria-hidden className="flex h-8 items-center gap-1.5 border-b border-border bg-muted/60 px-3.5">
@@ -38,7 +39,7 @@ export function BrowserFrame({ shot, className, priority }: { shot: Shot; classN
         <i className="size-2.5 rounded-full bg-foreground/15" />
         <i className="size-2.5 rounded-full bg-foreground/15" />
       </div>
-      <Image src={shot.src} alt={shot.alt} width={shot.width} height={shot.height} priority={priority} sizes="(min-width: 1280px) 720px, 100vw" className="block h-auto w-full" />
+      <Image src={shot.src} alt={shot.alt} width={shot.width} height={shot.height} priority={priority} sizes={sizes} quality={90} className="block h-auto w-full" />
     </div>
   );
 }
@@ -101,9 +102,9 @@ export function ProductPage({ product: p, copy: t }: { product: Product; copy: P
             </div>
           </Reveal>
           <Reveal delay={0.1} className="relative mt-14 sm:mt-16 lg:pr-24">
-            <BrowserFrame shot={p.heroImage} priority />
+            <BrowserFrame shot={p.heroImage} priority sizes="(min-width: 1280px) 1120px, 100vw" />
             <PhoneFrame className="absolute -bottom-8 right-2 hidden w-[180px] sm:block lg:right-0 lg:w-[220px]">
-              <Image src={p.heroPhone.src} alt={p.heroPhone.alt} width={p.heroPhone.width} height={p.heroPhone.height} sizes="220px" className="block h-auto w-full" />
+              <Image src={p.heroPhone.src} alt={p.heroPhone.alt} width={p.heroPhone.width} height={p.heroPhone.height} sizes="220px" quality={90} className="block h-auto w-full" />
             </PhoneFrame>
           </Reveal>
         </div>
