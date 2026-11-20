@@ -1,0 +1,61 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<!-- Animación de entrada y salida del logo ELEM. La salida es la del video de ELEM Assist (../chat_interfase/promo/video.html).
+     Cada cuadro es función del tiempo: window.__seek(t). Vertical por defecto; #h es horizontal 1920 × 1080. -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--grad:linear-gradient(90deg,#fb356b,#e6128f,#bc12d6);--soft:linear-gradient(90deg,#ff6890,#e879f9);--wm:linear-gradient(90deg,#ff6890,#e6128f,#bc12d6)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow:hidden;background:#120209}
+#stage{position:relative;overflow:hidden;font-family:'Hanken Grotesk',sans-serif;background:radial-gradient(circle at 80% 20%,rgba(230,18,143,.42),transparent 52%),radial-gradient(circle at 12% 88%,rgba(188,18,214,.30),transparent 55%),#120209}
+.elem{position:absolute;left:0;right:0;text-align:center}
+.iso{position:relative;margin:0 auto}
+.iso i{position:absolute;left:0;display:block}
+.wm{font-weight:500;line-height:1;display:inline-block;background:var(--wm);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grano{position:absolute;inset:0;width:100%;height:100%;opacity:.05}
+</style></head><body><div id="stage"></div>
+<script>
+const H = location.hash === '#h', SW = H ? 1920 : 1080, SH = H ? 1080 : 1920, SIZE = H ? 150 : 130;
+const ENTRA = 0.1, COMPRIME = 0.8, NOMBRE = 1.6, SALIDA = 4.1, BARRE = 0.42, COLA = 0.45;   // segundos; SALIDA: cuando las bandas ya cubren todo
+const DURACION = SALIDA + BARRE + COLA;
+const clamp = (x) => Math.max(0, Math.min(1, x)), p = (t, a, b) => clamp((t - a) / (b - a)), lerp = (a, b, x) => a + (b - a) * x;
+const out3 = (x) => 1 - Math.pow(1 - x, 3), out5 = (x) => 1 - Math.pow(1 - x, 5), in3 = (x) => x * x * x;
+/** Arranca y aterriza sin velocidad, con un final largo: las barras llegan al logo sin frenazo ni rebote. */
+const suave = (x) => { const y = Math.pow(x, 0.75); return y * y * y * (6 * y * y - 15 * y + 10); };
+const inOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const css = (el, s) => Object.assign(el.style, s);
+const stage = document.getElementById('stage'); css(stage, { width: `${SW}px`, height: `${SH}px` });
+
+// Geometría del logo (public/elem_brand_logo_v6.svg, sobre un wordmark de 56): barras 156 y 117 × 18, paso 37, isotipo 11 a la izquierda.
+const k = SIZE / 56, th = 18 * k, long = 156 * k, short = 117 * k, step = 37 * k, ls = (16 / 56) * SIZE, GAP = 0.33 * SIZE;
+const alto = step * 2 + th + GAP + SIZE, oy = Math.round(SH / 2 - alto / 2), ox = SW / 2 - long / 2 - 11 * k, cx = SW / 2, cy = oy + step + th / 2;
+const barra = (i) => ({ x: ox, y: oy + i * step, w: i === 1 ? short : long, h: th, r: th / 2 });
+const banda = (i) => ({ x: 0, y: (SH / 3) * i - 1, w: SW, h: SH / 3 + 2, r: 0 });
+const mezcla = (a, b, e) => ({ x: lerp(a.x, b.x, e), y: lerp(a.y, b.y, e), w: lerp(a.w, b.w, e), h: lerp(a.h, b.h, e), r: lerp(a.r, b.r, e) });
+
+stage.innerHTML = `<svg class="grano"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
+  <div class="elem" id="logo" style="top:${oy}px"><div class="iso" style="width:${long}px;height:${step * 2 + th}px;left:${-11 * k}px">
+    ${[0, 1, 2].map((i) => `<i id="bar${i}" style="background:var(--${i === 1 ? 'soft' : 'grad'})"></i>`).join('')}</div>
+    <div class="wm" id="wm" style="margin-top:${GAP}px;font-size:${SIZE}px;letter-spacing:${ls}px;padding-left:${ls}px">ELEM</div></div>`;
+const q = (id) => document.getElementById(id);
+
+const ponBarra = (i, R, z, vis = 1) => css(q(`bar${i}`), { left: `${(R.x - cx) / z + cx - ox}px`, top: `${(R.y - cy) / z + cy - oy}px`, width: `${R.w / z}px`, height: `${R.h / z}px`,
+  borderRadius: `${R.r / z}px`, backgroundSize: `${Math.max(R.w / z, long)}px 100%`, opacity: vis });
+
+window.__seek = (t) => {
+  const d = SALIDA, z = 1 + 0.045 * p(t, 0, d);
+  css(q('logo'), { transformOrigin: `50% ${cy - oy}px`, transform: `scale(${z})` });
+  // Entrada: las tres bandas llegan desde la izquierda, cubren la pantalla y se comprimen hasta ser el logo.
+  // Salida: crecen hasta cubrir la pantalla y se van hacia la derecha.
+  [0, 1, 2].forEach((i) => {
+    if (t < COMPRIME) { const e = out3(p(t, ENTRA + i * 0.06, ENTRA + 0.52 + i * 0.06)); ponBarra(i, { ...banda(i), x: (e - 1) * SW * 1.02 }, z); return; }
+    const R = mezcla(banda(i), barra(i), suave(p(t, COMPRIME + i * 0.05, COMPRIME + 1.15 + i * 0.05)));
+    if (t < d) ponBarra(i, mezcla(R, banda(i), inOut(p(t, d - 0.52 + i * 0.05, d - 0.03))), z);
+    else { const e = in3(p(t, d + i * 0.05, d + BARRE - 0.1 + i * 0.05)); ponBarra(i, { ...banda(i), x: e * SW * 1.02 }, z); } });
+  // Nombre: aparece de a poco cuando las barras ya pasaron; se va justo antes de que crezcan.
+  const w = inOut(p(t, NOMBRE, NOMBRE + 0.8)), fuera = p(t, d - 0.6, d - 0.36);
+  css(q('wm'), { transform: `translateY(${(1 - w) * 18 - fuera * 14}px)`, opacity: w * (1 - fuera) });
+};
+window.__duration = DURACION;
+window.__cues = { entrada: 0, sello: 1.3, barrido: SALIDA - 0.45 };
+document.fonts.load(`500 ${SIZE}px "Hanken Grotesk"`).then(() => document.fonts.ready).then(() => { __seek(0); window.__ready = true; });
+</script></body></html>

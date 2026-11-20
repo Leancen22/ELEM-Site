@@ -3,7 +3,7 @@ import { Link } from '@/components/i18n/link';
 import { PageHero } from '@/components/layout/page-hero';
 import { Section } from '@/components/ui/section';
 import { Reveal } from '@/components/motion/reveal';
-import { servicios, empresa } from '@/lib/navigation';
+import { servicios, productos, empresa } from '@/lib/navigation';
 import { buildMetadata } from '@/lib/seo';
 import { getLocale } from '@/i18n/server';
 import type { Locale } from '@/i18n/config';
@@ -22,6 +22,7 @@ type Content = {
   heroDesc: string;
   groupMain: string;
   groupServices: string;
+  groupProducts: string;
   groupCompany: string;
   groupLegal: string;
   main: SiteLink[];
@@ -32,7 +33,7 @@ const content: Record<Locale, Content> = {
   es: {
     metaTitle: 'Mapa del sitio · Todas las páginas de ELEM',
     metaDesc:
-      'Todas las secciones de ELEM en un solo lugar: qué hacemos, cómo trabajamos, nosotros, noticias y páginas legales.',
+      'Todas las secciones de ELEM en un solo lugar: qué hacemos, productos, cómo trabajamos, nosotros, noticias y páginas legales.',
     home: 'Inicio',
     sitemap: 'Mapa del sitio',
     heroTitle: 'Todo el sitio, de un vistazo.',
@@ -41,11 +42,13 @@ const content: Record<Locale, Content> = {
       'Un índice claro de cada sección y página de ELEM. Si te perdiste, aquí encuentras el camino de vuelta.',
     groupMain: 'Principal',
     groupServices: 'Qué hacemos',
+    groupProducts: 'Productos',
     groupCompany: 'Empresa',
     groupLegal: 'Legal',
     main: [
       { label: 'Inicio', href: '/', description: 'Página principal' },
       { label: 'Qué hacemos', href: '/servicios', description: 'Nuestros servicios' },
+      { label: 'Productos', href: '/productos', description: 'ELEM Core, ELEM One y ELEM Assist' },
       { label: 'Cómo trabajamos', href: '/como-trabajamos', description: 'Nuestro proceso' },
       { label: 'Nosotros', href: '/nosotros', description: 'Quiénes somos' },
       { label: 'Noticias', href: '/noticias', description: 'Avisos y novedades' },
@@ -62,7 +65,7 @@ const content: Record<Locale, Content> = {
   en: {
     metaTitle: 'Sitemap · Every page on ELEM',
     metaDesc:
-      'Every section of ELEM in one place: what we do, how we work, about us, news and legal pages.',
+      'Every section of ELEM in one place: what we do, products, how we work, about us, news and legal pages.',
     home: 'Home',
     sitemap: 'Sitemap',
     heroTitle: 'The whole site, at a glance.',
@@ -71,11 +74,13 @@ const content: Record<Locale, Content> = {
       'A clear index of every section and page on ELEM. If you got lost, here is the way back.',
     groupMain: 'Main',
     groupServices: 'What we do',
+    groupProducts: 'Products',
     groupCompany: 'Company',
     groupLegal: 'Legal',
     main: [
       { label: 'Home', href: '/', description: 'Landing page' },
       { label: 'What we do', href: '/servicios', description: 'Our services' },
+      { label: 'Products', href: '/productos', description: 'ELEM Core, ELEM One and ELEM Assist' },
       { label: 'How we work', href: '/como-trabajamos', description: 'Our process' },
       { label: 'About', href: '/nosotros', description: 'Who we are' },
       { label: 'News', href: '/noticias', description: 'Advisories and updates' },
@@ -109,6 +114,7 @@ export default async function SitemapPage() {
   const groups: Group[] = [
     { title: t.groupMain, items: t.main },
     { title: t.groupServices, items: servicios[locale] },
+    { title: t.groupProducts, items: productos[locale] },
     { title: t.groupCompany, items: empresa[locale] },
     { title: t.groupLegal, items: t.legal },
   ];

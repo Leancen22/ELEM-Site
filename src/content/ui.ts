@@ -12,6 +12,7 @@ export type Ui = {
   footer: {
     about: string;
     colServices: string;
+    colProducts: string;
     colCompany: string;
     rights: string;
     privacy: string;
@@ -34,6 +35,7 @@ export const ui: Record<Locale, Ui> = {
     footer: {
       about: 'Estudio de ingeniería de software. Diseñamos, construimos y evolucionamos software para empresas.',
       colServices: 'Qué hacemos',
+      colProducts: 'Productos',
       colCompany: 'Empresa',
       rights: 'Todos los derechos reservados.',
       privacy: 'Privacidad',
@@ -54,6 +56,7 @@ export const ui: Record<Locale, Ui> = {
     footer: {
       about: 'Software engineering studio. We design, build and evolve software for companies.',
       colServices: 'What we do',
+      colProducts: 'Products',
       colCompany: 'Company',
       rights: 'All rights reserved.',
       privacy: 'Privacy',

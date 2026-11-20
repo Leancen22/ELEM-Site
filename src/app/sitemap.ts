@@ -36,6 +36,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: StaticHref[] = [
     '/',
     '/servicios',
+    '/productos',
+    '/productos/elem-core',
+    '/productos/elem-one',
     // '/soluciones', // oculto: menú fusionado en Servicios
 
     '/como-trabajamos',

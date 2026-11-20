@@ -1,7 +1,7 @@
 import { Link } from '@/components/i18n/link';
 import { Logo } from '@/components/brand/logo';
 import { site } from '@/lib/site';
-import { servicios, empresa } from '@/lib/navigation';
+import { servicios, productos, empresa } from '@/lib/navigation';
 import { getLocale } from '@/i18n/server';
 import { ui } from '@/content/ui';
 import { gaId } from '@/lib/analytics';
@@ -14,7 +14,7 @@ export async function Footer() {
     <footer className="bg-surface border-t border-border">
       <div className="container-wide">
         <div className="grid gap-12 py-16 sm:py-20 md:grid-cols-12">
-          <div className="md:col-span-5">
+          <div className="md:col-span-4">
             <Logo />
             <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-muted-foreground">{t.about}</p>
             <a
@@ -25,7 +25,8 @@ export async function Footer() {
             </a>
           </div>
 
-          <FooterCol title={t.colServices} items={servicios[locale]} className="md:col-span-4" />
+          <FooterCol title={t.colServices} items={servicios[locale]} className="md:col-span-3" />
+          <FooterCol title={t.colProducts} items={productos[locale]} className="md:col-span-2" />
           <FooterCol
             title={t.colCompany}
             items={[

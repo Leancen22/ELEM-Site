@@ -1,0 +1,56 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{position:relative;font-family:'Hanken Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;background:radial-gradient(circle at 75% 18%,rgba(232,121,249,.38),transparent 55%),radial-gradient(circle at 18% 82%,rgba(255,104,144,.32),transparent 55%),linear-gradient(135deg,#fff1f4,#ffe2e8)}
+.head{position:absolute;left:110px;top:240px;width:860px}
+.logo{font:500 112px/1 'Hanken Grotesk',sans-serif;color:#8a0d40;white-space:nowrap}
+.logo b{font-weight:500;letter-spacing:20px;margin-right:12px;background:linear-gradient(90deg,#fb356b,#e6128f,#bc12d6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.phrase{margin-top:26px;font:400 40px/1.3 'Hanken Grotesk',sans-serif;color:#a40a43}
+.browser{position:absolute;left:130px;top:520px;width:900px;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 50px 120px -30px rgba(40,4,24,.55),0 0 0 1px rgba(15,23,42,.08)}
+.browser .bar{height:42px;background:#f1f5f9;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;gap:9px;padding:0 18px}
+.browser .dot{width:13px;height:13px;border-radius:50%}
+.browser .url{margin-left:16px;height:26px;flex:0 1 360px;border-radius:8px;background:#fff;border:1px solid #e2e8f0;display:flex;align-items:center;padding:0 12px;font-size:15px;color:#64748b}
+.browser img{display:block;width:100%}
+.phone{position:absolute;left:60px;top:800px;width:400px;height:846px;border-radius:64px;background:#0b0f19;padding:14px;box-shadow:0 60px 120px -30px rgba(40,4,24,.7),inset 0 0 0 2px #2a3242}
+.screen{position:relative;width:372px;height:818px;border-radius:50px;overflow:hidden;background:#fff}
+.island{position:absolute;top:12px;left:50%;width:118px;height:34px;margin-left:-59px;border-radius:20px;background:#0b0f19;z-index:3}
+.full{position:absolute;left:0;top:54px;display:block;width:100%;height:764px;object-fit:cover;object-position:top}
+
+.chat-top,.chat-bot{position:absolute;left:0;width:372px;background-image:url(capturas/assist-celular.jpg);background-size:372px auto;background-repeat:no-repeat}
+.chat-top{top:54px;height:37px;background-position:0 -6px}
+.chat-bot{bottom:14px;height:106px;background-position:0 100%}
+.cta{position:absolute;left:510px;top:1290px;display:inline-flex;align-items:center;gap:18px;padding:28px 42px;border-radius:999px;background:linear-gradient(90deg,#fb356b,#e6128f,#bc12d6);font:500 40px/1 'Hanken Grotesk',sans-serif;color:#fff;white-space:nowrap}
+.handle{position:absolute;left:520px;top:1440px;font:400 30px/1 'Hanken Grotesk',sans-serif;letter-spacing:.18em;color:#c40847}
+@font-face{font-family:'Inter W';font-weight:100 900;src:url(capturas/inter.woff2) format('woff2')}
+.body{position:absolute;left:0;right:0;top:91px;bottom:120px;padding:16px 14px 0;overflow:hidden;font:400 14px/1.5 'Inter W',sans-serif;color:#1f2f3d;background:#fff;display:flex;flex-direction:column;gap:12px}
+.body .u{align-self:flex-end;padding:9px 14px;border-radius:16px 16px 5px 16px;background:#e6128f;color:#fff;font-size:14px;line-height:1.3}
+.body p{margin:2px 0 0}
+.cite{display:inline-grid;place-items:center;min-width:17px;height:17px;padding:0 4px;border-radius:5px;background:#fde4f1;color:#c0127a;font-size:10.5px;font-weight:700;vertical-align:1px}
+.map{width:216px;border-radius:12px;overflow:hidden;border:1px solid #e3e8ee;background:#f7f7f8}
+.map img{display:block;width:100%}
+.map span{display:block;padding:7px 10px;font-size:12px;line-height:1.35;color:#4b5b69}
+.body ul{margin:-2px 0 0;padding-left:18px}
+.src{font-size:12px;color:#5f6f7d}
+.sug{align-self:flex-start;margin-top:-4px;padding:6px 12px;border-radius:999px;background:#f0f0f1;font-size:12.5px;line-height:1.25;color:#2a2f36}
+</style></head><body>
+<div class="head">
+ <div class="logo"><b>ELEM</b>Assist</div>
+ <div class="phrase">Un asistente con IA para el sitio de tu empresa.</div>
+</div>
+<div class="browser"><div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span class="url">Ceibo Hogar</span></div><img src="capturas/assist-escritorio.jpg"></div>
+<div class="phone"><div class="screen"><div class="island"></div><div class="chat-top"></div>
+<div class="body">
+ <div class="u">¿Dónde puedo retirar mi pedido?</div>
+ <p>Podés retirar tu pedido en cualquiera de nuestras tres sucursales. El retiro en sucursal es gratis y está listo en 2 horas desde la confirmación; te avisamos por correo y WhatsApp <span class="cite">1</span></p>
+ <ul><li>Ceibo Centro: lun a sáb 9–20 h</li><li>Ceibo Parque: lun a dom 10–22 h</li><li>Ceibo Costa: lun a sáb 10–21 h</li></ul>
+ <div class="map"><img src="capturas/assist-mapa.png"><span>Mapa de sucursales y horarios para retiro de pedidos</span></div>
+ <div class="src">1 fuente ▸</div>
+ <div class="sug">¿Qué necesito llevar para retirar mi pedido?</div>
+ <div class="sug">¿A qué hora abre Ceibo Centro para retirar?</div>
+</div>
+<div class="chat-bot"></div></div></div>
+<div class="cta">Solicitá tu demo <svg width="40" height="33" viewBox="0 0 44 36" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18H40M26 4L40 18L26 32"/></svg></div>
+<div class="handle">@elem.uy</div>
+</body></html>

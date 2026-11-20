@@ -91,6 +91,13 @@ const solucionesRaw: RawItem[] = [
   { href: '/soluciones#crm', icon: GitMerge, label: { es: 'Integraciones CRM', en: 'CRM Integrations' } },
 ];
 
+// Productos propios, cada uno con su página (ELEM Assist todavía tiene sólo su noticia de lanzamiento).
+const productosRaw: RawItem[] = [
+  { href: '/productos/elem-core', label: { es: 'ELEM Core', en: 'ELEM Core' }, description: { es: 'CMS para editar tu web', en: 'CMS to edit your website' } },
+  { href: '/productos/elem-one', label: { es: 'ELEM One', en: 'ELEM One' }, description: { es: 'Intranet y gestión de personas', en: 'Intranet and people management' } },
+  { href: '/noticias/presentamos-elem-assist', label: { es: 'ELEM Assist', en: 'ELEM Assist' }, description: { es: 'Asistente con IA para tu sitio', en: 'AI assistant for your site' } },
+];
+
 const empresaRaw: RawItem[] = [
   { href: '/como-trabajamos', icon: Route, label: { es: 'Cómo trabajamos', en: 'How we work' }, description: { es: 'Nuestro proceso', en: 'Our process' } },
   { href: '/nosotros', icon: Building, label: { es: 'Nosotros', en: 'About' }, description: { es: 'Quiénes somos', en: 'Who we are' } },
@@ -110,6 +117,10 @@ export const soluciones: Record<Locale, MenuItem[]> = {
   es: pick(solucionesRaw, 'es'),
   en: pick(solucionesRaw, 'en'),
 };
+export const productos: Record<Locale, MenuItem[]> = {
+  es: pick(productosRaw, 'es'),
+  en: pick(productosRaw, 'en'),
+};
 export const empresa: Record<Locale, MenuItem[]> = {
   es: pick(empresaRaw, 'es'),
   en: pick(empresaRaw, 'en'),
@@ -117,6 +128,7 @@ export const empresa: Record<Locale, MenuItem[]> = {
 
 const navCopy = {
   servicios: { es: 'Qué hacemos', en: 'What we do' },
+  productos: { es: 'Productos', en: 'Products' },
   comoTrabajamos: { es: 'Cómo trabajamos', en: 'How we work' },
   empresa: { es: 'Nosotros', en: 'About' },
   noticias: { es: 'Noticias', en: 'News' },
@@ -131,6 +143,7 @@ export function getMainNav(locale: Locale): NavEntry[] {
   const c = (k: keyof typeof navCopy) => navCopy[k][locale];
   return [
     { label: c('servicios'), href: '/servicios' },
+    { label: c('productos'), href: '/productos' },
     { label: c('comoTrabajamos'), href: '/como-trabajamos' },
     { label: c('empresa'), href: '/nosotros' },
     { label: c('noticias'), href: '/noticias' },
@@ -139,6 +152,7 @@ export function getMainNav(locale: Locale): NavEntry[] {
 
 const supportNavRaw: RawItem[] = [
   { href: '/servicios', label: { es: 'Qué hacemos', en: 'What we do' } },
+  { href: '/productos', label: { es: 'Productos', en: 'Products' } },
   { href: '/como-trabajamos', label: { es: 'Cómo trabajamos', en: 'How we work' } },
   // { href: '/soluciones', label: { es: 'Soluciones', en: 'Solutions' } },
   // Oculto: empresa nueva, sin casos/referencias todavía.

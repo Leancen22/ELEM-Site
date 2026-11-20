@@ -20,6 +20,9 @@ export const routing = defineRouting({
   pathnames: {
     '/': '/',
     '/servicios': { es: '/servicios', en: '/services' },
+    '/productos': { es: '/productos', en: '/products' },
+    '/productos/elem-core': { es: '/productos/elem-core', en: '/products/elem-core' },
+    '/productos/elem-one': { es: '/productos/elem-one', en: '/products/elem-one' },
     '/soluciones': { es: '/soluciones', en: '/solutions' },
     '/casos-de-exito': { es: '/casos-de-exito', en: '/case-studies' },
     '/nosotros': { es: '/nosotros', en: '/about' },
